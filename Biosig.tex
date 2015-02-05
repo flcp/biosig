@@ -4,6 +4,7 @@
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{amsmath}
 
 %%Wenn ein Absatz nicht eingerückt werden soll
 \setlength{\parindent}{0em}
@@ -24,7 +25,43 @@
 Hier steht der Inhalt.
 hören und sehen du ficker
 äöü
- 
+
+\section{11 - HMM (Hidden Markov Models)}
+	\begin{itemize}
+		\item Modellieren Sequenz von Datenpunkten
+		\item benötigen zugrundeliegendes state modeling
+		\item oft zusammen mit GMMs verwendet
+	\end{itemize}
+	
+\subsection{Sequenzmodellierung und State-Modelierung}
+	\begin{itemize}
+		\item Sequenzmodellierung ist in typischer Signalverarbeitungskette letzte Schritt nach Datenverarbeitung und State Modeling 
+		\item Klassifikation und Sequenzmodellierung eng miteinander verbunden
+		\item 
+	\end{itemize}
+
+\subsection{Dynamic Time Warping}
+	\begin{itemize}
+		\item einfaches Verfahren zum Vergleich von Sequenzen
+		\item Algorithmen in der HMM-Modellierung sehr ähnlich zu DTW
+		\item Wir haben: Aufnahmen von Sprachsignalen - Trainingsdaten (Beispielaufnahmen mit bekanntem Inhalt) + Testdaten (Aufnahmen mit unbekanntem Inhalt)
+		\item Ziel: Wir wollen die Distanz einer unbekannten Sequenz und einer Beispielsequenz berechnen
+		\item Frame für Frame-Vergleich Probleme: Signale sind unterschiedlich lang + Anfang und Ende der Äußerung nicht bekannt
+		\item Faggot-Lösung: Lineares Alignment - für fast alle Zwecke aber viel zu unflexibel
+		\item Killer-Lösung: DTW
+				\begin{itemize}	
+					\item basiert auf Prinzip des dynamischen Programmierens (DP) bzw. der minimalen Editierdistanz
+					\item Pfade durch eine Matrix von möglichen Zuordnungen berechnet
+					\item Ergebnis: Distanzmaß zwischen den beiden Äußerungen
+				\end{itemize}
+	
+		\item Ziel: Finde Distanz zwischen den beiden Äußerungen (je niedriger desto besser)
+		\item Problem: Alle Pfade müssen betrachtet werden um den Besten zu finden
+		\item Lösung:
+				\begin{itemize}
+					\item Berechne für jede Zeit $t$ 
+				\end{itemize}
+ 		\end{itemize}
  
 %%Ende
 \end{document}
