@@ -9,7 +9,7 @@
 \usepackage{a4wide}
 
 %%Wenn ein Absatz nicht eingerückt werden soll
-\setlength{\parindent}{0em}
+\setlength{\parindent}{0cm}
  
 %%Abstand zwischen Absätzen
 \setlength{\parskip}{2.0ex plus 1.0ex minus 0.5ex}
@@ -23,10 +23,94 @@
 
 \tableofcontents
  
-\section{fickerboy}
-Hier steht der Inhalt.
-hören und sehen du ficker
-äöü
+\section{Einleitung}
+\subsection{Biosignale}
+\begin{itemize}
+	\item Chemische und elektrische Biosignale
+	\item Zuständig für Steuerung, Regelung, Informationsübertragung
+\end{itemize}
+\subsection{Definitionen}
+\begin{itemize}
+	\item Biosignale: Nachrichten, die von physikalischen (oder chemischen) Aktionen des menschlichen Körpers ausgehen
+	\item Biosignale: autonome, energetisch-stofflich messbare physikalische Größen
+	\item Kommunikation:  Übertragung/Austausch von Informationen
+	\item Interaktion: Wechselseitiges Einwirken
+	\item Kooperation: Zusammenarbeit (zum gegenseitigen Nutzen)
+	\item Mensch-Maschine Interaktion = M-M Kommunikation
+\end{itemize}
+
+\subsection{Arten}
+\begin{itemize}
+	\item Kinetische Biosignale
+	\item Optische Biosignale
+	\item chemische Biosignale
+	\item Elektrische Biosignale
+	\item Akustische Biosignale
+	\item Thermische Biosignale
+\end{itemize}
+
+\subsection{Bewusste vs Unbewusste Benutzerschnittstellen}
+Wichtig ist nur, dass das Biosignal reproduzierbar ist \\
+Passive Schnittstelle beobachtet Benutzer und interpretiert \\
+Aktive Schnittstelle = Steuerung der Maschine
+
+\subsection{Bewertungskriterien Benutzerschnittstellen}
+\begin{itemize}
+	\item Effektivität (Wirksamkeit, Verlässlichkeit, Erhaltbarkeit)
+	\item Effizienz (Anstrengung des Nutzers vs. benötigte Arbeitsschritte)
+	\item Zufriedenheit (Bewertung durch Nutzer, kein technisches Attribut)
+	\item Privatsphäre
+	\item Sicherheit
+	\item Flexibilität
+	\item Natürlichkeit
+	\item User Experience
+	\item Preis
+\end{itemize}
+
+Verschiedene Sensoren zur Erfassung von Biosignalen des lebenden Organismus. \\
+Ein Sensor kann mehrere Funktionen erfassen (Elektrode: EEG, EKG, EMG, EOG).
+
+\subsection{Vor/Nachteile Biosignal basierter Benutzerschnittstellen}
+Effektivität:
+\begin{itemize}
+	\item Robustheit (Umwelteinflüsse, Temperatur, Feuchtigkeit, Wasser, Dunkelheit etc.)
+	\item Bandbreite (Nutzen unbewusster Signale vergrößert Bandbreite)
+	\item Signale mit geringen Bandbreiten (EMG besser als Sprache)
+	\item Throughput (Handschrift, Tippen, Sprache, Bewegung, Gestik, Mimik)
+\end{itemize}
+Andere Kriterien
+\begin{itemize}
+ \item Zufriedenheit (Tragekomfort, Bequemlichkeit)
+ \item Flexibilität - Mobilität
+ \item Privatsphäre (anderer und von sich selbst)
+\end{itemize}
+
+\subsection{Systemarchitektur}
+\begin{itemize}
+	\item Benötigt Information über Signal, Signalerfassung, Vorverarbeitung und Mustererkennung
+	\item Typischer Aufbau Biosignal->Signalverarbeitung->Decoder->Adaption, wobei Applikationen, Modelle und Wissen nur auf Decoder und Adaption Einfluss nehmen
+\end{itemize}
+
+\subsection{Sprache}
+\begin{itemize}
+	\item Spracherkennung, Synthese, Übersetzung, Verstehen/Zusammenfassung, Sprechererkennung
+	\item Z.T. Körpervibration als Biosignal verwendet für Spracherkennung, Vorteil unabhängig von Hintergrundgeräuschen
+	\item Z.T. Spracherkennung über Kontraktion der Artikulationsmuskeln (lautloses Sprechen, Robust ggnüber Hintergrundgeräuschen, aber Elektroden im Gesicht)
+\end{itemize}
+
+\subsection{EEG}
+\begin{itemize}
+	\item Erfasst Gehirnströme
+	\item Erkennt Emotionen, Mentale Auslastung, momentane Beschäftigung
+\end{itemize}
+
+\subsection{Bewegung}
+\begin{itemize}
+	\item Aufwändige Analyse
+	\item Airwriting mithilfte von Inertialsensoren
+\end{itemize}
+
+\section{Messen von Biosignalen}
 
 \section{11 - HMM (Hidden Markov Models)}
 	\begin{itemize}
