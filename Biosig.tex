@@ -247,23 +247,263 @@ Formale Definition:
 		\item $S={s_1,...,s_N}$ - Menge aller möglichen Zustände
 		\item $\pi$: $\pi(s_i) = P(q_1 = s_i)$ - Anfangsverteilung bei t=1
 		\item $A=((a_{ij})), 1 \leq i, j \leq n$ - Matrix von Übergangswahrscheinlichkeiten
+		\item $B=(b_i)$ - Vektor von Ausgabewahrscheinlichkeiten, d.h. $b_i(v)=P(o_t = v | q_t = s_i)$. Dabei ist $v \in V$
+		\item V - Vokabular, Menge der Ausgabesymbole (diskret oder kontinuierlich)
+	\end{itemize}
+
+Diskrete HMMs:$V = {x_1,x_2, ...,x_v}$, dann sind die $b_i$ diskrete Wahrscheinlichkeiten
+
+
+Kontinuierliche HMMs: $V=R^d$, dann sind die $b_i$ stetige Wahrscheinlichkeitsdichten
+
+\begin{itemize}
+	\item Für die Anfangswahrscheinlichkeiten gilt $\sum_i \pi(s_i) = 1$. Vereinfachend nimmt man oft einfach: $\pi(s_1) = 1 \enspace , \enspace \pi(s_j) = 0 \enspace , \enspace j \neq 0$, d.h. es gibt einen ausgezeichneten Startzustand)
+	\item Es gilt $\sum_j a_{ij} = 1$ für alle i und meistens ist $a_{ij} = 0$ für die meisten Folgezustände j
+\end{itemize}
+Die Struktur eines HMMs nennt man Topologie:
+	\begin{itemize}
+		\item Lineares Modell:  \\ \includegraphics[scale=0.3]{Grafiken/hmm-struktur.png} 
+		\item Links-nach-Rechts-Modell: \\ \includegraphics[scale=0.2]{Grafiken/hmm-lnr.png} 
+		\item Alternative Pfade: \\ \includegraphics[scale=0.2]{Grafiken/hmm-ap.png}
+		\item Bakis model (lin. Modell + kann je 1 Zustand übersprungen werden): \\ \includegraphics[scale=0.2]{Grafiken/hmm-bakis.png}   
+		\item Ergodisches Modell (Jeder Zustand ist von jedem anderen Zustand erreichbar): \\
+\includegraphics[scale=0.2]{Grafiken/hmm-em.png} 
+	\end{itemize}
+
+HMM-Theorie kennt drei Hauptaufgaben: Evaluationsproblem, Dekodierungsproblem, Optimierungsproblem
+
+Evalutationsproblem: Berechne die Wahrscheinlichkeit der Beobachtung $P(O|\lambda)$
+	\begin{itemize}
+		\item Entspricht der Durchführung des DTW-Algorithmus
+		\item Forward-Algorithmus löst dieses Problem
+		\item Herausforderung: Wir müssen die Wahrscheinlichkeit der Beobachtung entlang aller möglichen Pfade berechnen
+		\item Sehr aufwendig - Finden effizienter Algorithmen
+		\item Frage: Wie summieren wir die Wahrscheinlichkeiten entlang aller möglichen Pfade effizient auf?
+		\item Lösung: Ansatz ist wie beim dyn. Programmieren:
+			\begin{itemize}
+				\item Berechne iterativ für jeden Frame und jeden Zustand die Vorwärts-Teilwahrscheinlichkeiten (forward probabilities) $\alpha$
+				\item Dann ergibt sich eine Matrix A der Vorwärtswahrscheinlichkeiten \\ \includegraphics[scale=0.2]{Grafiken/hmm-fa-A.png}
+				\item $\alpha_t(j)$ bezeichnet die Wahrscheinlichkeit, bei gegebener Teilbeobachtung zum Zeitpunkt t im Zustand j zu sein. Zur Berechnung iteriert man über die Zeit:
+				\item Init: $\alpha_1(j) = b_j(o_1) \pi(s_j)$
+				\item Induktion: $\alpha_t(j) = b_j(o_t) \cdot \sum_{i=1..n} a_{ij} \alpha_{t-1}(i)$ 
+				\item Ergebnis: $p(o_1,o_2,...,o_T|\lambda) = \sum_{j=1..n} \alpha_T(j)$
+				\item Komplexität: $O(N^2T)$
+			\end{itemize}
+	\end{itemize}
+
+Dekodierungsproblem: Berechne die wahrscheinlichste Zustandsfolge bei der gegebenen Beobachtung $(q_1^*,...,q_{t-1}^*,q_t^*) = arg \max_{q_1,...,q_t} P(q_1,...,q_t|O,\lambda)$. Viterbi-Algorithmus:
+	\begin{itemize}
+		\item Definiere: $z_t(j) := \max_{q_1,...,q_{t-1}} P(q_1,...,q_{t-1}, q_t = j, o_1,...,o_t)$
+		\item $z_t$ ist die maximale Wahrscheinlichkeit (maximiert über alle Zustandsfolgen bis Zeitpunkt t), mit der bei der gegebenen Teilbeobachtung zum Zeitpunkt t der Zustand j erreicht wird
+		\item Man kann $z_t(j)$ iterativ berechnen, indem man alle möglichen Vorgängerzustände betrachtet und maximiert: \\
+			$z_t(j) = \max_i z_{t-1}(i) \cdot a_{ij} \cdot b_j(o_t)$\\
+			$z_1(j) = \pi(s_j) \cdot b_j(o_1)$
+		\item Ergibt sich eine Matrix Z, ähnlich wie beim Forward-Algorithmus \\
+		\includegraphics[scale=0.2]{Grafiken/viterbi-algo.png}
+		\item Rechenaufwand: $O(N^2T)$
+		\item Außerdem speichern wir für jeden Zustand den optimalen Vorgängerzustand: $r_t(j) = argmax_t (z_{t-1}(i) a_{ij})$
+		\item Wenn alle $z_t$ und $r_t$ berechnet sind, kann Rückwärtszeiger $r_t$ benutzt werden, um die gesuchte optimale Zustandsfolge zu berechnen
+		\item Beginne beim letzten Zeitpunkt T und suche den wahrscheinlichsten Zustand. Dann gehe entlang der Rückwärtszeiger schrittweise zurück: \\
+		\includegraphics[scale=0.2]{Grafiken/viterbi-algo-qt.png}
+	\end{itemize}
+
+Optimierungsproblem: Finde ein HMM $\lambda^{'}$, so dass $P(O|\lambda^{'})> P(O|\lambda)$ (Ein gegebenens HMM $\lambda$ soll verbessert werden)
+	\begin{itemize}
+		\item Welche Parameter können trainiert werden: Übergangswahr., Emissionswahr., Anfangswahr.
+		\item Probleme bei der Optimierung: unbekannt zu welchem Zeitpunkt wir in welchem Zustand sind, Wahrscheinlichkeit berechenbar dass zu Zeitpunkt t im Zustand $s_j$ (diese Information können wir zur Gewichtung nutzen)
+		\item Lösung des Optimierungsproblem besteht aus 2 Schritten:
+		\item Estimation Step: Berechne die Zuordnungswahrscheinlichkeit von Trainingsdaten zu HMM-Zuständen
+			\begin{itemize}
+				\item Trainingsbeobachtung $O=(o_1,...,o_T)$
+				\item für jedes Sample die Wahrscheinlichkeit berechnen, dass es einem gewissen HMM-Zustand zuzuordnen ist
+				\item für jede Kombination von aufeinanderfolgenden Samples die Wahrscheinlichkeit berechnen, dass sie einem gewissen Zustandsübergang zuzuordnen sind
+			\end{itemize}
+		\item Maximization Step: Optimiere die Parameter von Emissionswahrscheinlichkeiten, (Übergangswahrscheinlichkeiten und Anfangswahrscheinlichkeiten)
+	\end{itemize}
+ 
+Forward-Backward-Algorithmus:
+	\begin{itemize}
+		\item Berechnet die Zuordnungswahrscheinlichkeiten von Trainingsdaten zu HMM-Zuständen, löst also den Expectiation Step
+		\item Betrachten wir eine Beobachtung $o=(o_1,...,o_T)$
+		\item Gesucht sind 2 Parameter:
+			\begin{itemize}
+				\item $Y_t(j) = P (q_t=j|o_1,...,o_T,\lambda)$ ist die Wahrscheinlichkeit, dass der Beobachtungsvektor $o_t$ zum Zustand j gehört
+				\item $\xi_t(i,j) = P (q_t=i,q_{t+1}=j | o_1,...,o_T,\lambda)$ ist die Wahrscheinlichkeit, dass zum Zeitpunkt t im Zustand i befinden und dann in den Zustand j übergehen
+			\end{itemize}
+		\item Beide Wahrscheinlichkeiten hängen von der gesamten Beobachtung o ab
+		\item Berechnung von $y$ und $\xi$
+			\begin{itemize}
+				\item Forward-Algorithmus berechnet die Wahrscheinlichkeit, nach der Teilbeobachtung $(o_1,...,o_t)$ also zum Zeitpunkt t im Zustand j zu sein
+				\item Backward-Algorithmus berechnet die Wahrscheinlichkeiten im Zustand j zu sein und dann die Teilbeobachtung $(o_{t+1},...,o_T)$ zu machen
+				\item Kombination der beiden ergibt Forward-Backward-Algorithmus, der $Y_t(j)$ berechnet
+				\item Berechne $P(q_t=j|o_1,...,o_T,\lambda)$ druch Aufspaltung in Forward-Teil (bis Zeit t) und Backward-Teil (nach Zeit t).
+				\item $\alpha_t(j) := P(q_t=j,o_1,...,o_t|\lambda)$ \\
+					  $\beta_t(j) := P(q_{t+1}=j,o_1,...,o_T|\lambda)$ \\
+					  $\Rightarrow P(q_t=j|o_1,...,o_T,\lambda) = \alpha_t(j) \cdot  \beta_t(j)$. Anwendung der Bayes-Regel ergibt: \\ \vspace{3px}
+				\includegraphics[scale=0.2]{Grafiken/forward-backward-algo.png}	  	
+				\item $\beta_t$ können ähnlich wie die $\alpha_t$ rekursiv berechnet werden, aber rückwärts:
+					\begin{itemize}
+						\item Init: $\beta_T(i) = 1$ für alle Zustände i
+						\item Induktion: $\beta_t(t) = \sum_{j=1..n} a_{ij} b_j (o_{t+1})\beta_{t+1}(j), \enspace t=T-1,..., 1$
+						\item Durch Aufsummieren: $\Rightarrow p(o_{t+1},o_{t+2},...,o_T|\lambda) = \sum_{j=1..n} \beta_T(j)$
+					\end{itemize}			
+				\item[] \includegraphics[scale=0.25]{Grafiken/forward-backward-beta.png}	  		 		\item $\xi_t(i,j)$: auch mit Forward-Backward-Algorithmus $\xi_t(i,j) = P(q_t = i,q_{t+1} = j|O,\lambda)$
+				\item[] \includegraphics[scale=0.2]{Grafiken/xis.png}
+			\end{itemize}
+	\end{itemize}
+
+\underline{Optimierung des HMMs:}
+	\begin{itemize}
+		\item Trainingsdaten den HMM-Zuständen und Zustandsübergängen zugeordnet
+		\item Das war der Expectation Step des Algorithmus
+		\item Führe nun Maximierung der HMM-Ausgabewahrscheinlichkeit durch (Maximization Step)
+		\item Zuordnung der Samples zu HMM-Zuständen, gegeben durch $\alpha_t(j),\beta_t(j),Y_(j)$
+		\item Falls Emissionswahrscheinlichkeiten durch Gauss-Mischverteilungen modellieren, dann verwende EM-Algorithmus zum Training
+	\end{itemize}
+	
+\underline{Optimierung der Emissionswahrscheinlichkeiten:} \\
+Betrachten Emissionswahrscheinlichkeiten $B^{'}=(b_1^{'},...,b_N^{'})$ bei diskretem Ausgabealphabet V. Zu jedem Zustand i = 1,...,N gehört eine Verteilung $b_i$, so dass $b_i(v_k) \in  [0,1]$ die Wahrscheinlichkeit angibt im Zustand i die Beobachtung $v_k$ zu machen. \\
+Danach werden die $b_i^{'}$ bestimmt: \includegraphics[scale=0.2]{Grafiken/bis.png}\\
+Das heißt, $b_i^{'}(v_k)$ entspricht dem Anteil der Emissionen von $v_k$ an der Gesamtzahl der "Besuche" von Zustand i.
+	
+	
+\underline{Optimierung der Übergangswahrscheinlichkeiten:} 	
+	\begin{itemize}
+		\item $sum_{t=1..T-1} \xi_t(i,j)$ ist der Erwartungswert der Anzahl der Transitionen von i nach j
+		\item Der neue Wert $a_{ij}^{'}$ ist der Anteil der Transitionen von i nach j, normalisiert durch die Gesamtzahl der Transitionen (=Besuche) von i 
+		\item Summiere über alle Zeitpunkte t=1,...,T: $a_{ij}^{'} = \frac{\sum_t \xi_t(i,j)}{\sum_t \gamma_t(i)}$
+		\item Der neue Wert $\pi^{'}(i)$ ist dementsprechend die Anzahl der Besuche von i zur Zeit t = 1, also $\pi_t^{'} = \gamma_1(i) = \frac{\alpha_1(i)\beta_1(i)}{\sum_l \alpha_1(l)\beta_1(l)}$
 	\end{itemize}
  		
+\underline{Baum-Welch-Regeln:} \\ 	
+	\begin{itemize}
+		\item Alle Parameter des HMMs an die aktuelle probabilistische Zuordnung der Samples, gegeben durch $\gamma_t(i)$, angepasst. Es ergibt sich also ein neues HMM: $\lambda^{'} = (S,\pi^{'},A^{'},B^{'},V)$
+		\item Dieser Algorithmus wird, wie es für EM-Algorithmen typisch ist, so lange iterativ wiederholt, bis ein Abbruchkriterium erfüllt ist
+		\item Die Regeln der letzten "Folien" sind die Baum-Welch-Regeln
+	\end{itemize}
+	
+\underline{Training von HMMs mit Viterbi:} \\ 
+	\begin{itemize}
+		\item Viterbi, der immer nur maximale Wahrscheinlichkeiten betrachtet, geht viel schneller als Forward-Backward-Algorithmus
+		\item In der Spracherkennung ist Viterbi-Training Standard
+	\end{itemize}
+	
+\section{12 - Spracherkennung}
+\subsection{Schall als Luftdruckwelle} 
+
+\underline{Was ist Schall?} \\ 
+	\begin{itemize}
+		\item Druckwelle, die von einem vibrierenden Objekt erzeugt wird
+		\item Vibration überträgt sich auf Partikel des umgebenden Trägermediums (z.B. Luft) - Energietransport über Medium findet statt
+		\item Partikel parallel zur Ausbreitungsrichtung der Welle - spricht man von Longitudinalwelle
+		\item Longitudinalwelle besteht aus Kompressionen (Verdichtungen) + Rarefaktionen (Verdünnungen) der Luft
+		\item Lässt sich durch Sinusfkt. beschreiben
+		\item Amplitude entspricht der Dichte der Luft an der betreffenden Stelle
+		\item Ausbreitungsgeschwindigkeit in der Luft: 331,5 + 0,6 T m/s, T = Temperatur in C
+	\end{itemize}
+
+\underline{Messung der Schallintensität} \\  
+ 	\begin{itemize}
+ 		\item leseste hörbare Ton moduliert den Luftdruck um etwa $10^{-5} Pa$, Schmerzgrenze: $100 = 10^2 Pa$
+ 		\item Wird in Dezibel [dB] gemessen (dB ist Verhältnis von zwei Schallintensitäten)
+ 		\item Schalldruckpegel (sound pressure level, SPL) misst den absoluten Schalldruck in dB
+ 		\item Referenzgröße $P_0$ ist die Hörschwelle von $2 \cdot 10^{-5} Pa$ $SPL = 20 \cdot log_{10} (P / P_0)$
+ 	\end{itemize}
+ 
+\subsection{Der menschliche Sprachproduktionsapparat} 
+\underline{Sprachproduktionsapparat} \\ 		
+ 	\begin{itemize}
+ 		\item Sprache besteht aus Luftdruckwellen - diese werden von Mund und Nase ausgestoßen
+ 		\item Erzeugung dieser Wellenform besteht aus 2 Schritten
+ 			\begin{itemize}
+ 				\item Stimmbänder und Kehlkopf erzeugen eine Grunderregung
+ 				\item Der Dokaltrakt (Mundhöhle, Nasaltrakt) wirkt als ein Filter auf diese Grunderregung und moduliert sie
+ 			\end{itemize}
+ 		\item Grunderregung kann eine periodische Schwingung oder aperiodisches Rauschen sein
+ 		\item Häufige Annahme: Erregung und Filter sind unabhängig
+ 	\end{itemize}
+ 
+\underline{Grundfrequenz} \\
+Betrachten wir zuerst den Fall, dass die Stimmbänder sich öffnen und schließen und so die Grunderregung erzeugen
+	\begin{itemize}	
+		\item Periodisches öffnen und schließen der Stimmbänder erzeugt periodische Schwingung (Grunderregung)
+		\item Dauer eine Periode hängt von Länge und Anspannung der Stimmbänder und dem von der Lunge erzeugten Luftdruck ab
+		\item Die Periode kann vom Sprecher in gewissen Grenzen moduliert werden, um die Tonhöhe (pitch) zu modulieren
+		\item Öffnungszyklus der Stimmbänder:
+			\begin{itemize}
+				\item Stimmbänder widerstehen dem Lungenluftdruck
+				\item Unter immer stärkerem Druck öffnen sich die Stimmbänder
+				\item Wenn der Druck wieder gering ist fallen die elastischen Stimmbänder wieder in die Ausgangsposition
+			\end{itemize}
+		\item Anzahl dieser Öffnungsvorgänge pro Sekunde als Grundfrequenz der Sprache $f_0$
+		\item Variiert von 60 Hz (große Männer) bis 300 Hz (Kinder)
+		\item Grundfrequenz bestimmt die Periode für die höherfrequenten harmonischen Schwingungen des Vokaltrakts
+	\end{itemize}
+	
+\underline{Stimmhafte vs. stimmlose Phoneme} \\
+	\begin{itemize}
+ 		\item Laute sind stimmhaft, wenn während der Artikulation eine Vibration der Stimmbänder vorliegt
+ 		\item Andernfalls sind die Stimmbänder geöffnet, und die Grundanregung des Lautes ist ein Rauschen mit gewissen chaotischen Eigenschaften
+ 		\item Beispiel für beide Lautarten: Wellenform des engl. Wortes sees \\
+ 		\includegraphics[scale=0.2]{Grafiken/bsp-sees.png}
+	\end{itemize}
  		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
+\underline{Das Quelle-Filter-Modell} \\
+	\begin{itemize}
+		\item Wellengenerator: Periodische Schwingung der Stimmbänder
+		\item Rauschgenerator: Luftstrom bei stimmlosen Phonen
+		\item Systemmodell: Filtereigenschaft des Vokaltraktes (Mundraums)
+		\item[] \includegraphics[scale=0.2]{Grafiken/quelle-filter-modell.png}
+	\end{itemize}
+
+\subsection{Akustische Phonetik und Phonologie}
+\underline{Phonetik und Phonologie} \\
+	\begin{itemize}
+		\item Phonetik: Studium der Produktion, Klassifikation und Transkriptiopn von Sprachlauten -> Fokus liegt auf der akustischen Realisierung der Sprachlaute
+		\item Phonologie: Studium der Verteilung und Struktur von Lauten in einer Sprache -> Hauptziel ist es, übergreifende Charakteristiken von Sprachlauten zu finden
+	\end{itemize}
+
+\underline{Phonetik} \\
+	\begin{itemize}
+		\item Artikulatorische Eigenschafen
+			\begin{itemize}
+				\item Laute können neben stimmhaft/stimmlos nach artikulatorischen Eigenschaften unterschieden werden
+				\item Unterscheidung erfolgt entsprechend der Anatomie der wichtigen Artikulatoren und ihrer Position im Vokaltrakt
+				\item Hauptkomponenten des menschl. Sprachproduk.apparats: Lungen, Trachea (Luftröhre), Pharynx (Rachen), Nasenhöhle und Mundhöhle. (Rachen + Mundhöhle = Vokaltrakt, Nasenhöhle = Nasaltrakt)
+				\item Innerhalb des Vokaltrakts sind Stimmbänder, weicher Gaumen (Velum), harter Gaumen (Palatum), Zunge, Zähne und Lippen
+			\end{itemize}
+		\item Benennung von Sprachlauten
+			\begin{itemize}
+				\item Nasallaute:Luftstrom hauptsächlich durch Nase, gesenktes Velum (/n/)
+				\item Orallaute: Luftstrom durch Mund, Velum verschließt Nasalraum
+				\item Stoplaute (Plosive):Vokaltrakt kurzzeitig vollst. verschlossen (/p/, /b/)
+				\item Frikative: Vokaltrakt teilw. verschlossen, Reibung entsteht (/f/)
+				\item Approximanten: Vokaltrakt verengt, keine Reibung (/j/)
+				\item Labial: Artikulationsort Lippen (/b/, /w/)
+				\item Dental: Artikulation Zunge an Zähnen
+				\item Alveolar: Alveole (Zahndamm) aktiv
+				\item Palatal: Harter (vorderer) Gaumen aktiv
+				\item Velar: Weicher (hinterer) Gaumen aktiv
+				\item Glottal: Glottis, Stimmbänder aktiv (z.B. Be-amte)			
+			\end{itemize}
+		\item Konsonanten und Vokale
+			\begin{itemize}
+				\item Bei der Artikulation von Konsonanten befindet sich irgendwo im Vokaltrakt ein Hindernis (Stop, Verengung) für den Luftstrom
+				\item Bei Vokalen liegt kein solches Hindernis vor
+				\item Wichtige Eigenschaften für die Spracherkennung wichtig:
+					\begin{itemize}
+						\item Durschnittliche Dauer von Vokal ist viel länger als von Konsonant
+						\item Vokale tragen den Hauptteil an Energie im Signal
+						\item => Vokale wichtig für Spracherkennung, Konsonanten sind schwach und können mit Stille verwechselt werden
+						\item Bei (englischem/deutschem) Text ist es gerade andersherum
+					\end{itemize}
+			\end{itemize}
+		\item Modell des menschlichen Vokaltrakts
+			\begin{itemize}
+				\item 12 - folie 18
+			\end{itemize}
+	\end{itemize}
+
  		
  		
  		
