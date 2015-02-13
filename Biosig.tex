@@ -111,16 +111,284 @@ Andere Kriterien
 \end{itemize}
 
 \section{Messen von Biosignalen}
-\subsection{Ficker}
-asdsaddas
-dsaasd
-asd
-asd
+\subsection{Messen - Definitionen}
+Bestimmung eines Meswertes durch Verglecih mit Vergleichsgröße \\
+Messwert = Zahlenwert $\times$ Maßeinheit
 
-das
-das
-das
-das
+\subsection{Messfehler}
+Systematische und zufällige Messfehler \\
+Abhängig von
+\begin{itemize}
+	\item Gewähltes Messverfahren
+	\item Messgerät
+	\item Umwelteinflüssen
+\end{itemize}
+
+\subsection{Messverfahren}
+\begin{itemize}
+	\item Direkte / Indirekte Messverfahren
+	\item Direkt: Blutdruck, Körpertemperatur, Herzfrequenz, Bioelektrische Potenziale (EEG, EKG, EMG, EOG)
+	\item Indirekt: Extinktion (Lichtabsorption), Ionenaktivität, Durchlässigkeit für elektrische Felder, magnetische Reaktionsfähigkeit
+	\item Dauer: kurzzeitig vs. langzeitig Überwachen
+	\item In Medizin: Messen, um Zustand zu erfahren (zum Lebenretten)
+	\item In Informatik: Messen, für Informationsgewinn (Proband, keine Kranken)
+	\item Dient Erfassung, Wandlung, Verarbeitung und Übertragung von Biosignalen
+\end{itemize}
+	
+\subsection{Auswertung einer Messung}
+\begin{itemize}
+	\item Inter-Individuelle Variabilität: Verschiedene Zielpersonen
+	\item Intra-Individuelle Variabilität: Tagesform
+	\item Grad der Belästigung: Dauer, Schmerz
+	\item Biologische Störquellen: physioligische Artefakte (Augenbewegung bei EEG), Methodenart, Dauer und Wiederholbarkeit (Ermüdung, Lerneffekt)
+\end{itemize}
+
+\subsection{Messgröße Biosignal}
+\begin{itemize}
+	\item Biosignal = Messgröße
+	\item Beschreibt Zustand/Zustandsänderung des Organismus
+	\item Geben Auskunft über Änderungen von: Stoffwechsel, Organen, funktionelle Änderungen, patho- physiologische Zustände, Dynamik von Prozessen
+	\item Ort und zeitlich/räumliche Zuordnung wichtig für Analyse
+\end{itemize}
+
+\includegraphics[scale=0.65]{Grafiken/beispielbiosig.png}
+
+\subsection{Eigenschaften, Beschreibung, Darstellung}
+Eigenschaften
+\begin{itemize}
+	\item Strukturgrößen: Länge, Fläche, menge, Volumen, Elastizität
+	\item Funktionsgrößen: Temperatur, Druck, elektrische Potenziale, akustische Geräusche
+	\item Beschreibung: Frequenz, Amplitude, Form, Auftrittszeitpunkt
+	\item Darstellung: Zeit/Frequenzbereich, 2D oder 3D
+	\item Auftreten: Stochastisch, stationär, periodisch, diskret
+\end{itemize}
+
+\subsection{Einteilung nach physikalischen Eigenschaften}
+\begin{itemize}
+	\item Bioakustische Signale: Herzschall, Lungengeräusche, Sprache
+	\item Biochemische Signale: Stoffzusammensetzung, Konzentration
+	\item Bioelektrische und biomagnetische Signale: Elektrische Potenziale, Ionenströme
+	\item Biomechanische Signale: Größe, Form, Bewegung, Beschleunigung
+	\item Biooptische Signale: Farbe, Lumineszenz
+	\item Biothermische Signale: Körpertemperatur
+\end{itemize}
+
+
+
+\subsection{Messkette}
+\begin{itemize}
+	\item Applikation von Reizen, Strahlen, Substanzen, Wellen
+	\item Primäres Messsignal Messen mit Fühler
+	\item Signalverarbeiten (Linearisieren, Artefakterkennung, Rauschen entfernen)
+	\item Biostatistik, Signalanalyse, Bildverarbeitung
+	\item Bewertung
+\end{itemize}
+
+
+\subsection{Primäres Messsignal}
+\begin{itemize}
+	\item Medizin: Messsignal durch äußere Substanzen/Strahlen
+	\item Biosignale: Invasiv, keine Anwendung äußerer Reize
+	\item Meistens Signale, die vorhanden sind
+	\item Primäres Messsignal: direkt vom Körper abgegriffen
+\end{itemize}
+
+\subsection{Reize}
+\begin{itemize}
+	\item Reize -> Reaktionen
+	\item Mechanische, Elektrische, Akustische, Optische Reize, radioaktiv markierte Substanzen, Ultraschall, Röntgen, physische/psychische Reize
+	\item Unwichtig für Benutzerschnittstellen, wichtig fürs Training
+\end{itemize}
+
+\subsection{Biosensoren}
+\begin{itemize}
+	\item Biosensoren erfassen Biosignale
+	\item Mit Wandler verbunden oder ist direkt Wandler
+	\item Wandler wandelt primär in sekundäres Messsignal um
+	\item Sekundär Signal meist elektrisch
+	\item Fühler ist eine biologische Detektionskomponente
+\end{itemize}
+
+\subsection{Biologische Detektionskomponente}
+\begin{itemize}
+	\item Sensitiv, spezifisch mit der Substanz
+	\item Es können entstehen Wärme, Elektronen,Protonen, Lich, Gase, etc.
+	\item Komponente besteht aus Enzymen, Mikroorganismen, Organellen, Zellverbände, Antikörper
+\end{itemize}
+
+\subsection{Anforderungen an Biosensoren}
+\begin{itemize}
+	\item Rückwirkungsfrei
+	\item Reproduzierbar
+	\item Konstantes Übertragungsverhalten
+	\item Hohe Bioverträglichkeit
+	\item Geringe Belastung
+	\item Einfache Anwendung (Reinigung etc.)
+	\item Entwicklungsziele für nächste Generation: Zuverlässiger, weniger Artefakte, Miniaturisierung, bessere Inkorporation, höhere Komplexität, Kanalanzahl, Berührungslosigkeit
+\end{itemize}
+
+\subsection{Wandler}
+\begin{itemize}
+	\item Wandeln primäres in sekundäres Messsignal
+	\item Meist elektrisches Sekundärsignal
+	\item Chemoelektrische Wandler, elektrische und magnetische Wandler, Mechanoelektrische Wandler, photoelektrische Wandler, thermoelektrische Wandler1
+\end{itemize}
+
+\subsection{Elektrische Wandler}
+\begin{itemize}
+	\item Ionenstrom->Elektronenstrom
+	\item Ausdehnung (Dichte der Elektrodenplatzierung), Umgebungseinflüsse (Dreck, Tragekomfort) wichtig
+	\item Größe: Mikro, Makroelektroden
+	\item Platzierung: Oberflächen, Nadelelektroden
+	\item Baufrom: Nadel, Schlaufe, Napf
+	\item Materialien: Metallelektroden
+\end{itemize}
+
+\subsection{Mechanoelektrische Wandler}
+\begin{itemize}
+	\item Messung von Längenänderungen, Dehnungen, Druckschwankungen, Vibrationen, Blutfluss
+	\item Besitzt Membran, die Kraftänderung detektiert (Auslenkung)
+	\item Resistive Wandler: Membran = Spule, Längenveränderung des Dehnmessstreifens => Änderung des Widerstands
+	\item Induktive Wandler: Membran = Spule, Verschiebung von Eisen/Ferritkern
+	\item Kapazitive Wandler: Membran = Kondensator, Veränderung des Plattenabstandes => Kapazitätsänderung
+	\item Kapazitive Wandler Beispiel: Kondensatormikrofon: Membran => Kondensator => Vibrationen verändern Entfernung der Platten => Kapazitätsänderung => Umwandlung in Spannungsschwankungen
+	\item Piezoelektrische Wandler: Piezoelektrische Kristalle, mechanische Einflüsse in Richtung der polaren elektrischen Achsen bewirken Verformung => Verschiebung der Atome => Elektrische Ladung => Oberflächenladung
+	\item Ladung ist Piezoelektrische Konstante $\times$ äußere Kraft
+	\item Hall-Sonden: Nutzt Hall-Effekt: Strom durchflossen -> in orthogonales Magnetfeld => Spannung
+	\item Photoelektrische Wandler: Erfassen Lichtabsorption und Lichtreflexion: Photowiderstand, Photodiode, Photoelement, Phototransistor: Lichtstärke => Stromänderung
+	\item Thermoelektrische Wandler: Messung Atemstrom, Körpertemperatur
+	\item Thermoelement: Temperaturdifferenz => Thermospannung
+\end{itemize}
+
+\subsection{Weitere Wandler - Indirekte Messung}
+\begin{itemize}
+	\item Biosignale oft indirekt erfasst
+	\item Durch Einfluss von Strahlen, Wellen, radioaktive Stoffe
+	\item PET, SPECT, MRT, CT; Angiographie
+\end{itemize}
+
+\subsection{Vorverarbeitung}
+Elektrisches Sekundärsignal digitalisieren \\
+
+\subsection{Vorverarbeitung - Differenzverstärker}
+\begin{itemize}
+	\item Zwei Eingänge, ein Ausgang
+	\item $U_a = V*(U_e1-U_e2)$
+	\item V Verstärkungsfaktor
+	\item Wenn beide Eingänge gleich sind, Ausgangsspannung 0
+	\item Brummen von Wechselstrom wird unterdrückt
+	\item Linearität zwischen Eingangs und Ausgangssignal
+	\item Verstärkung und Frequenzgang in Abhängigkeit des Biosignals
+\end{itemize}
+
+\subsection{Vorverarbeitung - Filterung}
+\begin{itemize}
+	\item Wirkt auf Frequenzkomponenten eines Signals
+	\item Tiefpass- und Hochpassfilter
+	\item Tiefpassfilter lässt tiefe Frequenzen passieren, dämpft hohe Frequenzen (EMG, EEG)
+	\item Hochpassfilter lässt hohe Frequenzen passieren, dämpft langsame Wellen
+\end{itemize}
+
+Ideal: Linear, d.h. Änderung der Messgröße entspricht Änderung des Messwerts\\
+Real nicht linear, da Außeneinwirkungen (Beispiel Messung Blutdruck, Gebilde zum Messen ist schwingungsfähig, daher leichte Änderungen)\\
+Wesentliches Ziel ist Verbesserung der nicht-linearen Teile der Messkette
+
+\subsection{Digitalisierung}
+\begin{itemize}
+	\item Sekundäres Messsignal ist kontinuierlich in Zeit und Amplitude
+	\item Muss diskret im Computer sein
+	\item Sampling und Quantisierung
+	\item Quantisierung = Diskretisierung der y-Achse
+	\item Sampling = Diskretisierung der x-Achse
+\end{itemize}
+
+\subsection{Digitale Signalverarbeitung}
+\begin{itemize}
+	\item Digitale Filterung
+	\item Fensterung: Signal wird in Fenster unterteilt, um Zeitverlauf nachweisen zu können (Sprache, 16000 Samples/Sekunde -> 100 Fenster/Sekunde)
+	\item Merkmalsextraktion (Wichtige Merkmale bezogen auf Kontext extrahieren)
+	\item Kompression (Verringerung der Dimensionalität)
+\end{itemize}
+
+\subsection{Speicherung, Registrierung}
+\begin{itemize}
+	\item Direktschreibeverfahren: Ausgabe auf Registrierpapier
+	\item Indirektschreibeverfahren: Photoschreiber und UV-Licht Schreiber
+	\item Monitor: Analog oder Digitale Anzeige
+	\item Speicherung auf Speichermedien
+	\item Für Benutzerschnittstellen nur digitale Direktschreibung sinnvoll
+\end{itemize}
+
+\subsection{Übertragung}
+\begin{itemize}
+	\item Signale aus Körper
+	\item Signale, die Auskunft geben über Person/implantierte Geräte
+	\item Wired-Wireless, Bluetooth etc.
+\end{itemize}
+
+\subsection{Datenanalyse}
+\begin{itemize}
+	\item Messwerte: Zeitbereich/Frequenzbereich/Bildverarbeitung
+	\item Beschreiben mit Systemen/Modellen/Simulationen
+	\item Studien: Blindstudie (kein Placebo-Effekt), Doppelblindstudie (Untersucher kennt Faktoren nicht), Abhängige und unabhängige Stichproben, Langzeituntersuchungen
+	\item Datenanalyse maschinell!
+	\item Ablauf: Training + Klassifikation
+\end{itemize}
+
+\section{Erfassen von Biosignalen}
+
+
+\subsection{Spracherkennung}
+\begin{itemize}
+	\item Traditionell: Mikrofon, Signal wird in elektrische Energie transformiert
+	\item Probleme: Hörbarkeit (leise), Interferenz (Hintergrund), Privacy (öffentliche Orte)
+	\item Alternativen?
+\end{itemize}
+
+
+\subsection{Stethoskop/NAM}
+\begin{itemize}
+	\item Kondensatormikrofon in Stethoskop
+	\item "Hört" Körpervibrationen
+	
+\end{itemize}
+
+\subsection{Bone-Conduction}
+\begin{itemize}
+	\item Resonanzkörper menschlicher Körper
+\end{itemize}
+
+
+\subsection{Geflüsterte Sprache}
+\begin{itemize}
+	\item keine/kleine Vibration der Stimmbänder
+	\item gewisse Adaptionsschritte
+	\item Throat microphone
+	\item Close Talking microfone
+\end{itemize}
+
+\subsection{Bioelektrische Signale}
+\begin{itemize}
+	\item Potentialdifferenzen aus Nerven/Muskelvorgängen
+	\item Elektroden leiten Signal ab
+	\item Spannungsdifferenz benötigt
+	\item Bipolare Ableitung: Potentialdifferenz zwischen zwei Elektroden auf elektrisch aktiven Gebieten
+	\item Unipolare Ableitung/Referenzableitung: Eine Elektrode auf inaktivem Gebiet (Referenz)
+\end{itemize}
+
+\includegraphics[scale=0.65]{Grafiken/bioelektrischesignalefreq.png}
+
+\subsection{Erfassen elektrischer Felder}
+\begin{itemize}
+	\item 
+\end{itemize}
+
+
+
+
+
+%__________________________________BENNE
+
 
 
 \section{11 - HMM (Hidden Markov Models)}
