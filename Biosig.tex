@@ -1,4 +1,4 @@
-%% Das Layout des Dokumentes wird festgelegt. Hier A4 mit einer 10er Schrift. Typ: Report 
+ %% Das Layout des Dokumentes wird festgelegt. Hier A4 mit einer 10er Schrift. Typ: Report 
 \documentclass[a4paper,10pt,oneside]{article}
 
 \usepackage[ngerman]{babel}
@@ -708,6 +708,257 @@ Gibt grundlegenden Unterschied zwischen der Wahrnehmung (Perzeption) eines Laute
 		\item Unterschied: frequenzabhängige Wahrnehmung der Lautstärke (Empfindlichkeit variiert mit der Frequenz, Lautstärke != Intensität)
 		\item Wahrnehmung hängt abvon: Resonanzfreq. des Gehörgangs, Übertragungsfunktion der Gehörknöchelchen
 	\end{itemize}
+	
+\section{Sprackerkennung - Algorithmik}
+\subsection{Sprachsignalverarbeitung}
+Wir benötigen eine Repräsentation jedes Frames, die das enthaltene Sprachsegment möglichst gut charakterisiert
+	\begin{itemize}
+		\item Geringer Aufwand in Speicherplatz und Rechenzeit
+		\item Verschiedene Phoneme sollen gut unterscheidbar sein
+		\item Robust gegenüber Störungen 
+	\end{itemize}
+
+\underline{Speech Coding} \\
+Wie repräsentiert man Sprache in digitaler Form?
+	\begin{itemize}
+		\item Direkte Speicherung der Wellenform (beachte Effekte von Sampling/Quantisierung, akustische Signal sollte zurückzugewinnen sein)
+		\item Parametrische Repräsentation (gewisse Eigenschaften des Sprachsignals werden bezogen auf ein gewisses Modell gespeichert)
+	\end{itemize}
+
+Wie beurteilt man die Qualität einer Sprachcodierung?
+	\begin{itemize}
+		\item Qualität vs. Bitrate
+		\item Benötigte Rechenleistung (Echtzeitanforderungen)
+		\item Quantisierungsrauschen
+		\item Robustheit bei weiteren Verarbeitungsschritten
+		\item Fehlertoleranz
+		\item Verhalten bei nichtsprachlichen Signalen
+		\item Hohe Verständlichkeit für Menschen
+	\end{itemize}
+	
+\underline{Sampling} \\
+	\begin{itemize}
+		\item Erster Schritt: A/D-Wandlung
+		\item Hörbereich: ca. 200 Hz - 20 kHz
+		\item Sprachsignal: ca. 300 Hz - 8 kHz
+		\item Nach Nyquist-Theorem tasten wir in der Regel mit min. 16 kHz ab
+		\item weniger problematisch ist die Quantisierung (16-bit-Quantisierung ist ausreichend für Spracherkennung)
+	\end{itemize}
+	
+\underline{Mel-Frequency Cepstral Coefficients (MFCC)} \\
+\underline{Framing (Fensterung} \\
+Bei Framing gibt es 3 Dinge zu beachten:
+	\begin{itemize}
+		\item Frame Shift (die Schrittweite zwischen Frames)
+		\item Frame Size (Fenstergröße)
+		\item Fensterform
+	\end{itemize}
+
+Schrittweite ergibt sich aus Spracherzeugung und -perzeption:
+	\begin{itemize}
+		\item Sprechrate: 10-30 Phone/s => Phonem hat eine Länge von ca. 30 -100ms
+		\item Jedes Phon kann aus mehreren Segmenten bestehen, üblicherweise wird es durch drei Zustände (Anfang, Mitte, Ende) modelliert
+		\item Kleinstes Segment entspricht daher 10ms => Frame Shift ist deshalb 10ms
+	\end{itemize}
+	
+\underline{Das Hamming-Fenster} \\
+	\begin{itemize}
+		\item Standardfenster in der Sprachsignalverarbeitung
+		\item[] %G 13 - 12
+		\item Fenstergröße beträgt etwa 1.5-2-fache des Frameshifts
+		\item Typische Fenstergröße: ca. 16ms
+	\end{itemize}
+	
+\underline{Fouriertransformation} \\
+	\begin{itemize}
+		\item Nächster Schritt zur Berechnung von MFCCs ist Frequenzanalyse der einzelnen Frames
+		\item Zur Erinnerung: STFT
+		\item[] %G Formel 12 - 15
+		\item w[n] ist die Hamming-Fensterfunktion
+		\item Die STFT erzeugt N Frequenzsamples aus N Zeitsamples - 1 komplexe Zahl pro Frequenz, Symmetrisch im Betrag + antisymmetrisch in der PHase => reicht die positiven Frequenzen zu betrachten
+		\item Effiziente Berechnung: FFT (Fast Fourier Transform)
+		\item Menschl. Ohr ist sehr empfindlich für die Phase des Audiosignals (aber nicht in 10-20ms Fenstern), daher reicht es in den Fenstern dieser Gröe das Amplitudenspektrum (Betrag des Spektrums) zu betrachten
+	\end{itemize}
+	
+\underline{Mel-Filterbank} \\
+	\begin{itemize}
+		\item Betrachten wir uns die DTFT auf einem 16 kHz gesampelten Sprachframe, liefert -> 16ms entsprechen 256 Samples, gibt es 256 Frequenzkomponenten im Bereich von -8 kHz bis 8 kHz (aus Symmetriegründen sind 128 von ihnen interessant für uns)
+		\item Problem: Diese Auflösung im Frequenzbereich ist viel zu hoch
+		\item Es wäre besser, größere Frequenzbereiche zu betrachen
+		\item Lösung: Vor der Logarithmierung verwenden wir eine Filterbank
+		\item Filterbank fasst jeweils benachbarte Frequenzen gewichtet zusammen
+		\item Filterbank orientiert sich am menschlichen Gehör (lin. Frequenzantwort zwischen 0 Hz und 1000 Hz, log. Antwort über 1000 Hz)
+		\item Meistens benutzt: Mel-Filterbank (40 überlappende Dreiecksfilter zwischen 300 Hz und 8000 Hz + Verringert Dimensionalität des Signals auf 40 Koeffizienten pro Frame
+	\end{itemize}
+	
+\underline{Cepstrum} \\
+ 	\begin{itemize}
+ 		\item Zunächst berechnen wir den Logarithmus des Amplitudenstpektrums (menschl. Gehör unterscheidet Frequenzen auch logarithmisch)
+ 		\item $e(t) * h(t) \rightarrow E(z) \cdot H(z) \rightarrow log E + log H$
+ 		\item Frequenzanalyse des logarithmierten Spektrums ergibt das Cepstrum
+ 		\item Einheit des Cepstrums ist die Quefrenz (auch Hz)
+ 		\item Cepstrum ist die Summe vom Einfluss der Anregungsschwingung und dem Einfluss vom Vokaltrakt (weil die FT linear ist)
+ 		\item Anregungsschwingung von 200 Hz im Beispiel sichtbar
+ 		\item[] %G 13 - 23
+ 	\end{itemize}
+ 	
+\underline{Log-Mel-Spektrogramm} \\
+	\begin{itemize}
+		\item Mel-Filterbank behält die grobe Struktur des ursprünglichen Spektrogramm
+		\item Durch anschließende Logarithmierung und inverser FT, erhält man die Mel-Frequency Cepstral Coefficients (MFCC)
+		\item Überlicherwise werden die ersten 13-14 MFCCs verwendet
+	\end{itemize}	
+	
+%G 13 - 25 		
+
+\underline{Dynamik des Sprachsignals} \\
+	\begin{itemize}
+		\item Typischerweise werden etwa 14 Koeffizienten pro Frame extrahiert
+		\item Nicht nur Betrag eines Koeffizienten ist interessant, sondern auch Änderungsrate (1. Ableitung) und "Beschleunigung" (2. Ableitung)
+		\item Diese kann man wie folgt approximieren:
+			\begin{itemize}
+				\item Differenz zwischen Frames t und t-1 $\rightarrow$ "delta"-Koeffizienten, 1. Ableitung
+				\item Differenz der deltas $\rightarrow$ "delta-delta"-Koeffizienten, 2. Ableitung 
+				\item Alternativ kann man benachbarte Frames zeitverschoben "stacken"
+			\end{itemize}
+	\end{itemize}
+	
+\subsection{The Big Picture/Fundamentalformel der Spracherkennung}
+
+\underline{Fundamentalformel der Spracherkennung} \\
+	\begin{itemize}
+		\item Gegeben eine Sequenz von Merkmalsvektoren X, finde wahrscheinlichste Wortsequenz W
+		\item[] %G 13-32
+	\end{itemize}
+	
+\underline{Automatic Speech Recognition} \\
+	%G 13-34 
+	\begin{itemize}
+		\item Aussprache-Wörterbuch 
+			\begin{itemize}
+				\item Die Verbindung zwischen der Akustik und der geschriebenen Sprache (Beschreibe ein Wort als Konkatenation von Phonemen)
+				\item[] %G 13-35
+			\end{itemize}
+		\item Akustisches Modell
+			\begin{itemize}
+				\item $p(X|W)$
+				\item Gegeben W, mit welcher Warhscheinlichkeit wird die Merkmalssequenz X beobachtet?
+			\end{itemize}
+	\end{itemize}
+
+\underline{Sprachproduktion als stochastischer Prozess} \\
+	\begin{itemize}
+		\item Das gleiche Wort/Phonem/Laut hört sich jedesmal anders an
+			\begin{itemize}
+				\item betrachte Wörter/Phoneme/Sprachteile als Zustände eines Sprachproduktionsprozesses
+				\item diese Zustände haben unterschiedliche akustische Realisierungen
+				\item wir können nur die Realisierung beobachten, nicht den Zustand
+			\end{itemize}
+		\item In einem Zustand können verschiedene Laute beobachtet werden, aber nicht alle Laute sind in jedem Zustand wahrscheinlich (in einem gegebenen Zustand emittiert der Sprachprozess einen Laut entsprechend einer bestimmten Wahrscheinlichkeitsverteilung/-dichte
+		\item Produktionsprozess kann Übergänge aus einem Zustand in einen anderen machen, aber nicht alle Übergänge sind wahrscheinlich (Auch Zustandsübergänge folgen einer Wahrscheinlichkeitsverteilung)
+	\end{itemize}
+	
+\underline{HMMs in der Spracherkennung} \\
+	\begin{itemize}
+		\item Ein typisches HMM (für das Wort "can")
+		\item[] %G 13-39 
+		\item 3-Zustands-Bakis-Modell pro Phonem
+		\item Self-Loops erlauben beliebige Dauer eines Phonems
+		\item Jeder Zustand modelliert Teil eines Phonems (Anfang, Mitte, Ende)
+		\item Diesen Teil eines Phonems nennt man auch Subphonem
+		\item Zustände, die zum selben "akustischen Phänomen" gehören, teilen sich ein Modell $Model S_1 = Model S_7 = Model g-b$ 
+		\item[] %G 13-40
+		\item Vorteile: Bessere Ausnutzung der Trainingsdaten, höhere Robustheit, bessere Parameterabschätzung, Rechenzeit wird gespart
+	\end{itemize}
+
+\underline{HMM-Training} \\
+ 	\begin{itemize}
+ 		\item 1. Init:	
+ 			\begin{itemize}
+ 				\item HMM muss initialisiert werden, vor dem eigentlich Training
+ 				\item Init alle Parameter zufällig oder identisch
+ 				\item Verwende gelabelte Daten (durch anderen Erkenner, manuell) - Init Gaussverteilungen z.B. mit K-Means o.ä.
+ 			\end{itemize}
+		\item 2. Training / Iterative Optimierung 
+			\begin{itemize}
+				\item 1. Berechne Zustandsordnung (Forward-Backward, Viterbi)
+				\item 2. Schätze HMM-Parameter neu (Baum-Welch, EM)
+				\item Abbruchkriterien: keine Verbesserung der Scores (log-likelihoods) mehr auf Trainingsmenge oder separater Kreuzvalidierungsmenge, feste Anzahl Iterationen
+			\end{itemize}
+ 	\end{itemize}
+ 	
+\underline{Kontextabhängige Modellierung} \\
+	\begin{itemize}
+		\item Betrachte die Aussprachen von true, train, table und tell
+		\item[] %G 13-42
+		\item Die wahre Aussprache ist aber eher wie folgt
+		\item[] %G 13-42
+		\item Phonem T wird abhängig vom Kontext unterschiedlich ausgesprochen
+		\item Erste Idee
+			\begin{itemize}
+				\item Eigentliche Aussprachen anstelle der Phoneme verwenden: /ch/ /r/ /uw/ statt /t/ /r/ /uw/
+				\item Problem: /ch/ in true klingt anders als /ch/ in church
+			\end{itemize}
+		\item Zweite Idee
+			\begin{itemize}
+				\item Kontextabhängige Einheiten
+				\item[] %G 13-43
+			\end{itemize}
+		\item[] $\rightarrow$ Trainiere unterschiedliche HMMs abhängig vom phonetischen Kontext
+		\item Ein Phonem was von Vorgänger und Nachfolger abhängt ist ein Triphon
+		\item Was passiert, wenn wir einheitlich jedes Phonem als Triphon modellieren? 
+			\begin{itemize}
+				\item Manche Kontexte kommen sehr selten vor (zu wenig Trainingsdaten!)
+				\item Manche Kontexte kommen vielleicht im Trainingsmaterial gar nicht vor, aber könntne beim Decoding benötigt werden?
+			\end{itemize}
+		\item Ansatz: Fasse bestimmte Phoneme zu Klassen zusammen (Wissensbasiert: Artikulatorische Feature (Frikative, Vokale, etc. ))
+		\item Triphone abhängig von diesen Klassen anstelle von einzelnen Phonemen
+	\end{itemize}
+
+\underline{CART} \\
+	\begin{itemize}
+		\item Verwende datengetriebene Methode, um Kontextklassen zu bilden
+		\item CART steht für Classification und Regression Tree
+		\item Aufteilung erfolgt durch binäre Fragen und deren Informationsgewinn
+		\item Vorgehensweise
+			\begin{itemize}
+				\item Initial gibt es so viele Blätter im Baum wie Phoneme (Jedes Blatt enthält ein kontextunabhängiges Phonem)
+				\item Iteratives vorgehen:
+				\item 1. Bestimme Informationsgewinn jeder möglichen Frage für jedes Blatt im Baum
+				\item 2. Spalte Blatt mit der Frage mit höchstem Informationsgewinn auf
+			\end{itemize}
+		\item Abbruchkriterien
+			\begin{itemize}
+				\item Maximale Anzahl Blätter
+				\item Minimaler Informationsgewinn
+				\item Minimale Menge an Trainingsdaten in jedem Blatt
+			\end{itemize}
+		\item[] %G  13-45
+	\end{itemize}
+
+\underline{Sprachmodellierung} \\
+Was brauchen wir noch, um natürliche menschliche Sprache gut erkennen zu können?
+	\begin{itemize}
+		\item Lexikalisches Wissen: Vokabular, Aussprachewörterbuch
+		\item Akustische Klassifikation haben wir gelernt: HMMs
+		\item Wissen über die Sprache ist ebenso wichtig
+			\begin{itemize}
+				\item Ist eine Wortsequenz grammatikalisch korrekt (schwierig!)
+				\item Hat eine Wortsequenz eine sinnvolle Bedeutung?
+				\item Welche Worte sind jetzt wahrscheinlich?
+				\item Wie kann man den Ablauf eines Dialogs verfolgen?
+			\end{itemize}			 
+	\end{itemize}
+	
+\underline{Stochastische Sprachmodelle} \\
+	\begin{itemize}
+		\item Modellieren Abfolge von Worten und Sätzen
+		\item Gegebene Wortfolge W wird eine gewisse Auftrittswahrscheinlichkeit P(W) haben
+		\item Sprachmodellierung ist in der Spracherkennung essentiell
+	\end{itemize}
+ 		
+ 		
+ 		
  		
  		
  		
