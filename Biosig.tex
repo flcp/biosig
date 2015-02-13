@@ -380,9 +380,278 @@ Wesentliches Ziel ist Verbesserung der nicht-linearen Teile der Messkette
 
 \subsection{Erfassen elektrischer Felder}
 \begin{itemize}
-	\item 
+	\item Problem 1: Lokalisierung des elektrischen Feldes
+	\item Anzahl Elektroden begrenzt
+	\item Man geht bei EEG phänomenologisch vor, man erkennt Muster wieder, ohne alles zu verstehen
+	\item Problem 2: Wandlung von Ionenstrom in Elektronenstrom
+	\item Im Körper: elektr. Signalübertraung durch Ionenbewegungen
+	\item Nötig, Ionen in Elektronenstrom zu wandeln, um erfassen zu können
+	\item Elektroden erledigen dies
+	\item Zwei Elektrodenarten:
+	\item Redoxelektrode: Elektronen treten als Ladungsträger durch die Phasengrenze auf
+	\item Ionen-Elektrode Ionen treten als Ladungsträger durch die Phasengrenze auf
 \end{itemize}
 
+
+\subsection{Nadelelektroden}
+\begin{itemize}
+	\item 2-6cm lang <1cm dick
+	\item Verschiedene Seelen, Bipolare haben 2 Seelen
+	\item Nadelelektronen unwichtig, da unkomfortabel (Einstich)
+\end{itemize}
+
+
+\subsection{Trockene/Feuchte Oberflächenelektroden}
+\begin{itemize}
+	\item Trockene: Direkter Körperkontakt, höherer Elektrode-haut Widerstand => Vorverstärker, groß, unhandlich
+	\item Feuchte: Gel, meist verwendet
+\end{itemize}
+
+\subsection{Ionenelektrode}
+\begin{itemize}
+	\item Potenziale an Körperoberfläche gemessen
+	\item Ankopplung mit Elektrolytpaste
+	\item Metallischer Körper in Flüssigkeit => An Phasengrenze verschieben sich Ionen gegenseitig, Konzentrationen von Flüssigkeit/Metall ändern sich
+	\item Ladungsverteilung
+	\item Materialien haben chemische Potentiale
+	\item => Ionenaustausch
+	\item Gleichgewicht => Potentialdifferenz = Spannung (Galvani-Spannung)
+	\item Stört Messung
+	\item Messung über Referenzelektrode, da Bestimmung der Galvani-Spannung nicht möglich (Messung über Differenzen von zwei Galvani-Spannungen, zwischen bezugselektrode und untersuchende Elektrode)
+	\item Durch Abnahme (Messen) von Strom, entsteht Stromfluss an Phasengrenze
+	\item Dadurch Polarisation, Abweichung der Galvani Spannung
+\end{itemize}
+
+\subsection{Polarisation}
+\begin{itemize}
+	\item Thermodynamisches Gleichgewicht, kein Strom zuwischen Kathode und Anode
+	\item Fließt durch Elektrode Strom, nicht Elektrodenpotenzial einen anderen Wert an
+	\item Positiver(Anodischer) Strom = positive Abweichung
+	\item Negativer (Kathodischer) Strom = Negative Abweichung
+	\item Auslenkung der Elektrode heißt Polarisation oder Überspannung
+	\item Durchtrittsüberspannung: Durchtritt durch Phasengrenze
+	\item Diffusionsüberspannung: Ionentransport zur Phasengrenze
+	\item Chemische Überspannung: Hemmung chemischer Reaktionen (Kristallisation)
+	\item Polarisierbare Elektroden: Höher Überganswiderstand zwischen Körper und Elektrode, Verhalten wie Kondensator
+	\item Bei Potenzialänderung erfolgt Stromfluss => Aufladung der Elektrode
+	\item Unpolarisierbare Elektroden: Keine Hemmung des Ladungstransportes
+	\item Ionenaustausch über Phasengrenze, Stromdichte S des Ladungstransports nur diffusionsbegrenz
+	\item Reale Elektroden dazwischen (polarisierbar und unpolar.)
+	\item Polarisierbare Metallelektrode: Positiv geladenene Metallionen in Elektrolytlösung: Osmostischer Druck und Feldkraft dagegen => elektrische Aufladung
+	\item Aufbau einer entgegengesetzter Ladungsschickt im molekularen Abstand von der Phasengrenze
+	\item Helmholtzsche Doppelschicht wie Kondensator => Polarisierbar
+	\item Anwendungsbeispiel Ableitung höherfrequenter Signale
+	\item Unpolarisierbare Metallelektrode: Metallelektrode wird mit Salz überzogen, Anion muss Bestandteil des Salzes sein
+	\item Galvanispannungen kleiner und stabiler
+	\item Geringere Überganswiderstände überall
+	\item Ag/AgCl Elektroden für fast alle Signale einsetzbar
+	\item Bei EEG wird Elektrolyt oder mit Kochsalzgetränktem Überzug verwendet
+\end{itemize}
+
+\subsection{Die Haut}
+\begin{itemize}
+	\item Wasserundurchlässig
+	\item Leitfähigkeit durch Drüsen
+	\item Kapazität umfasst Schichtaufbau der Haut
+	\item Absenkung der Impedanz: Entfettung, Elektrodenpaste, Abtragen mit Sandpapier 
+\end{itemize}
+
+\subsection{Biokinetische Signale}
+\begin{itemize}
+	\item Messung von Bewegungen
+	\item Direkte Erfassung EMG/EOG (Elektromyografie, Elektrookulografie)
+	\item Indirekte Erfassung: Marker/Videoaufzeichnung
+\end{itemize}
+
+
+\subsection{Artefakte}
+\begin{itemize}
+	\item Störungen
+	\item Ursachen Methoden, Proband, Speichertechnik (Kompression)
+	\item Biologische Artefakte (vom Patienten)
+	\item Technische Artefakte (Durch Geräte oder von außen)
+	\item Biologische Artefakte (Augenbewegungen, Verspannungen, EKG Einstreuungen, Pulswellen, Schwitzen, Bewegungen)
+	\item Technische Artefakte (Kontaktstellen, Kabeldefekte, Kabelbewegungen, fehlende Erdung, elektrostatische, magnetische oder elektromagnetische Wechselfelder
+	\item Elektrische MEssmethode erzeugt viele dieser ARtefakte
+\end{itemize}
+
+\subsection{Artefaktbereinigung}
+\begin{itemize}
+	\item Testmethoedn anpassen (Abschirmen, möglichst viel konstant halten (Tageszeit, helligkeit)
+	\item Technische Möglichkeiten: Bandsperrfilter, Hintergrundaktivitäten selektieren, Adaptive Filter, spezielle Algorithmen
+	\item Manuelle/Automatische Artefaktrejektion
+\end{itemize}
+
+\section{Nervensystem, Informationsfluss im menschlichen Körper}
+
+\subsection{Bausteine}
+\begin{itemize}
+	\item Neuronen: Transport und Verarbeitung von Signalen/Informationen
+	\item Gliazellen: Hilfsapparat für Neuronen, Schutz, Versorgung, Stütze
+\end{itemize}
+
+
+\subsection{Neuronen}
+\begin{itemize}
+	\item Zellkörper(Soma): Verdickung, Verarbeitung von Informationen, wesentliche Stoffwechselvorgänge, enthält Zellkern
+	\item Axon (Sender): Langer Zellfortsatz, transferiert Informationen vom Zellkörper zu anderen Zellen
+	\item Dendriten (Empfänger): Zellfortsätze aus dem Zellkörper, sammeln Informationen von anderen Neuronen, stark bedornt, andere Neuronen können andocken
+	\item Myelinscheide: umhüllt Axon, dient Beschleunigung der Leitungsgeschwindigkeit des Axons
+	\item Vier Prinzipien der neuronalen Organisation:
+	Grundlegende Strukturelle/funktionelle Einheit des Gehirns \\
+	Axonenendigungen kommunizieren mit Dendriten anderer Neuronen nur an bestimmten Stellen, den Synapsen \\
+	Verbindungsspezifität: Jede Nervenzelle kommuniziert nur mit ganz bestimmten anderen (spezielle Schaltkreise) \\
+	Signalübertragung nur in eine Richtung
+\end{itemize}
+
+\includegraphics[scale=0.65]{Grafiken/neuron.png}
+
+
+\subsection{Klassifikation}
+\begin{itemize}
+	\item Nach äußerer Gestalt (Pyramiden, Stern, ...)
+	\item Nach Verbindungen:
+	\item Sensorische Neurone: Informationsweitergabe über physikalische oder chemische Reize
+	\item Motoneurone: Gehirn und Rückenmark, Steuern Aktivität von Muskel und Drüsenzellen
+	\item Interneurone: Dienen als Umschaltstation zwischen sensorischen und motorischen
+\end{itemize}
+
+
+\subsection{Gliazellen}
+\begin{itemize}
+	\item "Führungselemente" beim Wachstum von Neuronen
+	\item Stützelemente des Nervensystems
+	\item Transportmedium 
+	\item bilden Myelinscheiden
+	\item Beeinflussung der Effektivität synaptischer Kontakte
+	\item Wirken bei Blut/Hirn Schranke mit, schirmen Nervensystem von schädl. Stoffen im Blut ab
+\end{itemize}
+
+\subsection{Weiße/Graue Substanz}
+\begin{itemize}
+	\item Graue Substanz: Großhirnrinde (Cortex) und Kerne, besteht aus Neuronen Zellkörpern
+	\item Weiße Substanz: Unterhalb des Cortex, bettet graue Substanz ein, besteht aus Nervenfasern
+\end{itemize}
+
+
+\subsection{Ruhepotential}
+\begin{itemize}
+	\item Ionenkonzentration im Zellinneren ungleich Zelläußeren => Potentialdifferenz
+	\item = Membranpotential (Mensch -70mV Ruhepotential) (Zellinnere negativ außen)
+	\item Zelle elektrisch polarisiert
+	
+\end{itemize}
+
+
+
+\subsection{Messung}
+\begin{itemize}
+	\item Einstich in Zellinnere, zweite Elektrode außerhalb
+\end{itemize}
+
+
+\subsection{Permeabilitätsunterschiede}
+\begin{itemize}
+	\item Keine Ladungsausgleich da: Zellmembran nicht gleichermaßen durchlässig
+	\item Ruhepotential aus unterschiedlcihen Verteilungen von Na, K, Cl, Proteinen
+	\item Hoch permeabel: K+, Cl-
+	\item Niedrig permeabel: Na+
+	\item Undurchlässig: Proteinanionen
+	\item Zellinnere K+, negative geladene Proteine
+	\item Zelläußere: Na+, Cl-, Ca2+
+	\item Elektrostatische Kräfte
+	\item Thermische Bewegung-> Körperwärme
+\end{itemize}
+
+\subsection{Natrium-Kalium-Pumpe}
+\begin{itemize}
+	\item K+ in negativen zellinneren
+	\item Cl- im positiven Äußeren
+	\item Na+ außen (trotz Ladung)
+	\item Natrium-Kalium-Pumpe befördert Na+ aus der Zelle ins Äußere (aktiver Transport)
+	\item Membranproteine zwischen innen und außenseite (besitzen 3 Bindestellen für Na+ innen, 2 Bindungsstellen für K+ außen)
+	\item K+ wandert durch Kaliumkanäle aus Zellinneren (passiver transport)
+\end{itemize}
+
+\subsection{Passiver Signaltransport}
+\begin{itemize}
+	\item Kein Energieverbrauch
+	\item Potentialänderung
+	\item Leitung schnell und verlustreich
+	\item Nur bei kurzen Distanzen möglich (<1mm, z.B. Membranen der Dendriten)
+	\item z.B. im Gehirn (informationsverarbeitung auf engem Raum)
+\end{itemize}
+
+\subsection{Aktionspotential (Spike)}
+\begin{itemize}
+	\item Zellen erzeugen Potenzialspitzen
+	\item Verlustarme Weiterleitung
+	\item Über lange Distanzen möglich
+	
+	\item Erregbare Nervenzellen reagieren uaf Reiz (Ionenleitfähigkeit der Membran ändert sich)
+	\item Können weitaus höhere Spannung als der ursprüngliche Reiz verursachen
+	\item Spannungsänderung durch Reiz => von Innen nach außen gerichteter Strom durch Membran
+	\item 3 Phasen
+	\item Depolarisation: schnell: Ionentör öffnet sich, Natriumeinstrom: Potential wird größer
+	\item Repolarisation: langsam: Kaliumtore öffnen sich, Kaliumausström: Potential fällt ab
+	\item Nachhyperpolarisation: Kaliumtore schließen sich nur langsam: Potential fällt unter Ruhepotential
+	\item Nach Aktionspotential: Membran schwer/überhaupt nicht erregbar, Refraktärphase
+	
+\end{itemize}
+
+\subsection{Saltatorische Erregungsleitung}
+\begin{itemize}
+	\item Ausbreitung des Aktionspotential entlang des Axons ist sprunghaft
+	\item Myelinscheiden wie Isolatoren
+	\item An Ranvier-Schnürringen sind unmyelinisierte Stellen (Hohe Konzentration an sspannunggesteuerten Na-Kanälen, Aktionspotential wird wieder aufgefrischt)
+	
+\end{itemize}
+
+\subsection{Aktionspotentiale Eigenschaften}
+\begin{itemize}
+	\item Alles- oder Nichts: Stärke des Reizes keien Auswirkung auf Höhe AP
+	\item Stärke des Reizes bestimmt Geschwindigkeit des AP, (Länge Refraktärzeit)
+	\item Reizstärke in Frequenz der AP umkodiert
+\end{itemize}
+
+\subsection{Informationsübertragung: Synapse}
+\begin{itemize}
+	\item Signalübertragung durch Synapsen
+	\item Definition Synapse: Verbindungsstelle zwischen zwei Neuronen oder einem Neuron und einer Zelle des Erfolgsorgans (z.B. Muskelzelle) an der Information weitergegeben wird
+	\item Axon - Dendrit oder Axon - Soma
+	\item Elektrische Synapse
+	\item Chemische Synapse
+\end{itemize}
+
+\subsection{Elektrische Synapse}
+\begin{itemize}
+	\item Nahe Zellmembranen
+	\item Röhrenartige Verbindung
+	\item Schnell
+	\item Informationsübertragung in beide Richtungen
+	\item Synchronisation von Zellverbänden mit identischen Funktionen: Muskelzellen des Herzens, Muskelzellen der inneren Organe, Neuronenverbände im Gehirn
+\end{itemize}
+
+\subsection{Chemische Synapsen}
+\begin{itemize}
+	\item Spalt größer als bei elektrische Synapse
+	\item Spalt wird mit chemischen Botenstoffen überbrückt
+	\item Ausganszelle sendet Botenstoff, löst Prozess an Membran von Empfängerzelle aus -> Ionenwanderung
+	\item Asymmetrisch
+	\item Nicht so schnell
+	\item Zentralnervensystem Informationsverarbeitung
+	\item Präsynaptische Endigung (Sender)
+	\item Postsynaptischer Membranbereich (Empfänger)
+	\item Ablauf Informationsübertragung:
+	\item Membranerregung in präsynaptische Endigung
+	\item Neurotransmitter in synaptischen Spalt
+	\item Verteilt sich darin
+	\item Erreich Empfängermoleküle (Rezeptoren) an postsynaptischer Membran
+	\item Transmitterstoffe wirken an Repezeptoren
+	\item Ionenkanäle öffnen sich -> Potentialveränderung -> evtl. neues AP
+	\item Chemische Übertragung: schnell, gezielt, kurz
+	\item Neurotransmitter ist in den Vesikeln der präsynaptischen Endigung gespeichert
+\end{itemize}
 
 
 
