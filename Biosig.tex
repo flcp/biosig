@@ -500,11 +500,203 @@ Betrachten wir zuerst den Fall, dass die Stimmbänder sich öffnen und schließe
 			\end{itemize}
 		\item Modell des menschlichen Vokaltrakts
 			\begin{itemize}
-				\item 12 - folie 18
+				\item Menschliche Vokaltrakt kann durch eine verlustfreie Röhre mit variablem Querschnitt approximiert werden
+				\item Wichtige Approximation: Verkettung von endlichen vielen Röhren mit festen Querschnitt
+				\item Mit dem Modell berechnen sich die Filereigenschaften des Vokaltrakts
+				\item [] %G 12 - 18
+			\end{itemize}
+		\item Mathematische Beschreibung
+			\begin{itemize}
+				\item Unter geeigneten Bedingungen erfüllen Schallenwellen im Vokaltrakt die linearen partiellen DGLs
+				\item "lossless tube"-Modell mit N Röhren approx. A
+				\item analytische Lösung der DGLs möglich => Approximation der Frequenzantwort des Vokaltraktes
+				\item Dieser Filter hat i.a. N konjugiert-komplexe Polstellen, die N/2 Resonanzfrequenzen (Formanten) entsprechen
+				\item Tonhöhe der Formanten definieren den Laut
+				\item Vokaltraktfilter kann durch ein nur-Pole-Modell, das nur Resonanzfrequenzen berücksichtigt, schon gut modelliert werden
+			\end{itemize}
+		\item Eigenschaften des Sprachspektrum
+			\begin{itemize}
+				\item Im Spektrum des Sprachsignals sind die Oberfrequenzen der Anregungsschwingung, die von den Stimmbändern kommt, besonders stark vertreten, so dass das Spektrum selber annährend periodisch ist
+				\item Vokaltrakt wirkt als Filter auf die Anregung
+			\end{itemize}
+		\item Formanten
+			\begin{itemize}
+				\item Formanten lassen sich aus Spektrogrammen ablesen
+				\item Die ersten beiden Formanten bestimmen im wesentlichen den Klang eines Vokals
+			\end{itemize}
+		\item Klassifikation von Vokalen: Formanten
+			\begin{itemize}
+				\item Das Vokaldreieck gibt an, welche Vokale im Mittel welche Formanten haben
+				\item[] %G 12 - 23 rechts
+			\end{itemize}
+		\item Klassifikation von Vokalen: Formanten F1 und F2
+			\begin{itemize}
+				\item F1 entspricht der Hauptresonanzfrequenz des Rachenraumes
+				\item F2 ist die Hauptresonanzfrequenz des Mundraumes
+				\item Weg von Kehlkopf bis zur Zunge ist länger als Weg von Zunge bis Lippen => F1 < F2
+				\item Zungenposition und Mundraum bestimmen die Werte F1 und F2
+			\end{itemize}
+		\item Diphtonge - Die charakteristischen Formanten F1 und F2 heißen auch formant targets, wenn
+			\begin{itemize}
+				\item Vokal ein spezifisches Ziel hat - Monophthong
+				\item Zwei verschiedene Ziele kombinieren - Diphtonge
+				\item Gibt einen fließenden Übergang zwischen den beiden Zielen
+				\item Manche Sprachen (z.B. Mandarin) haben sogar Triphthonge 
+				\item Diphtong wird i.d.R. genauso lang gesprochen wie ein Monophthong
+			\end{itemize}
+		\item Klassifikation von Konsonanten
+			\begin{itemize}
+				\item Werden durch Art und Ort der Artikulation beschrieben
+				\item Artikulationsart - Mechanismus mit dem die Artikulation passiert
+				\item Artikulationsort - Beschreibt Ort der Hauptverengung
+				\item Sonorität (Schallfülle), Stimmhaftigkeit, Aspiration, Stärke
+			\end{itemize}
+		\item Vokaltraktformen: Plosive (Verschlusslaute)
+			\begin{itemize}
+				\item[] %G 12 - 28 + Spektogramm
+				\item weiteres Plosiv: Glottal stop (Glottisschlag, Glottisverschlusslaut) - Luftstrom von den Stimmbändern im Kehlkopf gestoppt 
+				\item Typisch: Kurzzeitig Luftstrom völlig unterbrochen
+			\end{itemize}
+		\item Vokaltraktformen: Nasale
+			\begin{itemize}
+				\item[] %G 12 - 13 +Spektogramm
+				\item Mundraum komplett abgeschlossen und Rachenraum und Nasaltrakt miteinander verbunden
+				\item Markante Eigenschaft: auffälligen fehlenden Frequenzbänder (gewisse Frequenzen im Mundraum werden vollständig reflektiert und so löschen sich Wellen aus)
+			\end{itemize}
+		\item Vokaltraktformen: Frikative (Reibelaute)
+			\begin{itemize}
+				\item[] %G 12 - 32 +Spektogramm
+				\item Desweiteren gibt es glottalen Frikativ /h/ (wie in Haus) 
+			\end{itemize}
+		\item Phone und Phoneme
+			\begin{itemize}
+				\item Zwischen Schreibweise eines sprachl. Lautes und seiner Aussprache gibt es (prinzipiell) keinen Zusammenhang
+				\item Phonetik: Sprachlaute haben keine inhärente Bedeutung
+				\item Phonem: Kleinste Spracheinheit, die ein Wortpaar unterscheidet (minimales Paar) - Bsp: /kind/ != /rind/ -> /k/ und /r/ sind Phoneme
+				\item Phon: Belieber Sprachlaut, der von anderen Sprachlauten akustisch unterschieden werden kann 
+				\item Mit Phonem ist ein Bedeutungsunterschied verbunden und mit Phon nur ein akustischer Unterschied
+				\item Schreibkonvention: /phonem/ vs [phon]
+			\end{itemize}
+		\item Phonetische Alphabete
+			\begin{itemize}
+				\item IPA: International Phonetic Alphabet (von der International Phonetic Association entwickelt + enthält Inventar für alle Laute aller Sprachen der Welt)
+				\item Worldbet: 1-1 Abbildung von IPA-Symbolen auf ASCII-7 Symbole, um IPA-Alphabet auf Computern nutzbar zu machen
+				\item Klein- und Großschreibung von Buchstaben hat auch Bedeutung
+				\item Sampa: Basiert auch auf ASCII-7 Symbolen, wurde aber ursprünglich nur die deutsche und dann Indoeuropäische Sprachen entwickelt + Kürzlich auch auf weitere Sprachen ausgedehnt (X-Sampa)
+			\end{itemize}
+		\item IPA-Schema für Konsonanten + Vokale
+			\begin{itemize}
+				\item[] Konsonanten: %G 12 - 38
+				\item[] Vokale: %G 12 - 39
+			\end{itemize}
+		\item Phone und Phoneme 
+			\begin{itemize}
+				\item Phoneme unterscheiden sich in Aussprachen durch:
+					\begin{itemize}
+						\item 1. Koartikulation, Kontext
+						\item 2. Koartikulation bei variabler Sprechgeschwindigkeit
+					\end{itemize}
+				\item Wenn es mehrere Phone gibt, die dasselbe Phonem repräsentieren - heißt dann Allophone
+			\end{itemize}
+		\item Koartikulation
+			\begin{itemize}
+				\item Phoneme werden of auf systematische Weise von ihren Nachbarphonen beeinflusst
+				\item Diesen Prozess bezeichnet man als Koartikulation
+				\item In kontinuierlicher Sprache (mit variabler Sprechgeschwindigkeit)
+					\begin{itemize}
+						\item werden formant targets macnhmal nicht vollständig erreicht
+						\item Betonungsmuster können verändert sein
+						\item Laute können modifiziert werden (Assimilation)
+						\item Laute können ganz verschwinden (Elision)
+					\end{itemize}
+				\item Effizientprinzip
+					\begin{itemize}
+						\item Sprecher versucht, den artikulatorischen Aufwand zu minimieren, ohne das dabei Information verlorengeht 
+						\item Sprecher kann je nach Situation seinen Sprechgeschwindigkeit erhöhen 
+					\end{itemize}
+				\item Laute innerhalb einer Silbe beeinflussen sich mehr als benachbarte Laute in verschiedenen Silben
+			\end{itemize}
+		\item Prosodie 
+			\begin{itemize}
+				\item Eine Phrase kann, von der Intonation einzelner Laute abgesehen, auch als ganzes eine Melodie haben
+				\item Eine Prosodie enthält Information über: Intention der Äußerung, Relevanz, Auflösung syntaktischen oder semantischen Zweideutigkeiten, Emotionen des Sprechers
+				\item Prosodische Information ist: Intonation ("Melodie" des Satzes), Pausen, Betonung, Rhythmus
 			\end{itemize}
 	\end{itemize}
 
- 		
+\subsection{Sprachperzeption}
+\underline{Sprachproduktion und Sprachperzeption} \\
+	\begin{itemize}
+		\item Akustische Sprache pflanzt sich dann als Schalldruckwelle durch die Luft fort und wird vom menschlichen Ohr oder Mikrofon aufgefangen
+	\end{itemize}
+	
+\underline{Sprachkommunikation von Mensch zu Mensch} \\
+	\begin{itemize}
+		\item[] %G 12 - 46
+		\item A: Neurophysiologischer Prozess im Gehirn
+		\item B: elek. Prozess in den efferenten Nervenbahnen
+		\item C: Bewegung des Artikulationsapparates
+		\item D: Erzeugung des akustischen Sprachsignals im Vokaltrakt
+		\item E: Akustische Übertragung des Sprachsignals
+		\item F: mechanischer Prozess im Mittelohr, hydromechanischer Prozess im Innenohr
+		\item G: elek. Signale in den afferenten Nervenbahnen
+		\item H: Neurophysiologischer Prozess im Gehirn des Empfängers
+		\item I: Akustisches Feedback zum Ohr des Sprechers
+	\end{itemize}
+	
+\underline{Physiologie des Ohres} \\
+	\begin{itemize}
+		\item Ohr empfängt die Schalldruckwellen aus der Luft
+		\item Drucksignal wird in elek. Signal umgewandelt
+		\item elek. Signal wird zum Gehirn weitergeleitet
+		\item Außenohr:
+			\begin{itemize}
+				\item Ohrmuschen fängt durch ihre Form die Schallwelle ein und leitet sie in den Ohrkanal
+				\item Orhkanal verstärkt das Signal
+				\item Schließlich gelangt das Signal zum Mittelohr
+				\item Signal Eingang + Ausgang: Schalldruckwelle in Luft
+			\end{itemize}
+		\item Mittelohr: 
+			\begin{itemize}
+				\item Schalldruckwellen bewegen das Trommelfell
+				\item Dadurch gerät die Knochenstruktur (Hammer, Amboss, Steigbügel) in Schwingung 
+				\item Durch das ovale Fenster wird eine Druckwelle der Flüssigkeit des Innenohres erzeugt
+				\item Signal Eingang: Schalldruckwelle in Luft
+				\item Signal Ausgang: Schalldruckwelle in Flüssigkeit
+				\item Schalldruckwiderstand: Luft (niedrig), Flüssigkeit (hoch)
+				\item Mittelohr übersetzt die Schallwelle von niedrigem Widerstand zu hohem Widerstand
+				\item Knochenstruktur zwischen dem großen Trommelfell und dem kleinen ovalen Fenster dient als Verstärker
+			\end{itemize}
+		\item Innenohr:
+			\begin{itemize}
+				\item Die Cochlea ist eine spiralenförmige Röhre 
+				\item Cochlea ist mit den Cochlea Filtern besetzt 
+				\item Filter übersetzen die Wellen in Nervensignale
+				\item Signal Eingang: Schalldruckwelle in Flüssigkeit
+				\item Signal Ausgang: Elektrisches Signal im Gehörnerv
+			\end{itemize}
+		\item Cochlea:
+			\begin{itemize}
+				\item Cochlea Filter schwingen in den Wellen
+				\item Filter sind mit der Basilarmembran verbunden
+				\item Bewegung erzeugt eine Anregung in der Basilarmembran
+				\item Dieses Signal wird dann durch den Gehörnerv an das Gehirn weitergeleitet
+			\end{itemize}
+	\end{itemize}
+
+\underline{Wahrnehmung verschiedener Frequenzen} \\
+	\begin{itemize}
+		\item An verschiedenen Punkten entlang der Cochlea reagiert die Basilarmembran auf unterschiedliche Frequenzen
+		\item Das Gehör basiert auf Frequenzen
+	\end{itemize}
+
+\underline{Physikalische vs. perzeptuelle Eigenschafen} \\
+Gibt grundlegenden Unterschied zwischen der Wahrnehmung (Perzeption) eines Lautes und seinen messbaren physikalischen Eigenschaften. Manche physikalischen und perzeptuellen Eigenschaften hängen miteinander zusammen, sind aber keineswegs identisch
+%G 12 - 55
+	\begin{itemize}
+		\item Unterschied: frequenzabhängige Wahrnehmung der Lautstärke (Empfindlichkeit variiert mit der Frequenz, Lautstärke != Intensität)
+		\item Wahrnehmung hängt abvon: Resonanzfreq. des Gehörgangs, Übertragungsfunktion der Gehörknöchelchen
+	\end{itemize}
  		
  		
  		
