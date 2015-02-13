@@ -1223,9 +1223,285 @@ Was brauchen wir noch, um natürliche menschliche Sprache gut erkennen zu könne
 		\item Modellieren Abfolge von Worten und Sätzen
 		\item Gegebene Wortfolge W wird eine gewisse Auftrittswahrscheinlichkeit P(W) haben
 		\item Sprachmodellierung ist in der Spracherkennung essentiell
+			\begin{itemize}
+				\item Weitere Informationsquelle beim Erkennungsprozess
+				\item Hilft bei Unterscheidung von Homophonen
+				\item Verringert den Suchraum 
+				\item Erster Schritt zur semantischen Analyse
+			\end{itemize}
+		\item Schwierigkeit 1: Welche Wortsequenzen sind in gesprochener Sprache möglich?
+			\begin{itemize}
+				\item Klassische Methode zur Beschreibung: Formale Grammatik
+				\item Aber wie beschreibt man die volle Flexibilität der deutschen Sprache?
+			\end{itemize}
+		\item[] $\rightarrow$ Wir brauchen eine probabilistische Methode, die ausdrucksstark, einfach aufzusetzen, und möglichst fehlertolerant ist
+		\item Schwierigkeit 2: Anzahl möglicher Wortfolgen W wird sehr schnell sehr groß, wenn man die maximale Länge der Wortfolgen wachsen lässt
+		\item $\rightarrow$ Brauchen eine effiziete Approximation von Sprachmodellwahrscheinlichkeiten (und einen guten Algorithmus)
 	\end{itemize}
- 		
- 		
+	
+\underline{Wahrscheinlichkeit einer Wortsequenz} \\
+	\begin{itemize}
+		\item Wahrscheinlichkeit einer Wortsequenz P(W) kann zerlegt werden $P(W) = P(w_1 w_2 .. w_n) = P(w_1) \cdot P(w_2 | w_1) \cdot ... P(w_n | w_1 w_2 ... w_{n-1})$
+		\item Wahrscheinlichkeit von $w_n$ hängt von allen Worten $w_1 w_2 ... w_{n-1}$ ab
+		\item Vorberechnung aller Wahrscheinlichkeiten aller Wortfolgen unmöglich
+		\item Mögliche Lösungen:
+			\begin{itemize}
+				\item $P(W|history)$ "on the fly" berechnen (selten, sehr teuer)
+				\item Äquivalenzklassen von Historien bilden, um deren Anzahl zu reduzieren
+			\end{itemize}
+		\item Grammatik nur bei kleinen Vokabularen und beschränkter Domäne sinnvoll (z.B. Telefonservice)
+	\end{itemize}
+
+\underline{Sprachmodelle} \\
+Verschiedene Methoden, Historien in Äquivalenzklassen einzuteilen
+	\begin{itemize}
+		\item Grammatische Eigenschaften
+		\item POS (Part of Speech)
+		\item Semantische Bedeutung der vorherigen Wörter
+		\item Kontextgleichheit 
+		\item Automatisches Clustering nach bestimmten Regeln
+		\item Historie auf eine gewisse Anzahl Wörter beschränken (Unigramm, Bigramm, Trigramm)
+	\end{itemize}
+
+\underline{n-Gramm-Sprachmodelle} \\
+Der übliche Ansatz, n-Gramm-Wahrscheinlichkeiten abzuschätzen:
+	\begin{itemize}
+		\item Suche Domänen spezifische Texte (Transkriptionen der Audiodaten des Trainings, Suche im Netz)
+		\item bestimme Häufigkeit, mit der das Wort w nach einer Historie h auftritt
+		\item zähle die Häufigkeit der Historie h im gesamten Text und normalisiere $P(w|h) = \frac{count(h,w)}{count(h)}$
+	\end{itemize}
+	
+\underline{Automatic Speech Recognition - Suche} \\
+	\begin{itemize}
+		\item Suche: Akustik, Aussprachen und Sprache verbinden + gesprochene Sprache erkennen
+		\item Um eine Sprachäußerung zu erkennen müssen alle möglichen Wortfolgen miteinander verglichen weren
+		\item Die Gesamtheit aller möglichen Musterfolgen heißt Suchraum
+		\item Typischer Suchraum hat extrem viele Elemente
+		\item[] $\rightarrow$ Auswertung aller Wortsequenzen nicht möglich
+		\item Benötigen Algorithmus der den Suchraum nur teilweise prüft und möglichst gute Hypothese findet 
+		\item Dieses Problem nennt man Suche oder Decoding 
+	\end{itemize}
+
+\underline{Tiefensuche und Breitensuche} \\
+	\begin{itemize}
+		\item Tiefensuche
+			\begin{itemize}
+				\item Zu jedem Zeitpunkt wird nur der Pfad mit der höchsten Wahrscheinlichkeit weiterverfolgt (A* Suche) und Pfade werden zeitasynchron expandiert
+				\item Vorteil: Suche findet für das gegebene Modell das optimale Ergebnis
+				\item Nachteile: Unter Umständen müssen sehr viele Pfade expandiert werden + schlecht zu parallelisieren
+			\end{itemize}
+		\item Breitensuche (Standard-Suchmethode in der Spracherkennung)
+			\begin{itemize}
+				\item Expandiere die Pfade zeitsynchron und für jeden Frame werden nur eine feste/variable Anzahl an Pfaden weiterverfolgt (beam search)
+				\item Vorteile: kann verschiedene Wissensquellen zeitsynchron kombinieren + gut parallelisierbar
+				\item Nachteil: nicht garantiert, die optimale Lösung des Suchproblems zu finden
+			\end{itemize}
+	\end{itemize}
+ 
+
+\section{Muskelaktivität - Einstehung, Messung (EMG), Anwendungen}
+\subsection{Einstieg}
+
+\begin{itemize}
+	\item Ziel: Erfassung der menschlichen Bewegeung 
+	\item Bewegungserfassung durch: visuelle Erfassung durch Kameras, direkte Erfassung der Bewegung, indirekt durch die Erfassung der Muskelaktivität die die Bewegung erzeugt
+	\item Elektromyographie (EMG): Erfassung der elektrischen Potentiale, die durch Muskelaktivität entstehen
+	\item Mensch-Maschinen-Schnittstelle: Erfassung von willentlichen Bewegungen
+	\item Beschränkung auf die Betrachtung des Signals ab dem Rückenmark ($\alpha$-Motoneuronen)
+\end{itemize}
+
+\underline{Menschliche Bewegung} \\
+Definition: Bewegungen sind räumliche Verschiebungen von Gewebe
+	\begin{itemize}
+		\item Größräumige Bewegungen z.b. Bewegungen der Beine beim Gehen
+		\item Kleinste, fast unmerkliche Bewegungen z.B. Mimik
+		\item Jegliche Bewegung geschieht durch Muskeln
+			\begin{itemize}
+				\item Quergestreifte Muskeln: Skelettmuskeln (Muskeln des Bewegungsapparates), Herzmuskel (unwillkürlich gesteuert)
+				\item Glatte Muskeln: Muskeln der inneren Organe und Gefäße
+				\item Augenmerk gilt den Skelettmuskeln
+			\end{itemize}
+	\end{itemize}
+
+\subsection{Aufbau des Muskels}
+	\begin{itemize}
+		\item Bewegung und Muskelarbeit entsteht durch Muskelverkürzng (Muskelkontraktion)
+		\item Elemente, die zur Kontraktion fähig sind, heißen Myofibrillen
+		\item Skelettmuskeln sind über Sehnen mit dem Skelett (Knochen) verbunden
+		\item Kleinste funktionelle Einheit des Skelettmuskels ist die Muskelzelle = Muskelfaserzelle = Muskelfaser 
+		\item Muskelfasern schließen sich zu Faserbündeln zusammen, die man mit bloßem Auge als "Fleischfasern" erkennen kann
+		\item Muskelfaser: 1/100 - 1/10 mm Durchmesser, Bis 20cm Länge
+		\item Zytoplasma (Zellplasma) der Muskelfaser (Sarkoplasma) wird von der Membran (Sarkolmm) umschlossen
+		\item Im Inneren der Muskelfaser befinden sich die Myofibrillen
+		\item Nehmen größten Teil des Zellvolumens ein
+		\item Myofibrillen: langestreckt, Durchmesser ca. 1 $\mu m$
+		\item Myofibrillen sind in Zonen unterteilt
+		\item Diese Zonen weiter unterteil in A-Bande (stark brechend) und I-Bande (schwach brechend)
+		\item Innerhalb der I-Bande befindet sich die Z-Linie
+		\item Bereich zwischen zwei Z-Linien: Sarkomer
+		\item Unter dem Mirkoskop A/I-Bande als Querstreifen erkennbar - deshalb "quergestreifte Muskulatur"
+		\item Myofibrillen bestehen aus 2 Typen von parallel gelagerten fadenartigen Filamenten: Myosinfilamente (langgestreckte Myosinmoleküle - Protein), Aktinfilamente (kugelförmiges Protein, kettenförmig gelagert verdrillt zu Faden)
+		\item Beide Filamenttypen berühren sich, wo Ausstülpungen des Myosinmoleküls, die Myosinköpfe, das Aktinfilament berühren
+		\item[] %G 14- 14 links unten
+		
+	\end{itemize}
+%G Muskel aufbau
+
+\subsection{Muskelkontraktion}
+\begin{itemize}
+	\item Folgender Vorgang läuft bei Muskelkontraktion ab:
+		\begin{itemize}
+			\item Aktivierung Myosin-Aktin-Querbrücke
+			\item Verschiebung der Aktin- und Myosinfilamente in Längsrichtung gegeneinander (Filamentgleitmechanismus)
+		\end{itemize}
+	\item Sind minimale Verschiebungen, aber in vielen hintereinander Sarkomeren
+	\item Insgesamt ergibt sich so eine beachtliche Längenverkürzung
+	\item $\rightarrow$ Prozess nennt man Muskelkontraktion
+\end{itemize}
+
+Ausgangssituation:
+	\begin{itemize}
+		\item Muskeln in erschlafftem Zustand
+		\item ATP (Adenosintriphosphat) gespalten in ADP + P und an Myosinkopf gebunden
+		\item Bindungsstellen des Aktins mit Tropomyosin belegt
+	\end{itemize}
+
+Vorgang bei Erregung:
+	\begin{itemize}
+		\item Muskelfaser wird erregt, dadurch strömt $Ca^{2+}$ in die Muskelfibrillen
+		\item Diese Depolarisierung breitet sich als Aktionspotential aus
+		\item $Ca^{2+}$-Ionen binden sich an Troponinmoleküle $\rightarrow$ Tropomysin löst sich von Aktin-Bindungsstellen $\rightarrow$ Myosin kann an Aktin andocken
+		\item ADP und P wurden freigesetzt $\rightarrow$ Myosinhals knickt um
+		\item Myosinfilament zieht sich an Aktin entlang
+		\item Muskel kontrahiert
+	\end{itemize}
+
+Nach der Kontraktion:
+	\begin{itemize}
+		\item ATP bindet sich an Myosinköpfchen
+		\item ATP wird aufgespalten
+		\item Durch Energie die bei der Spaltung in ADP + P frei wird, klappt Myosinkopf zurück in Ausgangsposition und löst sich von Bindungsstelle
+	\end{itemize}
+	
+\underline{Neuromuskuläre Übertragung} \\
+Woher kommt Erregung eines Muskels, die eine Kontraktion bewirkt?
+	\begin{itemize}
+		\item Aktivierung einer quergestreiften Muskelfaser erfolgt durch ein Motoneuron
+		\item Spinale Motoneuronen = $\alpha$-Motoneuronen
+		\item Axon des $\alpha$-Motoneuronen bildet Bündel mit anderen Axonen einen efferenten Nerv, der vom Rückenmark zur Peripherie läuft
+		\item Axon endet in einer oder mehreren Synapsen, die an Muskel andocken - heißen motorische Endplatten
+	\end{itemize}
+	
+\underline{Aktivierung einer Muskelfaser} \\
+	\begin{itemize}
+		\item Wenn das Motoneuron feuert, ensteht im Muskel ein Aktionspotential (MUAP)
+		\item breitet sich längs der Muskelfaser vom Ursprung aus
+		\item Führt zu Kalziumeinstrom
+		\item Dieser führt zur Konformationsänderung der Myosinköpfe und somit zur Muskelkontraktion
+		\item Zahl der von einem Motoneuron versorten Muskelfasern liegt zwischen 1 und mehreren Tausen
+		\item Jede Muskelfaser hat nur eine Motorische Endplatte (d.h. wird von genau einem Motoneuron innerviert)
+		\item Motorische Einheit (MU) = ein Motoneuron + alle von ihm innervierten Muskelfasern
+		\item Um Muskelkontraktion aufrecht zu erhalten muss das Motoneuron wiederholt feuern, Abfolge von Aktionspotentialen (MUAPT)
+		\item Intervalle zwischen den einzelnen MUAPs und MUAPT sind etwa gaussverteilt
+	\end{itemize}
+	
+\underline{Kontraktionsstärke} \\
+Die Stärke der Kontraktion hängt von Zahl der den Muskel versorgenden gleichzeitig feuernden Motoneuronen und von der Frequenz ihres Feuerns ab
+
+\subsection{Elektromyographie (EMG)}
+Elektromyograpie: Das Studium der Muskelfunktion durch Erforschung des elek. Signals, das die Muskeln erzeugen
+
+\underline{Aktionspotentiale} \\
+	\begin{itemize}
+		\item Reizung der Muskelzelle erzeugt Aktionspotential in der Muskelfaser (MUAP)
+		\item Aktionspotential entsteht durch Einstrom von Ionen in dne Muskel
+		\item Durch das Aktionspotential entstehenden Potentialdifferenzen - invasiv und an der Hautoberfläche messbar
+		\item Besonders an der Hautoberfläche: Überlagerung vieler Aktionspotentiale, Identifizierung einzelner Potentialquellen ist schwierige Aufgabe
+		\item Betrachtung eines einzelnen Aktionspotentials an der Hautoberfläche: Plaziert man zwei Elektroden an zwei Positionen A (links) und B (rechts) auf dem Muskel (bipolare Ableitung)
+			\begin{itemize}
+				\item 1. Muskel in Ruhe: überall Ruhepotential, keine Differenz zwischen A und B
+				\item 2. Muskel wird aktiviert, d.h. Aktionspotential AP entsteht
+				\item 3. Da AP sich nur längs der Muskelfasern ausbreitet, wird die Elektrode nahe der Quelle A schneller von der Depolarisation erfasst als die quellferne Elektrode B $\rightarrow$ Potentialdifferenz A-B > 0
+				\item 4. AP wandert weiter und erreicht nun Elektrode B $\rightarrow$ nun ist A-B < 0
+				\item 5. AP wandert noch weiter, Potentialdifferenz ist wieder 0
+			\end{itemize}
+	\end{itemize}
+
+\underline{EMG-Signal} \\
+	\begin{itemize}
+		\item Bei längerer Muskelkontraktion entsteht eine ganze Serie von Aktionspotentialen: MUAPT
+		\item Unterschiede zwischen Signale durch Oberflächen- und Nadelelektrode: Oberflächen-EMG hat viel mehr Rauschen, Formen der einzelnen MUAPs eher schlecht erkennbar - erscheint tiefpassgefiltert
+	\end{itemize}
+	
+\underline{Messung - Nadel- vs Oberflächenelektrode} \\
+	\begin{itemize}
+		\item Nadelelektrode: wird direkt in Muskel eingebracht
+			\begin{itemize}
+				\item Vorteile: spezifische + eng umrissene Aufzeichnungszone, erfasst auch kleine und tiefliegende Muskeln
+				\item Nachteile: sind invasiv und erfordern sterile Bedingungen (nur durch Arzt einzubrinen), schwierig extakte Position wiederholt zu treffen
+			\end{itemize}
+		\item Oberflächenelektrode: 
+			\begin{itemize}
+				\item Vorteil: keine Schmerzen, Risiko
+				\item Nachteil: Mehr Cross-Talk, schlechtere räumliche Auflösung
+			\end{itemize}
+		\item Nur Oberflächenelektroden im Bereich der Benutzerschnittstellen
+	\end{itemize}
+	
+\underline{Muskel als Leiter} \\
+	\begin{itemize}
+		\item Relativ schlechter elek. Leiter
+		\item Muskel wird als Tiefpassfilter
+		\item Leitfähigkeit in Richtung der Muskelfasern höher als senkrecht zu ihnen
+		\item Daten abgeleiterer Potentiale stark von der Elektrodenpositionierung abhängig
+		\item Elektrodenabstand von der aktiven Faser spielt entscheidene Rolle
+	\end{itemize}
+	
+\subsection{Anwedungsbeispiele}
+
+\underline{Klinische Anwendung} \\
+	\begin{itemize}
+		\item Verhalten des Muskels bei gewissen wohldefinierten Reizen zu untersuchen
+		\item exakt quantifizierbare Eigenschaften des Signals zu untersuchen
+		\item nach Möglichkeit Verwendung von Nadelelektroden
+		\item Erster Schritt von EMG in med./physio. Anwendungen ist oft Zerlegung des Signals in einzelne MUAPTs
+		\item Algorithmus zur Zerlegung eines EMG-Signals:
+			\begin{itemize}
+				\item 1. Suche nach nächstem Peak im Rohsignal - dieser wird Knadidat für MUAP
+				\item 2. Ordne diesen Peak einer Klasse von MUAPs zu bzw. erzeuge neue Klasse. Bei Bedarf kann ein menschlicher Experte eingreifen.
+				\item 3. Nach erfolgreicher Zuordnung wird der Peak vom Rohsignal subtrahiert, Restsignal wird dann mit Schritt 1 weiterverarbeitet
+			\end{itemize}
+		\item Algorithmus bricht ab, wenn im Restsignal keine Peaks mehr vorhanden sind
+		\item Algorithmus wird seit ca. 30 Jahren so verwendet
+	\end{itemize}
+	
+\underline{Sonstige Anwedungen} \\
+	\begin{itemize}
+		\item Emotionserkennung
+			\begin{itemize}
+				\item Erkennung von Gesichtsausdrücken mittels EMG
+				\item Warum? Nicht-invasive Methode, kleines Device, Elektroden einfach anzubringen
+				\item Warum keine Videoerkennung? EMG in der Lage, Bewegungen aufzunehmen die auf Videos nicht sichbar sind + Mobiler kabelloser Rekorder kann überall mit hingenommen werden + benutzte Elektroden sind klein und leicht (nicht störend)
+				\item Elektroden werden auf Muskeln plaziert, die an Gesichtsausdruck beteiligt sind
+			\end{itemize}
+		\item Erkennung von Fingerbewegungen
+			\begin{itemize}
+				\item Fingermuskulatur befindet sich am Unterarm
+				\item Erlaubt Erfassung ohne Sensorik an der Hand
+				\item Signale liefern auch Information über Kraft
+				\item Problem: Crosstalk
+			\end{itemize}
+		\item EMG Prothesensteuerung/EMG-basierte Exoskelette
+		\item FES- Funktionelle Elektrostimulation
+			\begin{itemize}
+				\item Verfahren zur Wiederherstellung der Bewegungsfunktion der Gliedmaßen
+				\item Anwendungsgebiet: Lähmungen, bei denen nur Nervenbahnen zum betreffenden Muskel, aber nicht der Muskel selbst geschädigt ist
+				\item Ziele: 1. Verhinderung von Muskelschwund und Sehnenkontraktion, 2. Steuerung des betreffenden Muskels
+				\item Elektroden werden am Muskel angebracht (Oberflächenelektrode oder Implantat) $\rightarrow$ Übertragen elektrische Impulse an Muskel $\rightarrow$ Muskel kontrahiert
+				\item Sensoren an gesunde Körperteilen anbringen 
+				\item Erfassen der Bewegung $\rightarrow$ Übertragung auf defekten Muskel
+			\end{itemize}
+	\end{itemize}
  		
  		
  		
