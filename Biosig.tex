@@ -504,7 +504,7 @@ Wesentliches Ziel ist Verbesserung der nicht-linearen Teile der Messkette
 	Signalübertragung nur in eine Richtung
 \end{itemize}
 
-%\includegraphics[scale=0.65]{Grafiken/neuron.png}
+\includegraphics[scale=0.65]{Grafiken/neuron.png}
 
 
 \subsection{Klassifikation}
@@ -1649,7 +1649,7 @@ In Praxis fast nie linear trennbar, slack variables: einzelne Datenpunkte dürfe
 
 
 
-\section{11 - HMM (Hidden Markov Models)}
+\section{HMM (Hidden Markov Models)}
 	\begin{itemize}
 		\item Modellieren Sequenz von Datenpunkten
 		\item benötigen zugrundeliegendes state modeling
@@ -2040,7 +2040,7 @@ Betrachten wir zuerst den Fall, dass die Stimmbänder sich öffnen und schließe
 				\item Menschliche Vokaltrakt kann durch eine verlustfreie Röhre mit variablem Querschnitt approximiert werden
 				\item Wichtige Approximation: Verkettung von endlichen vielen Röhren mit festen Querschnitt
 				\item Mit dem Modell berechnen sich die Filereigenschaften des Vokaltrakts
-				\item [] %G 12 - 18
+				\item [] \includegraphics[scale=0.2]{Grafiken/1218.png}\\
 			\end{itemize}
 		\item Mathematische Beschreibung
 			\begin{itemize}
@@ -2090,19 +2090,19 @@ Betrachten wir zuerst den Fall, dass die Stimmbänder sich öffnen und schließe
 			\end{itemize}
 		\item Vokaltraktformen: Plosive (Verschlusslaute)
 			\begin{itemize}
-				\item[] %G 12 - 28 + Spektogramm
+				\item[] \includegraphics[scale=0.15]{Grafiken/1228.png} \includegraphics[scale=0.15]{Grafiken/1229.png}
 				\item weiteres Plosiv: Glottal stop (Glottisschlag, Glottisverschlusslaut) - Luftstrom von den Stimmbändern im Kehlkopf gestoppt 
 				\item Typisch: Kurzzeitig Luftstrom völlig unterbrochen
 			\end{itemize}
 		\item Vokaltraktformen: Nasale
 			\begin{itemize}
-				\item[] %G 12 - 13 +Spektogramm
+				\item[] \includegraphics[scale=0.15]{Grafiken/1230.png}\includegraphics[scale=0.15]{Grafiken/1231.png}
 				\item Mundraum komplett abgeschlossen und Rachenraum und Nasaltrakt miteinander verbunden
 				\item Markante Eigenschaft: auffälligen fehlenden Frequenzbänder (gewisse Frequenzen im Mundraum werden vollständig reflektiert und so löschen sich Wellen aus)
 			\end{itemize}
 		\item Vokaltraktformen: Frikative (Reibelaute)
 			\begin{itemize}
-				\item[] %G 12 - 32 +Spektogramm
+				\item[] \includegraphics[scale=0.15]{Grafiken/1232.png}\includegraphics[scale=0.15]{Grafiken/1233.png}
 				\item Desweiteren gibt es glottalen Frikativ /h/ (wie in Haus) 
 			\end{itemize}
 		\item Phone und Phoneme
@@ -2123,8 +2123,8 @@ Betrachten wir zuerst den Fall, dass die Stimmbänder sich öffnen und schließe
 			\end{itemize}
 		\item IPA-Schema für Konsonanten + Vokale
 			\begin{itemize}
-				\item[] Konsonanten: %G 12 - 38
-				\item[] Vokale: %G 12 - 39
+				\item[] Konsonanten: \includegraphics[scale=0.15]{Grafiken/1238.png}
+				\item[] Vokale: \includegraphics[scale=0.15]{Grafiken/1239.png}
 			\end{itemize}
 		\item Phone und Phoneme 
 			\begin{itemize}
@@ -2169,7 +2169,7 @@ Betrachten wir zuerst den Fall, dass die Stimmbänder sich öffnen und schließe
 	
 \underline{Sprachkommunikation von Mensch zu Mensch} \\
 	\begin{itemize}
-		\item[] %G 12 - 46
+		\item[] \includegraphics[scale=0.2]{Grafiken/1246.png}
 		\item A: Neurophysiologischer Prozess im Gehirn
 		\item B: elek. Prozess in den efferenten Nervenbahnen
 		\item C: Bewegung des Artikulationsapparates
@@ -2229,7 +2229,7 @@ Betrachten wir zuerst den Fall, dass die Stimmbänder sich öffnen und schließe
 
 \underline{Physikalische vs. perzeptuelle Eigenschafen} \\
 Gibt grundlegenden Unterschied zwischen der Wahrnehmung (Perzeption) eines Lautes und seinen messbaren physikalischen Eigenschaften. Manche physikalischen und perzeptuellen Eigenschaften hängen miteinander zusammen, sind aber keineswegs identisch
-%G 12 - 55
+\includegraphics[scale=0.15]{Grafiken/1255.png}
 	\begin{itemize}
 		\item Unterschied: frequenzabhängige Wahrnehmung der Lautstärke (Empfindlichkeit variiert mit der Frequenz, Lautstärke != Intensität)
 		\item Wahrnehmung hängt abvon: Resonanzfreq. des Gehörgangs, Übertragungsfunktion der Gehörknöchelchen
@@ -2290,7 +2290,7 @@ Schrittweite ergibt sich aus Spracherzeugung und -perzeption:
 \underline{Das Hamming-Fenster} \\
 	\begin{itemize}
 		\item Standardfenster in der Sprachsignalverarbeitung
-		\item[] %G 13 - 12
+		\item[] \includegraphics[scale=0.15]{Grafiken/1312.png}
 		\item Fenstergröße beträgt etwa 1.5-2-fache des Frameshifts
 		\item Typische Fenstergröße: ca. 16ms
 	\end{itemize}
@@ -2299,7 +2299,7 @@ Schrittweite ergibt sich aus Spracherzeugung und -perzeption:
 	\begin{itemize}
 		\item Nächster Schritt zur Berechnung von MFCCs ist Frequenzanalyse der einzelnen Frames
 		\item Zur Erinnerung: STFT
-		\item[] %G Formel 12 - 15
+		\item[] \includegraphics[scale=0.15]{Grafiken/1315.png}
 		\item w[n] ist die Hamming-Fensterfunktion
 		\item Die STFT erzeugt N Frequenzsamples aus N Zeitsamples - 1 komplexe Zahl pro Frequenz, Symmetrisch im Betrag + antisymmetrisch in der PHase => reicht die positiven Frequenzen zu betrachten
 		\item Effiziente Berechnung: FFT (Fast Fourier Transform)
@@ -2325,7 +2325,7 @@ Schrittweite ergibt sich aus Spracherzeugung und -perzeption:
  		\item Einheit des Cepstrums ist die Quefrenz (auch Hz)
  		\item Cepstrum ist die Summe vom Einfluss der Anregungsschwingung und dem Einfluss vom Vokaltrakt (weil die FT linear ist)
  		\item Anregungsschwingung von 200 Hz im Beispiel sichtbar
- 		\item[] %G 13 - 23
+ 		\item[] \includegraphics[scale=0.15]{Grafiken/1323.png}
  	\end{itemize}
  	
 \underline{Log-Mel-Spektrogramm} \\
@@ -2335,7 +2335,7 @@ Schrittweite ergibt sich aus Spracherzeugung und -perzeption:
 		\item Überlicherwise werden die ersten 13-14 MFCCs verwendet
 	\end{itemize}	
 	
-%G 13 - 25 		
+ \includegraphics[scale=0.15]{Grafiken/1325.png}
 
 \underline{Dynamik des Sprachsignals} \\
 	\begin{itemize}
@@ -2354,16 +2354,16 @@ Schrittweite ergibt sich aus Spracherzeugung und -perzeption:
 \underline{Fundamentalformel der Spracherkennung} \\
 	\begin{itemize}
 		\item Gegeben eine Sequenz von Merkmalsvektoren X, finde wahrscheinlichste Wortsequenz W
-		\item[] %G 13-32
+		\item[] \includegraphics[scale=0.2]{Grafiken/1332.png}
 	\end{itemize}
 	
 \underline{Automatic Speech Recognition} \\
-	%G 13-34 
+	\includegraphics[scale=0.15]{Grafiken/1333.png}
 	\begin{itemize}
 		\item Aussprache-Wörterbuch 
 			\begin{itemize}
 				\item Die Verbindung zwischen der Akustik und der geschriebenen Sprache (Beschreibe ein Wort als Konkatenation von Phonemen)
-				\item[] %G 13-35
+				\item[] \includegraphics[scale=0.2]{Grafiken/1335.png}
 			\end{itemize}
 		\item Akustisches Modell
 			\begin{itemize}
@@ -2387,13 +2387,13 @@ Schrittweite ergibt sich aus Spracherzeugung und -perzeption:
 \underline{HMMs in der Spracherkennung} \\
 	\begin{itemize}
 		\item Ein typisches HMM (für das Wort "can")
-		\item[] %G 13-39 
+		\item[] \includegraphics[scale=0.2]{Grafiken/1339.png}
 		\item 3-Zustands-Bakis-Modell pro Phonem
 		\item Self-Loops erlauben beliebige Dauer eines Phonems
 		\item Jeder Zustand modelliert Teil eines Phonems (Anfang, Mitte, Ende)
 		\item Diesen Teil eines Phonems nennt man auch Subphonem
 		\item Zustände, die zum selben "akustischen Phänomen" gehören, teilen sich ein Modell $Model S_1 = Model S_7 = Model g-b$ 
-		\item[] %G 13-40
+		\item[]\includegraphics[scale=0.2]{Grafiken/1340.png}
 		\item Vorteile: Bessere Ausnutzung der Trainingsdaten, höhere Robustheit, bessere Parameterabschätzung, Rechenzeit wird gespart
 	\end{itemize}
 
@@ -2416,9 +2416,9 @@ Schrittweite ergibt sich aus Spracherzeugung und -perzeption:
 \underline{Kontextabhängige Modellierung} \\
 	\begin{itemize}
 		\item Betrachte die Aussprachen von true, train, table und tell
-		\item[] %G 13-42
+		\item[] \includegraphics[scale=0.2]{Grafiken/13421.png}
 		\item Die wahre Aussprache ist aber eher wie folgt
-		\item[] %G 13-42
+		\item[] \includegraphics[scale=0.2]{Grafiken/13422.png}
 		\item Phonem T wird abhängig vom Kontext unterschiedlich ausgesprochen
 		\item Erste Idee
 			\begin{itemize}
@@ -2428,7 +2428,7 @@ Schrittweite ergibt sich aus Spracherzeugung und -perzeption:
 		\item Zweite Idee
 			\begin{itemize}
 				\item Kontextabhängige Einheiten
-				\item[] %G 13-43
+				\item[] \includegraphics[scale=0.2]{Grafiken/1343.png}
 			\end{itemize}
 		\item[] $\rightarrow$ Trainiere unterschiedliche HMMs abhängig vom phonetischen Kontext
 		\item Ein Phonem was von Vorgänger und Nachfolger abhängt ist ein Triphon
@@ -2459,7 +2459,7 @@ Schrittweite ergibt sich aus Spracherzeugung und -perzeption:
 				\item Minimaler Informationsgewinn
 				\item Minimale Menge an Trainingsdaten in jedem Blatt
 			\end{itemize}
-		\item[] %G  13-45
+		\item[] \includegraphics[scale=0.2]{Grafiken/1345.png}
 	\end{itemize}
 
 \underline{Sprachmodellierung} \\
@@ -2600,10 +2600,10 @@ Definition: Bewegungen sind räumliche Verschiebungen von Gewebe
 		\item Unter dem Mirkoskop A/I-Bande als Querstreifen erkennbar - deshalb "quergestreifte Muskulatur"
 		\item Myofibrillen bestehen aus 2 Typen von parallel gelagerten fadenartigen Filamenten: Myosinfilamente (langgestreckte Myosinmoleküle - Protein), Aktinfilamente (kugelförmiges Protein, kettenförmig gelagert verdrillt zu Faden)
 		\item Beide Filamenttypen berühren sich, wo Ausstülpungen des Myosinmoleküls, die Myosinköpfe, das Aktinfilament berühren
-		\item[] %G 14- 14 links unten
+		\item[] \includegraphics[scale=0.1]{Grafiken/1414.png}
 		
 	\end{itemize}
-%G Muskel aufbau
+\includegraphics[scale=0.3]{Grafiken/1409.png}
 
 \subsection{Muskelkontraktion}
 \begin{itemize}
@@ -2775,7 +2775,7 @@ Elektromyograpie: Das Studium der Muskelfunktion durch Erforschung des elek. Sig
 \underline{Terminologie} \\
 	\begin{itemize}
 		\item Kleine Übersicht der EDA-Terminologie
-		\item[] %G 17 - 7
+		\item[] \includegraphics[scale=0.2]{Grafiken/1706.png}
 		\item Hautleitfähigkeit und Hautleitwert werden oft synonym verwendet
 	\end{itemize}
 	
@@ -2919,7 +2919,7 @@ Elektromyograpie: Das Studium der Muskelfunktion durch Erforschung des elek. Sig
 			\end{itemize}
 	\end{itemize}
  	
-%G 17 - 26
+\includegraphics[scale=0.2]{Grafiken/1726.png}
 
 \underline{Von den Rohdaten zur Elektrodermalen Reaktion} \\
 	\begin{itemize}
@@ -2969,7 +2969,7 @@ Elektromyograpie: Das Studium der Muskelfunktion durch Erforschung des elek. Sig
 				\item Amplitudenkriterium: es müssen 0,02$\mu S$ überschritten werden, um als EDR zu gelten
 				\item Erholungszeit 
 			\end{itemize}
-		\item[] %G 17-6
+		\item[] \includegraphics[scale=0.2]{Grafiken/1733.png}
 	\end{itemize}
 	
 \underline{Die ideale Gestand einer EDR} \\
@@ -2977,7 +2977,7 @@ Elektromyograpie: Das Studium der Muskelfunktion durch Erforschung des elek. Sig
 		\item Betrachten eine einzelne EDR
 		\item Diagramm: ist der Stimulus abgebildet
 		\item Parameter, die von einer idealen einzelnen EDR (Typ 1 nach Boucsein) abgeleitet werden können: Latenz, Amplitude - Anstiegszeit, Halbwerts-/Abklingzeit
-		\item[] %G 17 -34
+		\item[] \includegraphics[scale=0.2]{Grafiken/1734.png}
 	\end{itemize}
 
 \underline{Parameter einer EDR} \\
@@ -3083,15 +3083,15 @@ Elektromyograpie: Das Studium der Muskelfunktion durch Erforschung des elek. Sig
 	\end{itemize}
 
 \underline{Auflösung der Modalitäten} \\
-%G 18 - 13
+\includegraphics[scale=0.3]{Grafiken/1813.png}
 
 \underline{Vergleich der Erfassungsmethoden} \\
-%G 14 - 14
+\includegraphics[scale=0.3]{Grafiken/1813.png}
 
 \subsection{Neuro Imaging}
 
 \underline{Aufbau des Gehirns} \\
-%G 18 - 17
+\includegraphics[scale=0.3]{Grafiken/1816.png}
 
 	\begin{itemize}
 		\item Frontallappen: Abschätzen von Konsequenzen, Bewertung von Aktionen, Gedächtnis, etc.
@@ -3188,7 +3188,7 @@ Elektromyograpie: Das Studium der Muskelfunktion durch Erforschung des elek. Sig
 	\end{itemize}
 
 \underline{Beispiel: time-courses} \\
-%G 18-31
+\includegraphics[scale=0.2]{Grafiken/1831.png}
 
 \underline{Was sind also diese Blobs?} \\
 	\begin{itemize}
@@ -3326,11 +3326,11 @@ Ein Brain-Computer Interface ist eine spezielle Mensch-Maschine-Schnittstelle di
 	\end{itemize}
 
 \underline{EPSP/IPSP} \\
-%G 19 - 11
+\includegraphics[scale=0.2]{Grafiken/1911.png}
 
 IPSP sind + und - vertauscht 
 
-%G 19 - 11
+\includegraphics[scale=0.2]{Grafiken/19111.png}
 
 \underline{Potenzialquellen} \\
 	\begin{itemize}
@@ -3351,7 +3351,7 @@ IPSP sind + und - vertauscht
 				\item vertikal ausgerichtete sind
 			\end{itemize}
 		\item Hirnwindungen spielen eine Rolle für das EEG
-		\item[] %G 19 - 13
+		\item[] \includegraphics[scale=0.25]{Grafiken/1913.png}
 		\item Pyramidenzellen spielen eine wesentliche Rolle für das EEG
 			\begin{itemize}
 				\item haben typischerweise lange Dendriten
@@ -3484,7 +3484,7 @@ IPSP sind + und - vertauscht
 	
 \underline{Frequenzbänder EEG-Bänder} \\
 Unterschiedliche Wachheitsgrade führen zu Änderungen des EEG-Frequenz-Spektrum
-%G 19 - 31
+\includegraphics[scale=0.2]{Grafiken/1931.png}
  
 \underline{$\alpha$-Grundrhythmus} \\
 	\begin{itemize}
@@ -3522,7 +3522,7 @@ Unterschiedliche Wachheitsgrade führen zu Änderungen des EEG-Frequenz-Spektrum
 \underline{Ereigniskorrelierte Potentiale (EKPs)} \\
 	\begin{itemize}
 		\item Typische visuelle EKP Wellenform:
-		\item[] %G 19 - 38
+		\item[] \includegraphics[scale=0.2]{Grafiken/1938.png}
 		\item Namensgebung der Komponenten: P (Positiv), N (Negativ), Ziffer (Durchnummeriert), Zahl (Zeitpunkt an dem die Komponente häufig auftritt (Latenz in ms)
 		\item Wichtige Parameter von EKP Komponenten: Peak Amplitude in $\mu V$, Peak Latenz in ms, Elektrodenposition (Scalp Map), Mittelwert der Amplitude innerhalb eines Zeitraums
 	\end{itemize}
@@ -3535,7 +3535,7 @@ Unterschiedliche Wachheitsgrade führen zu Änderungen des EEG-Frequenz-Spektrum
 	\end{itemize}
 
 \underline{Mittelung mehrerer Trials} \\
-	%G 19 - 40
+	\includegraphics[scale=0.2]{Grafiken/1940.png}
 	
 	\begin{itemize}
 		\item Mittelung vergrößert Signal-Rausch-Abstand (SNR)
@@ -3656,7 +3656,7 @@ und somato-sensorischer Stimulation (Füße, Hände, Zunge, etc.)
  		\item End-to-end Systeme
  		\item Ausgabe in Form eines "Workload Tachos"
  		\item Signalverarbeitung und maschinelles Lernen - Verarbeitungsschritte
- 		\item[] %G 19 - 56
+ 		\item[] \includegraphics[scale=0.2]{Grafiken/1956.png}
  	\end{itemize}
 
 \underline{Workload Adaptiver Mensch-Roboter Dialog} \\  
@@ -3687,7 +3687,7 @@ Benutzerufriedenheit (Fragebogen)
 
 \subsection{Das Auge}
 \underline{Auge als optischer Apparat} \\
-%G 20 - 7
+\includegraphics[scale=0.2]{Grafiken/2007.png}
 
 \underline{Das Auge} \\
 	\begin{itemize}
@@ -3818,7 +3818,7 @@ Aufgaben:
 	\end{itemize}
 	
 \underline{Regelung von Augenbewegungen} \\
-%G 20 - 27
+\includegraphics[scale=0.2]{Grafiken/2027.png}
 
 \section{Technik und Methodik}
 \underline{Grundlagen} \\
@@ -4045,7 +4045,7 @@ Verfahren:
 	\end{itemize}
 
 Herkömmliche Methode links und VRD rechts
-%G 20 - 55
+\includegraphics[scale=0.2]{Grafiken/2055.png}
 
 \underline{Nicht kopfgetragene VOG} \\
 	\begin{itemize}
@@ -4091,7 +4091,7 @@ Nah-Infrarot Licht im Wellenlängenbereich von ca. 700-900 nm
 	\begin{itemize}
 		\item Idealer Abstand zwischen Sender und Empfänger um Kortex Aktivität zu messen zwischen 2.5 und 4.5 cm
 		\item Messpunkt liegt zwischen Sender und Empfänger in Tiefe von ca. halbem Abstand
-		\item[] %G 21-7
+		\item[] \includegraphics[scale=0.2]{Grafiken/2107.png}
 	\end{itemize}
 
 \underline{Grundprinzip} \\
@@ -4138,7 +4138,7 @@ Nah-Infrarot Licht im Wellenlängenbereich von ca. 700-900 nm
  		\item Haut, Gewebe und Knochen sind transparent für Nah-Infrarot Licht 700-900 nm
  		\item Oxidiertes und deoxidiertes Hämoglobin absorbieren NIR
  		\item Unterschiede im Absorptionsspektrum erlauben das Messen von relative Unterschiden in HbO HbR in dem 2 Wellenlängen verwendet werden
- 		\item[] %21 - 14
+ 		\item[] \includegraphics[scale=0.2]{Grafiken/2114.png}
  	\end{itemize}
  	
 \underline{Hämodynamische Antworten} \\
@@ -4146,7 +4146,7 @@ Nah-Infrarot Licht im Wellenlängenbereich von ca. 700-900 nm
  		\item Durchschnittliche hämodynamische Antwort auf mentale Aktivität (Mittelungstechnik)
  		\item HbO steigt mit Aktivität (Überzufuhr an frischem Blut)
  		\item HbR genau anders herum 
- 		\item[] %G 21 - 15
+ 		\item[] \includegraphics[scale=0.2]{Grafiken/2115.png}
  	\end{itemize}
  	
 \underline{fNIRS BCI und fNIRS Passive BCI} \\
@@ -4163,7 +4163,7 @@ Nah-Infrarot Licht im Wellenlängenbereich von ca. 700-900 nm
 				\item Buchstaben werden regelmäßig nacheinadner präsentiert
 				\item Versuchsperson muss reagieren, wenn n-te Vorgänger er gleiche Buchstabe war
 				\item Unterschiedliche Aktivierungen durch n-bakc Stufen im Gradn-Average gezeigt
-				\item[] %G 21 - 17
+				\item[]\includegraphics[scale=0.2]{Grafiken/2117.png}
 			\end{itemize}
 		\item Features for fNIRS BCI
 			\begin{itemize}
@@ -4177,17 +4177,17 @@ Nah-Infrarot Licht im Wellenlängenbereich von ca. 700-900 nm
 	\begin{itemize}
 		\item Audio-visual slideshows using IAPS and IADS for emotion induction
 		\item 3 Klassen: aV, AV, Av
-		\item[] %G 21 - 27
+		\item[] \includegraphics[scale=0.25]{Grafiken/2127.png}
 	\end{itemize}
 	
 
 \underline{Signal Processing and Machine Learning} \\
-	%G 21 - 31
+	\includegraphics[scale=0.25]{Grafiken/2131.png}
 	
 
 \underline{Continuous Feature Extraction and Classification} \\
 	\begin{itemize}
-		\item[] %G 21 - 32
+		\item[] \includegraphics[scale=0.25]{Grafiken/2132.png}
 		\item continuously extract 5 sec windows with 50 \% overlap
 		\item mean values (16 dim)
 		\item drop features that have less than 10 \% of the total Mutual Information with ground truth labels
@@ -4226,7 +4226,7 @@ Differentiating what kind of task a subject is currently working on
 		\item mental arithmetics: the subjcts were asked to repeateldy subtract a given minuend between 7 and 19 (10 excluded) starting with a given number between 501 und 900
 		\item word generation: the subjects were asked to imagine words starting with a given letter
 		\item mental rotation: the subjects were aksed to imagine words starting with a given letter
-		\item[] %G 21 - 37
+		\item[] \includegraphics[scale=0.2]{Grafiken/2137.png}
 	\end{itemize}
 
 
@@ -4348,7 +4348,7 @@ Differentiating what kind of task a subject is currently working on
 		\item Zapfengelenk: ringförmige Drehung um einen Zapfen, Sonderform des Scharniergelenks
 		\item Flache Gelenke: Drehung um zwei aufeinander senkrechte Achsen im Raum, Einschränkungen der Bewegungen möglich
 		\item Kugelgelenk: größter Bewegungsspielraum um drei Achsen, Beschränkung durch Anschläge
-		\item[] %G 22- 12
+		\item[] \includegraphics[scale=0.2]{Grafiken/2212.png}
 	\end{itemize}
 	
 
@@ -4444,11 +4444,11 @@ Unterschiedliche Verfahren zur Erfassung von Bewegungsabläufen:
 	\begin{itemize}
 		\item rigide oder flexible Winkelmesser (Geniometer) vom Benutzer getragen
 		\item Skelettverbindungen zur Abbildung von Gelenkwinkeln
-		\item[] %G 22 - 26
+		\item[] \includegraphics[scale=0.2]{Grafiken/2226.png}
 	\end{itemize}
 
 \underline{Optische Verfahren} \\
-	%G 22 - 27
+	\includegraphics[scale=0.2]{Grafiken/2227.png}
 	
 \underline{Markerbasierte optische Systeme} \\
 	\begin{itemize}
@@ -4459,7 +4459,7 @@ Unterschiedliche Verfahren zur Erfassung von Bewegungsabläufen:
 		\item $\rightarrow$ Marker können aktiv (leuchtend) oder passiv (reflektierend) sein
 		\item Anforderungen an künstl. Marker: muss von allen Seiten gut lokalisierbar sein + muss konstrastreich zu dessen Umwelt sein
 		\item Warum Maker? deutlich einfachere Bildverarbeitung + Möglichkeit Infrarotkameras zu benutzen und damit Störungen im sichtbaren Bereich zu eliminieren
-		\item[] %G 22-30
+		\item[] \includegraphics[scale=0.2]{Grafiken/2230.png}
 	\end{itemize}
 	
 \underline{Markerlose Systeme} \\
@@ -4477,9 +4477,9 @@ Unterschiedliche Verfahren zur Erfassung von Bewegungsabläufen:
 				\item trotz Lichtgeschw. funktioniert dies im Nahbereich mit hoher Genauigkeit
 			\end{itemize}
 		\item Makerlose 2D Systeme
-		\item[] %G 22 -35
+		\item[] \includegraphics[scale=0.2]{Grafiken/2235.png}
 		\item Markerlose 3D Systeme
-		\item[] %G 22-33
+		\item[] \includegraphics[scale=0.2]{Grafiken/2233.png}
 		\item Alle Techniken liefern nur 2D und 3D Information und keine Informationen über Objekte, Körper, Hintergrund, Körperteile
 		\item Nutze Verfahren der Bildverarbeitung zur: Extraktion einzelner Menschen, Vorfolung der Körperteile, Verfolgung von Objekten, kann mit Modellwissen kombiniert werden (Menschmodell)
 	\end{itemize}
@@ -4524,7 +4524,7 @@ Unterschiedliche Verfahren zur Erfassung von Bewegungsabläufen:
 				\item benutze Sensorfusion um Orientierung im Raum für jeden Sensor zu bestimmen
 				\item Berechne Position der Gliedmaßen über Vorwärts-Kinematik relativ zum Wurzelgelenk
 			\end{itemize}
-		\item[] %G 22 - 46
+		\item[] \includegraphics[scale=0.2]{Grafiken/2246.png}
 	\end{itemize}
 
 \underline{Weitere Systeme: Lichtwellenleiter} \\
@@ -4558,16 +4558,16 @@ Unterschiedliche Verfahren zur Erfassung von Bewegungsabläufen:
 
 \underline{Zeitreihen} \\
 	\begin{itemize}
-		\item[] %G 23-4
+		\item[] \includegraphics[scale=0.2]{Grafiken/2304.png}
 		\item Allgemeinste Definition: diskrete Sequenz von m-dimensionalen Datenpunkten $v_i$, gemessen zu beliebeigen Zeitpunkten $t_i$
 		\item Reguläre Zeitreihen: Zeitintervalle zwischen Messungen sind uniform, d.h. es gibt eine Konstante k mit $t_i +k = t_{i+1}$
 	\end{itemize}
 	
 \underline{Segmentierung von Zeitreihen} \\
 	\begin{itemize}
-		\item[] %g 23-5
+		\item[] \includegraphics[scale=0.2]{Grafiken/2305.png}
 		\item Typischer Ablauf einer Segmentierung im Prozess der Verarbeitung von Zeitreihen
-		\item[] %g 13-6
+		\item[]\includegraphics[scale=0.2]{Grafiken/2306.png} 
 		\item Feature Extraktion: Digitalisierung, Datenreduktion, dimensionalitätsreduktion, Vorverarbeitung (Filterung, Geräuschreduktion, etc)
 		\item Anwendung: Evaluation der Resultate anhand von Referenzen, Analyse der Fehler und ggf. Verbesserung der Segmentierung
 		\item ABER: Mahnchmal wird zur Lösung des Segmentierungsproblems bereits die Lösung des Gesamtproblems benötigt
@@ -4683,7 +4683,7 @@ Unterschiedliche Verfahren zur Erfassung von Bewegungsabläufen:
  		
  		
 \underline{Erkennung} \\
-%g 23-26
+\includegraphics[scale=0.2]{Grafiken/2326.png}
 Wozu braucht man Verfahren zur auto. Bewegungserkennung und Modellierung?
 	\begin{itemize}
 		\item Mensch-Maschine-Interaktion
@@ -4731,7 +4731,7 @@ Wozu braucht man Verfahren zur auto. Bewegungserkennung und Modellierung?
  	\begin{itemize}
  		\item meist weniger rechenaufwändig als Sequenzmodellierung (wichtiger Faktor in mobilen Anwendungen, Embedded Systems, etc)
  		\item Verbreitet in der Aktivitätserkennung
- 		\item[] %g 23 - 33 mit 4pkt drüber
+ 		\item[] \includegraphics[scale=0.2]{Grafiken/2333.png}
  	\end{itemize}
 
 \underline{Sequenzmodellierung} \\
@@ -4742,7 +4742,7 @@ Wozu braucht man Verfahren zur auto. Bewegungserkennung und Modellierung?
  				\item HMM für Übergänge zwischen den Aktivitäten
  				\item Alternative: Kontexmodell
  			\end{itemize}
- 		\item[] %g 23-34
+ 		\item[] \includegraphics[scale=0.2]{Grafiken/2334.png}
  		\item für feingranulare Aktivitäten ist die temporale Information oft wichtig (Gesten, Gangzyklus)
  		\item Bewegungen werden typischerweise im Zeitbereich modelliert $\rightarrow$ Kurve muss mit zeitdiskreten HMM approximiert werden
  		\item Rules of Thumb: Hohe Anzahl von Zuständen um hohe Auflösung zu erreichen
@@ -4759,15 +4759,18 @@ Wozu braucht man Verfahren zur auto. Bewegungserkennung und Modellierung?
 	\begin{itemize}
 		\item Andere Darstellung von Klassifikationsergebnissen
 		\item zeigt an, wie viele Instanzen der Referenz-Klasse welcher Klasse im Test zugeordnet wurden (Klassifikation)
-		\item[] %G 24-6
+		\item[] \includegraphics[scale=0.2]{Grafiken/2406.png}
 		\item gibt wichtige Informationen an, die eine detalliertere Analyse zulassen, als nur die Bestimmung der Akkuratheit
 		\item Beispiel 
-		\item[] %G 24-8 ganze folie
+		\item[] \includegraphics[scale=0.2]{Grafiken/2408.png}
 	\end{itemize}
 	
 \underline{F-Score Beispiel + Gegenbeispiel} \\
- Metrik: Precision und Recall
- %G 24 -11,12,13,14
+ Metrik: Precision und Recall \\
+ \includegraphics[scale=0.2]{Grafiken/2411.png}
+ \includegraphics[scale=0.2]{Grafiken/2412.png}
+ \includegraphics[scale=0.2]{Grafiken/2413.png}
+ \includegraphics[scale=0.2]{Grafiken/2414.png}
  
 \underline{Gewichtung von Precision/Recall} \\
  	\begin{itemize}
@@ -4789,10 +4792,10 @@ Wozu braucht man Verfahren zur auto. Bewegungserkennung und Modellierung?
  	\end{itemize}
  	
 \underline{Statistische Analyse Beispiel} \\
- 	%G 24-18
- 	%G 24-19
- 	%G 24-20
- 	%G 24-21
+ \includegraphics[scale=0.2]{Grafiken/2418.png}
+ \includegraphics[scale=0.2]{Grafiken/2419.png}
+ \includegraphics[scale=0.2]{Grafiken/2420.png}
+ \includegraphics[scale=0.2]{Grafiken/2421.png}
  	
 \underline{Descriptive Analyse: Verteilung} \\
 	\begin{itemize}
@@ -4808,7 +4811,7 @@ Wozu braucht man Verfahren zur auto. Bewegungserkennung und Modellierung?
  		\item Betrachte Stichproblem Mittelwert als Zufallsvariable
  		\item Stichproben Mittelwert als Summe von unabhängigen, identisch verteilten Zufallsvariablen folgt einer Normalverteilung 
  		\item Für eine Normalverteilung fallsen 68,2 \% aller möglichen Werte innerhalb von einer Standardabweichung vom Mittelwert $\rightarrow$ Konfidenzinterfall des Stichprobenmittelwert
- 		\item[] %G 24 - 24
+ 		\item[] \includegraphics[scale=0.2]{Grafiken/2424.png}
  	\end{itemize}
  	
 \underline{Deskriptive Statistik: Grenzen} \\
@@ -4832,7 +4835,7 @@ Wozu braucht man Verfahren zur auto. Bewegungserkennung und Modellierung?
 	\end{itemize}
  		
 \underline{Statistical Tests: Generic Framework} \\
- %G 24 - 27
+\includegraphics[scale=0.2]{Grafiken/2427.png}
  
 \underline{t-Test} \\
  	\begin{itemize}
@@ -4918,7 +4921,7 @@ Wozu braucht man Verfahren zur auto. Bewegungserkennung und Modellierung?
  		
 \subsection{Versuchsplanung}
 \underline{The Scientific Method} \\
- 	%G 25 - 18
+ 	\includegraphics[scale=0.2]{Grafiken/2518.png}
 
 Generic Approach for emipiric Testing
 	\begin{itemize}
@@ -4977,53 +4980,6 @@ Generic Approach for emipiric Testing
  		\item 5. draw conclusions $\rightarrow$ Interpretation, check validity and reliability, regard alternative explanations
  	\end{itemize}
  		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 	
 
  
 %%Ende
