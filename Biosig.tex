@@ -3004,7 +3004,7 @@ Verfahren:
 		\item schnelles Setup, Kalibrierung notwendig
 		\item Nicht-Linear
 		\item moderate Kosten - ca. 4000 Dollar
-		\itee gut geeignet für Anewndungen wie Studien zu Mikroaugenbewegungen
+		\item gut geeignet für Anewndungen wie Studien zu Mikroaugenbewegungen
 		\item nicht geeignet für Messung von Folgebewegungen und Sakkaden wegen Nichtlin. 
 	\end{itemize}
  		
@@ -3084,7 +3084,7 @@ Herkömmliche Methode links und VRD rechts
 				\item Einsichten in die kognitiven neurologischen Abläufe
 				\item 2 Typen von Augenbewegungen: willkürliche (Steuerung und Kontrolle von Devices) und unwillkürliche (gesteuert vom Gleichgewichtssystem)
 			\end{itemize}
-		\itme Mensch-Maschine Schnittstellen
+		\item Mensch-Maschine Schnittstellen
 	\end{itemize}
  
 \section{Gehirnaktivität - Funktionale Nah-Infrarot Spektroskopie}
@@ -3176,9 +3176,439 @@ Nah-Infrarot Licht im Wellenlängenbereich von ca. 700-900 nm
 				\item Unterschiedliche Aktivierungen durch n-bakc Stufen im Gradn-Average gezeigt
 				\item[] %G 21 - 17
 			\end{itemize}
+		\item Features for fNIRS BCI
+			\begin{itemize}
+				\item keine Standardprozedur wie EEG
+				\item Die meisten Annäherungen sind sehr einfach
+			\end{itemize}
  	\end{itemize}
+ 
+
+\underline{Emotional Stimuli} \\ 		
+	\begin{itemize}
+		\item Audio-visual slideshows using IAPS and IADS for emotion induction
+		\item 3 Klassen: aV, AV, Av
+		\item[] %G 21 - 27
+	\end{itemize}
+	
+
+\underline{Signal Processing and Machine Learning} \\
+	%G 21 - 31
+	
+
+\underline{Continuous Feature Extraction and Classification} \\
+	\begin{itemize}
+		\item[] %G 21 - 32
+		\item continuously extract 5 sec windows with 50 \% overlap
+		\item mean values (16 dim)
+		\item drop features that have less than 10 \% of the total Mutual Information with ground truth labels
+		\item Classification using SVMs with radial basis function kernels
+	\end{itemize}
+	
+
+\underline{Evaluation} \\
+	\begin{itemize}
+		\item Evaluation Considerations: small amount of dataa, signals have high auto-correlation
+		\item 10-fold cross-validation
+		\item 1 minute gap between training and test data
+	\end{itemize}
+	
+
+\underline{Conclusion and Future Work} \\
+	\begin{itemize}
+		\item Affective State Recognition using small chunks of fNIRS works
+			\begin{itemize}
+				\item neutral vs emotion stimulation is significant for all subjects and classes 
+				\item lw vs high valence is significant in half of the subjects
+				\item recognition rates are not casued by short peaks
+				\item neutral blocks recognition rates are not influenced by previous emotion block
+			\end{itemize}
+		\item Future work
+			\begin{itemize}
+				\item increase classification performance 
+				\item more detailed analyses on the influenve of perceptual properties of the stimuli on the results
+			\end{itemize}
+	\end{itemize}
+	
+
+\underline{Mental tasks} \\
+Differentiating what kind of task a subject is currently working on
+	\begin{itemize}
+		\item mental arithmetics: the subjcts were asked to repeateldy subtract a given minuend between 7 and 19 (10 excluded) starting with a given number between 501 und 900
+		\item word generation: the subjects were asked to imagine words starting with a given letter
+		\item mental rotation: the subjects were aksed to imagine words starting with a given letter
+		\item[] %G 21 - 37
+	\end{itemize}
+
+
+\underline{Mentale Auslastung mit fNIRS} \\
+	\begin{itemize}
+		\item Erweiterung auf Single-Trail
+		\item Erster Schritt Richtung Interfaces, die sich mentaler Auslastung anpassen
+		\item Nicht nur Klassifikation von Ruhe-Phase, sondern auch zwischen den Auslastungs-Stufen
+		\item Merkmal: Steigung in HbO, HbR; Klassifikator: LDA
+		\item Merkmalsselektion: Mutual Information auf 8 Merkmale
+	\end{itemize}
+	
+
+\underline{Hemodynamics for BCI} \\
+	\begin{itemize}
+		\item Pros
+			\begin{itemize}
+				\item fNIRS
+					\begin{itemize}
+						\item relatively affordable
+						\item easy to setup
+						\item no electrode gel
+					\end{itemize}
+				\item fMRI
+					\begin{itemize}
+						\item very detailed
+						\item all brain-areas
+					\end{itemize}
+			\end{itemize}
+		\item Cons: very slow responses
+		\item ideal for slow processes: e.g. classroom settings
+		\item not well suited for clasic control paradigms
+	\end{itemize}
  		
+\section{Bewegung}
+\subsection{Physiologie}
  		
+	\begin{itemize}
+		\item Definition: Bewegungen sind räumliche Verschiebungen von Gewebe
+		\item Größräumige Bewegungen z.B. Beine beim Gehen
+		\item kleinste Bewegungen z.B. Mimik
+		\item Jegliche Bewegung geschieht durch Muskeln: Skelettmuskeln, Glatte Muskeln
+	\end{itemize}
+	
+
+\underline{Bewegungsapparat des Menschen} \\
+	\begin{itemize}
+		\item Stütz- und Bewegungsapparat: Knochen, Knorpelgewebe, Bänder, Muskeln, Sehnen
+		\item die einzelnen Gewebearten weisen ein unterschiedliches mechanisches Verhalten und biologische Funktion auf und werden daher separat betrachtet
+		\item Zusammenspiel der unterschiedlichen Gewebetypen bildet den Stütz- und Bewegungsapparat des Menschen
+		\item Stütz- und Bewegungsapparat werden auch als passiver und aktiver Bewegungsapparat bezeichnet
+	\end{itemize}
+	
+
+\underline{Aktiver und passiver Bewegungsapparat} \\
+ 	\begin{itemize}
+ 		\item Der aktive Bewegungsapp. dient in erster Linie der Bewegung und besteht aus der Skelettmuskulatur und ihren Anhangs- bzw. Hilfsorgnanen: Muskulatur, Sehnen, Sehnenscheiden, Schleimbeutel, Faszien
+ 		\item Der passive Bewegungsapp. dient in erster Linie der Stützung bzw. Formgebung des Körpers und besteht aus dem Skelett mit seinen verschiedenen Anteilen: Knochen, Knorpel, Gelenke, Bandscheiben, Bänder
+ 	\end{itemize}
+ 
+ 
+\underline{Gewebetypen} \\
+ 	\begin{itemize}
+ 		\item Knochengewebe
+ 			\begin{itemize}
+ 				\item lebendiges Gewebe
+ 				\item Knochengewebe ist einem permanenten Umbau unterworfen
+ 				\item Aufbau: im Inneren Spongiosa, außen Kompalta, Knochenhaut, Knochenknorpel
+ 			\end{itemize}
+ 		\item Knorpel
+ 			\begin{itemize}
+ 				\item elastisches, biegsames Gewebe
+ 				\item wesentlich für die Gelenkabnutzung
+ 				\item Funktion: zu tragendes Gewicht drück auf Knorpel, Flüssigkeit weicht zurück, Dämpfung der Kraft
+ 			\end{itemize}
+ 	\end{itemize}
+ 	
+ 
+\underline{Muskelgewebe} \\
+	\begin{itemize}
+		\item Muskelgewebe: Antriebe für die Fortbewegung, Muskel arbeitet auf Zug, pro Gelenk immer eine agonistische und eine antagonistische Muskelgruppe
+		\item Unterschiedliche Gruppen an Muskeln: quergestreift + glatt
+		\item nur Skelettmuskulatur ist bewusst steuerbar
+		\item Muskeln sind über Sehnen mit Knochen verbunden
+	\end{itemize}
+	
+
+\underline{Sehnen} \\
+	\begin{itemize}
+		\item Übertragung der Kraft der Muskulatur auf das Skelett
+		\item Verbindungselemente zwischen Muskeln und Knochen
+		\item sehr hohe Zugfestigkeit
+		\item Kollagene Bindegewebsfasern
+		\item Dämpfung der Kraftübertragung auf den Knochen
+		\item Ursprungssehne: im Bereich der Ursprungssehne ziehen die Sehnenfasern gebündelt zwischen den Muskelfasern und befestigen sich einzeln an den Muskelfaserhüllen
+		\item Ansatzsehne: im Bereich der ansatzsehne strahlen die Sehnenfasern gebündelt und sich teilweise überkreuzend in den Knochen ein. Dabei wird eine vorgelagerte Knorpelzone durchlaufen
+	\end{itemize}
+	
+
+\underline{Bänder} \\
+	\begin{itemize}
+		\item dehnbare, faserartige Bindegewebsstränge
+		\item verbinden die beweglichen Teile des Knochenskeletts
+		\item Einschränkung der Beweglichkeit ($\rightarrow$ Randbedingungen)
+		\item Dehnbarkeit beschränkt ($\rightarrow$ Bänderriss)
+		\item Gelenke erhalten Stabilität durch Überziehen mit Bändern
+	\end{itemize}
+ 		
+\underline{Gelenke} \\
+	\begin{itemize}
+		\item Definition Gelenk: Bewegliche Verbindung von mehreren Körpern
+		\item Anatomisches/menschliches Gelenk: Bewegliche Verbindung mehrerer Körper, gestützt und beschränkt durc Sehnen und Bänder
+		\item Durch Gelenke wird menschl. Bewegung aufgrund einer Aktivierung umgesetzt
+	\end{itemize}
+	
+\underline{Gelenktypen} \\
+	\begin{itemize}
+		\item Scharniergelenk: Bewegung ist nur um eine Achse möglich
+		\item Zapfengelenk: ringförmige Drehung um einen Zapfen, Sonderform des Scharniergelenks
+		\item Flache Gelenke: Drehung um zwei aufeinander senkrechte Achsen im Raum, Einschränkungen der Bewegungen möglich
+		\item Kugelgelenk: größter Bewegungsspielraum um drei Achsen, Beschränkung durch Anschläge
+		\item[] %G 22- 12
+	\end{itemize}
+	
+
+\underline{Regeneration von Gelenken} \\
+	\begin{itemize}
+		\item Abnutzung von Gelenken aufgrund Zerstörung von Knorpelgewebe
+		\item Problem: Knorpel ist nicht in der Lage sich selbst vollständig zu erneuern oder zu regenerieren
+	\end{itemize}
+	
+
+\underline{Biomechanik} \\
+	\begin{itemize}
+		\item Definition: Die Biomechanik, als Teilgebiet der Biophysik, befasst sich mit der Analyse der Untersuchung der Bewegung biologischer Systeme. Sie kombiniert hierzu die Methoden, Erkenntnisse und Verfahren der Mechanik und der Biologie.
+		\item Äußere Biomech.: Darstellung der mech. Eigenschaften
+		\item Innere Biomech.: Motorische Regelungsprozesse im Körper
+		\item Sportbiomech.: Teilgebiet der Sportwissenschaft Beschreibung und Erklärung der sportlichen Bewegung mit den Methoden der Mechanik
+	\end{itemize}
+	
+
+\underline{Kinematik/Dynamik} \\
+	\begin{itemize}
+		\item
+		 Kinematik: Lehre von Bewegungen von Körpern (Ursache von Bewegungen werden ignoriert)
+		\item Dynamik: Lehre von Wirkung von Kräften
+	\end{itemize}
+ 		
+\subsection{Erfassung}
+	\begin{itemize}
+		\item Festellung der geeigneten Merkmal und Verfahren zur Erfassung ergeben sich aus Anwendung und Anforderungen (z.B. bzgl. Kosten, etc)
+		\item In der Regel die Erfassung kategorisiert nach:
+		\item 1. Welche Merkmale werden erfasst?
+		\item 2. Wie werden die Merkmale erfasst?
+		\item 3. Messaufbau
+	\end{itemize}
+ 		
+
+\underline{Anforderungsanalyse} \\
+	\begin{itemize}
+		\item Was ist Ziel der Erfassung
+		\item Welche Parameter sollen analysiert werden?
+		\item Welche phys. Größen müssen dazu erfasst werden?
+		\item Wie viele Personen/Objekte sich beteiligt?
+		\item Wirken äußere Kräfte zusätzlich auf die Personen ein?
+		\item Wie lange dauert die Erfassung? (Betrachtungszeit)
+		\item Wie hoch ist die geforderte Genauigkeit
+		\item Was sind die Umweltbedingungen der Erfassung?
+		\item $\rightarrow$ Wahl des Messverfahrens und Experimentaufbaus
+	\end{itemize}
+
+
+\underline{Anforderungen an das Messverfahren} \\
+Bewertungskriterien
+	\begin{itemize}
+		\item Genauigkeit $\rightarrow$ Fehler in Position und Orientierung
+		\item Referenzkoordinatensystem: Koordinatensystem, indem das Aufnahmesystem Messwerte liefert (Weltkoordi. sind global und Sensorkoordi. sind relativ)
+		\item Auflösung: kleinste wahrnehmbare Änderung der Position/Orientierung
+		\item Aktualisierungsfrequenz $\rightarrow$ Frequenz mit der Daten an den Rechner gesendet werden können
+		\item Störanfälligkeit	
+		\item Verzögerung
+		\item Aufnahmevolumen
+		\item Kosten
+		\item Benutzbarkeit
+		\item Platzierung der Sensorik
+	\end{itemize}
+
+Unterschiedliche Verfahren zur Erfassung von Bewegungsabläufen:
+	\begin{itemize}
+		\item Kinemetrie: Messung kinematischer Merkmale von Körpern
+		\item Dynamometrie: Kraftmessung der äußeren Kräfte, Ableitung der Größen Impuls, Arbeit und Leistung
+		\item Elektromyographie: elek. Messung des Aktivierungszustandes eines Muskelns über das elek. Potenzial
+		\item anthropometrie: Abemessung und Messeverteilungen, Schwerpunkte im Körper, Bestimmung des Körperbaus
+	\end{itemize}
+
+\underline{Erfassungssystem für die Kinemtetrie} \\	
+	\begin{itemize}
+		\item Mechanische Systeme, optische Systeme, trägheitsbasierte Systeme
+		\item Zentrale Frage im Kontext von Benutzerschnittstellen: Internes oder externes System?
+		\item externe Systeme: Sensoren in der Umgebung des Nutzers
+			\begin{itemize}
+				\item VT: keine Vorbereitung des Nutzers
+				\item NT: begrenztes Aufnahmevolumen
+				\item $\rightarrow$ stationäre Anwedung (Büro, etc)
+			\end{itemize}
+		\item interne Systeme: Sensoren am Körper des Nutzers
+			\begin{itemize}
+				\item VT: unendliches Aufnahmevolumen
+				\item NT: Nutzer muss Sensoren tragen
+				\item $\rightarrow$ mobile Anwendungen (Outdoor, etc)
+			\end{itemize}
+	\end{itemize}
+	
+\underline{Mechanische Systeme} \\
+	\begin{itemize}
+		\item rigide oder flexible Winkelmesser (Geniometer) vom Benutzer getragen
+		\item Skelettverbindungen zur Abbildung von Gelenkwinkeln
+		\item[] %G 22 - 26
+	\end{itemize}
+
+\underline{Optische Verfahren} \\
+	%G 22 - 27
+	
+\underline{Markerbasierte optische Systeme} \\
+	\begin{itemize}
+		\item Marker werden am Körper festgeklebt (body landmarks)
+		\item Verfolgung der Markerpositionen mit mehreren Kameras
+		\item Stereometrische Bestimmung korrespondierender Punkte
+		\item Positionsrekonstruktion mit der Kenntnis über die Position der Kamer und den Kameraparametern
+		\item $\rightarrow$ Marker können aktiv (leuchtend) oder passiv (reflektierend) sein
+		\item Anforderungen an künstl. Marker: muss von allen Seiten gut lokalisierbar sein + muss konstrastreich zu dessen Umwelt sein
+		\item Warum Maker? deutlich einfachere Bildverarbeitung + Möglichkeit Infrarotkameras zu benutzen und damit Störungen im sichtbaren Bereich zu eliminieren
+		\item[] %G 22-30
+	\end{itemize}
+	
+\underline{Markerlose Systeme} \\
+	\begin{itemize}
+		\item Klassiche Kameras: liefern 2D Projektionen der Szene
+		\item Structured Light:	
+			\begin{itemize}
+				\item bekannte Lichtmuster werden auf eine Szene projiziert
+				\item die Verzerrung der Muster geben Aufschluss über 3D Oberfläche
+				\item Infrarotlicht erlaubt Kombination mit klassischen Kameras
+			\end{itemize}
+		\item Time-of-flight:
+			\begin{itemize}
+				\item Messung wie lange Licht braucht, bis es wieder bei der Kamera ist (Distanz)
+				\item trotz Lichtgeschw. funktioniert dies im Nahbereich mit hoher Genauigkeit
+			\end{itemize}
+		\item Makerlose 2D Systeme
+		\item[] %G 22 -35
+		\item Markerlose 3D Systeme
+		\item[] %G 22-33
+		\item Alle Techniken liefern nur 2D und 3D Information und keine Informationen über Objekte, Körper, Hintergrund, Körperteile
+		\item Nutze Verfahren der Bildverarbeitung zur: Extraktion einzelner Menschen, Vorfolung der Körperteile, Verfolgung von Objekten, kann mit Modellwissen kombiniert werden (Menschmodell)
+	\end{itemize}
+	
+\underline{Trägheitsbasierte Erfassung} \\
+	\begin{itemize}
+		\item Beschleunigung und Winkelgeschwindigkeit eines Körpers kann direkt über einen Sensor gemelssen werden: Beschleunigungssensor (Accellerometer) misst Beschleunigung, Drehratensensor (Hyroskop) misst Winkelgeschwi.
+		\item platziere Sensoren an allen zu messenden Körperteilen
+		\item MEMS Sensoren:
+			\begin{itemize}
+				\item mech. und opt. Systeme schon lange verfügbar: zu groß, zu schwer
+				\item MEMS Bauweise: micro-machined electromechanical system, Silizium als Basismaterial , Produktion wie Integrierte Schaltkreise, Im Schaltkreis ist eine mechanisch bewegliche Masse integriert
+				\item Bereits sehr verbreitet in Consumer Anwendungen (Smartphones, Wii, Nike Sport Sensor, etc)
+			\end{itemize}
+		\item Funktionsprinzip Beschleunigungssensoren: Bestimmen der Translativbewegung durch Messen des Grades der Auslenkung einer Prüfmasse und der Frequenzänderung einer schwingenden Masse
+		\item Funktionsprinzip Drehratensensoren: Bestimmen der Winkelgeschwindigkeit duch MEssung der Corioliskraft
+		\item Gravitation: 
+			\begin{itemize}
+				\item wird immer mit gemessen und muss daher von Messwerten abgezogen werden um die tatsächliche Beschleunigung zu erhalten
+				\item Aufteilung auf die Achsen ist von der Orientierung im Raum abhängig
+				\item kann nur bei Kenntnis der Orientierung abgezofen werden
+			\end{itemize}
+		\item Signale:
+			\begin{itemize}
+				\item Signale haben geringen Rauschanteil
+				\item Einfluss der Gravitation in x und z Richtung deutlich sichtbar
+				\item Sensororientierung unterscheidet sich von Referenzsystem
+			\end{itemize}
+		\item INS:
+			\begin{itemize}
+				\item Interialsensoren liefern: Beschleunigung und Winkelgeschw.
+				\item Wir wollen aber meist: Weg und Rotation
+				\item Theoretisch sind Weg und Rotation aus den Daten berechnenbar (Intertiales Navigationssystem, aber Fehler akkumulieren sich über die Zeit)
+				\item Praktisch so nicht einsetzbar
+				\item Hauptproblem ist die fehlende Möglichkeit Fehler zu korrigieren
+				\item Benutze stochastischen Filter zur fusion aller 3 Sensoren: Kalmann-Filter, Madgwick-Filter, 
+				\item Erdmagnetfeld ist in Innenräumen mit Elektronik stark verzerrt
+			\end{itemize}
+		\item Mensch:
+			\begin{itemize}
+				\item platziere Sensoren an allen Gliedmaßen
+				\item benutze Sensorfusion um Orientierung im Raum für jeden Sensor zu bestimmen
+				\item Berechne Position der Gliedmaßen über Vorwärts-Kinematik relativ zum Wurzelgelenk
+			\end{itemize}
+		\item[] %G 22 - 46
+	\end{itemize}
+
+\underline{Weitere Systeme: Lichtwellenleiter} \\
+	\begin{itemize}
+		\item Glasfaserkabel mit Diode sind entlang der entsprechenden Gelenke positioniert
+		\item spezielle Form von optischen Sensoren
+		\item Beugung des Fingers/Glasfaserkabels erzeugt messbare Lichtreflektion
+	\end{itemize}
+
+\underline{Anwendungen der Bewegungserfassung heute} \\
+	\begin{itemize}
+		\item Medizin
+		\item Sportinformatik
+		\item Entertainment/Gaming
+		\item Mensch-Maschine-Schnittstelle
+		\item Verhaltensanalyse
+	\end{itemize}
+	
+\section{Bewegung}
+\subsection{Segmentierung und Erkennung}
+ 		
+\underline{Segmentierung} \\	
+	\begin{itemize}
+		\item Aufnahme von längeren Sequenzen ist natürlicher als kurze "Schnipsel" oder "clips"
+		\item Daten müssen in Teilsequenzen geschnitten werden
+		\item Daten werden meist von Hand segmentiert, aber: hoher Kosten-und Zeitaufwand, Inkonsistenz
+		\item daher Automatisieren: gut und schnell
+		\item Bewegungsdaten sind Zeitreihen
+		\item Segmentierung von Zeitreihen ist ein altes Problem
+	\end{itemize}
+
+\underline{Zeitreihen} \\
+	\begin{itemize}
+		\item[] %G 23-4
+		\item Allgemeinste Definition: diskrete Sequenz von m-dimensionalen Datenpunkten $v_i$, gemessen zu beliebeigen Zeitpunkten $t_i$
+		\item Reguläre Zeitreihen: Zeitintervalle zwischen Messungen sind uniform, d.h. es gibt eine Konstante k mit $t_i +k = t_{i+1}$
+	\end{itemize}
+	
+\underline{Segmentierung von Zeitreihen} \\
+	\begin{itemize}
+		\item[] %g 23-5
+		\item Typischer Ablauf einer Segmentierung im Prozess der Verarbeitung von Zeitreihen
+		\item[] %g 13-6
+		\item Feature Extraktion: Digitalisierung, Datenreduktion, dimensionalitätsreduktion, Vorverarbeitung (Filterung, Geräuschreduktion, etc)
+		\item Anwendung: Evaluation der Resultate anhand von Referenzen, Analyse der Fehler und ggf. Verbesserung der Segmentierung
+		\item ABER: Mahnchmal wird zur Lösung des Segmentierungsproblems bereits die Lösung des Gesamtproblems benötigt
+		\item Erforderlich ist in solchen Fällen ien integriertet Ansatz, der das Segmentierungs- und das Erkennungsproblem in einem Schritt löst
+	\end{itemize}
+
+\underline{Segmentierung: Warum?} \\
+	\begin{itemize}
+		\item Wozu braucht man Segmentierung: Aufnahmen können aus verschiedenen Bewegungen bestehen + Bewegungen haben Funktionsphasen
+		\item Eine Lösung: manuelle Segmentierung (wird häufig gemacht, sehr kosten- und zeitaufwendig, inkonsistent)
+	\end{itemize}
+	
+\underline{Zuverlässigkeit manueller Segmentierung} \\
+	\begin{itemize}
+		\item Segmentgrenzen sind kontextabhängig
+			\begin{itemize}
+				\item Wahrnehmung von Grenzen hängt von der Reihenfolge der Bewegungen ab
+				\item Ändert man die Reihenfolge, können sich sehr unterschiedliche Ergebnisse ergeben, bedingt durch den Kontext und kognitive Prozesse im Gehirn bei der Wahrnehmung einer Bewegung
+			\end{itemize}
+		\item Bewegunssequenzen sind nicht abzählbar
+			\begin{itemize}
+				\item Willkürliche Definition von Grenzen
+				\item Definition der Teilbewegungen ist abhängig von der Anwendung
+			\end{itemize}
+		\item Menschen nehmen Bewegung als eine Folge diskreter Teilbewegungen wahr
+		\item Top-down: Definition bedeutungsvoller Einheiten?
+		\item Bottom-up: Automatisches Auffinden ähnlicher Einheiten?
+	\end{itemize}
+ 		
+\underline{} \\	
  		
  		
  		
