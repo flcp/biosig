@@ -651,11 +651,825 @@ Wesentliches Ziel ist Verbesserung der nicht-linearen Teile der Messkette
 	\item Ionenkanäle öffnen sich -> Potentialveränderung -> evtl. neues AP
 	\item Chemische Übertragung: schnell, gezielt, kurz
 	\item Neurotransmitter ist in den Vesikeln der präsynaptischen Endigung gespeichert
+	\item Zellsignal -> Vesikel verschmelzen mit Zellmembran -> Gießen Transmitter in Spalt
+\end{itemize}
+
+\subsection{Potenzialveränderungen}
+\begin{itemize}
+	\item Je nach verschobener Ionensorte
+	\item Depolarisation (Inneres wird positiver): Exzitatorisches postsynaptisches Potenzial (EPSP)
+	\item Hyperpolarisation (Zellinneres wird negativer): Inhibitorisches postsynaptisches Potenzial (IPSP)
+	\item Alles oder nichts für AP
+	\item Membranbereich muss erregbar sein
+	\item Nicht alle Potenzialverschiebungen der postsynaptischen Membran geben AP
+	\item Neurotransmitter dockt nur kurz, nach Reaktion Abtransport
 \end{itemize}
 
 
+\subsection{Drei Zustände der postsynaptischen Membran}
+\begin{itemize}
+	\item Hyperpolarisierung, Ruhepotenzial noch weiter zu negativeM Wert verschoben = IPSP
+	\item Depolarisierung, Ruhepotenzial wird weniger negativ oder positiv (EPSP), kein AP
+	\item Zielzelle soweit depolarisiert, dass AP auftritt -> Erregungsübertragung von Ausgangs- zu Zielzelle
+\end{itemize}
+
+\subsection{Verrechnung zum Gesamtergebnis}
+\begin{itemize}
+	\item Axonhügel kodiert Höhe des Membranpotenzials in Impulsfrequenz der axonal auslaufenden Aktionspotenziale
+	\item Mechanismen zum Verrechnen
+	\item Räumliche Summation, Verstärkung von mehreren Potenzialen, die in zeitlich geringer Versetzung einlaufen
+	\item Zeitliche Summation: Schnelle Aufeinanderfolge einlaufender Impulse zustande, Transmitterausschüttung kann sich erhöhen
+	\item Präsynaptische Hemmung: Synapse von hemmendem Neuron kann Transmitterausschüttung verringern
+\end{itemize}
+
+\subsection{Zusammenfassung Informationsweiterleitung}
+\begin{itemize}
+	\item Aktionspotenzial kommt an präsynaptischer Endigung an
+	\item => Öffnung spannungsgesteuerter Kalziumkanäle
+	\item Einstrom Kalzium verursacht Verschmelzen der transmittergefüllten Vesikel mit der Membran
+	\item Transmitter läuft in den synaptischen Spalt
+	\item Transmitter dockt an spezifische Rezeptoren der postsynaptischen Endigung an
+	\item Wird an der Membran ein Schwellwert überschritten, öffnen sich spannungsgesteuerte Natriumkanäle
+	\item Lawinenartiger Natriumeinstrom löst ein Aktionspotenzial aus
+	\item Kann weitergeleitet werden->Repeat
+\end{itemize}
+Ein Aktionspotenzial wandert nicht, es induziert neue AP in benachbarter Membranregion
+
+\subsection{Anatomie Nervensystem}
+\begin{itemize}
+	\item Topographie: zentrales nervensystem: Gehirn, Rückenmark
+	\item Peripheres Nervensystem: Spinalnerven, Hirnnerven, Körpernerven
+	\item Funktionelle Gliederung:
+	\item Somatisches Nervensystem: Sinnesorgane, Skelettmuskulatur
+	\item Autonomes/Vegetatives: Innere Organe, Glatte Muskulatur
+\end{itemize}
+
+\subsection{Zentrales nervensystem}
+\begin{itemize}
+	\item Rückenmark und Gehirn
+	\item Verarbeitung afferenter Signale (von Peripherie zum Gehirn)
+	\item Senden efferenter Signale (von Gehirn zu peripherie)
+	\item Denken, Lernen, Sprache, Gedächtnis, etc.
+	\item Kontrolle Atmung, Herz, etc.
+	\item Rückenmark: Spinale Reflexe (monosynaptisch, polysynaptische Reflexe)
+	\item Gehirn: Verschiedene Teile des Hirns verantwortlich für verschiedene Teile der Körperfunktionen, 2 Hemisphären (links, rechts), Cerebral cortex äußerster Teil des Großhirns, gefaltet um Oberfläche zu erhöhen
+	\item Zwischenhirn: Weiterleitung sensorischer Informationen
+	\item Komplexe kognitive Prozesse: Aktivität in verschiedenen Arealen
+\end{itemize}
+
+Gehirnteile zuständig für Körperteile
+\includegraphics[scale=0.65]{Grafiken/Homunkulus.png}
+
+\subsection{Neuronale Organisation des Kortex}
+\begin{itemize}
+	\item Drei Neuronentypen: Pyramidenzellen, Sternzellen, Spindelzellen
+	\item Übereinander geschichtete Zellen haben oft ähnliche Aufgaben (kortikale Säulen)
+	\item Feinstrukturen erkennbar
+\end{itemize}
+
+\subsection{Autonomes Nervensystem}
+\begin{itemize}
+	\item Weitgehend unbewusst
+	\item Herz, Lunge, MagenDarm, Gefäße und Drüsen
+	\item Elementar für Körper
+\end{itemize}
+
+\section{Digitale Signalverarbeitung}
+\subsection{Digitalisieren}
+\begin{itemize}
+	\item Zeit und Amplitude von kontinuierlich -> diskret
+	\item Sampling: Diskretisierung der Zeit
+	\item Quantisierung: Diskretisierung der Amplitude
+\end{itemize}
+
+\subsection{Quantisierung}
+\begin{itemize}
+	\item y-Achse in gleichlange Intervalle aufteilen
+	\item $q[i]$ kann nur Werte haben, die den Zentren der Intervalle entsprechen
+	\item Funktion nimmt Mittelwert des Intervalls an, in der sie sich grade befindet
+	\item Quantisierungsfehler $e[i] = f[i] - q[i]$
+	\item Durchschnittlicher Quantisierungsfehler ist $f_max-f_min/2n$ (Funktion zuwischen fmax fmin und n Intervalle auf y-Achse)
+	\item Signal-Noise Ratio = $E\{f^2[i]\} / E\{e^2[i]\}$
+\end{itemize}
 
 
+\subsection{Signal-Rausch-Verhältnis}
+\begin{itemize}
+	\item Störung e (Artefakte, Messungenauigkeit, Quantisierung)
+	\item Verhältnis zwischen Energie des Signals und Energie des "Rauschens"
+	\item Messung in Dezibel, da Rauschenergie << Signalenergie
+\end{itemize}
+
+
+\subsection{Sampling/Abtastung}
+\begin{itemize}
+	\item Input: Analoge Signal in Zeitbereich x(t)
+	\item Output: Digitale Repräsentation 
+	\item Abtastrate sehr wichtig (da sinuskurven, eventuell falsche Annahmen)
+	\item Informationsverlust
+	\item Abtastrate in Hertz
+	\item Undersampling
+	\item Aliasing (Falsche Annahmen führen zu falschem Kurvenverlauf
+	\item Hohe Abtastrate: relativ sicher
+	\item Niedrige Abtastrate: Falsche Frequenz gefunden
+\end{itemize}
+
+\subsection{Nyquist-Theorem}
+\begin{itemize}
+	\item Signale bandbegrenz: maximale Frequenz
+	\item Theorem von Nyquist: $f_l$-bandbegrenztes Signal wird mit Frequenz $>2fl$ abgetastet => original Signal aus den Samples vollständig rekonstruierbar
+	\item Ansonsten Aliasing
+	\item $2f_l$ Nyquist-Rate
+	\item maximal korrekte Frequenz $f_l$ Nyquist-Frequenz
+\end{itemize}
+
+\subsection{Frequenzanalyse}
+\begin{itemize}
+	\item Continuous-time Fourier transform (CTFT)
+	\item Discrete-Time Fourier transform (DTFT)
+	\item Short-time Fourier transform (STFT) (benötigt Fensterung)
+	\item Frequenz "SChwingungen pro Zeiteinheit, 1Hz=1Schwingung/Sekunde"
+	\item Bisher nur darstellung Zeit->Amplitude
+	\item Neue Darstellung zeit->Vorkommen einer Frequenz
+	\item $\rightarrow$ Kurve darstellbar als Überlagerungen von vielen Frequenzen
+	\item Warum Signal im Frequenzbereich darstellen?
+	\item Nützlich für Signalverarbeitung, leichtes Verständnis des Signals, Filter gut beschreibbar
+	\item Frequenzrepräsentation eines Signals = Spektrum
+\end{itemize}
+
+\subsection{Continous-Time Fourier Transform CTFT}
+\begin{itemize}
+	\item Fourier Transformierte:
+	\item $X(\omega) = F(x)(\omega)= \int_{-\infty}^\infty x(t)e^{-j\omega t}dt $
+	\item Wichtigste Eigenschaften:
+	\item Linearität: $F((x+y)(t)) = F(x(t)) + F(y(t))$ und $F(a\times x(t)) = aF(x(t))$
+	\item Umkehrbarkeit: Auf geeigneten Definitionsbereichen gibt es ein Inverses = KEIN INFORMATIONSVERLUST
+	\item $X(\omega)$ ist ein Wert, der angibt, welchen "Anteil" die Frequent $\omega$ am Eingabesignal hat
+	\item Fourier-Transformierte im allgemeinen komplex, Betrag $|X(\omega)$ ist die zur Frequenz gehörende Amplitude Winkel zwischen real und imaginär Teil ist Phase
+	\item Problem: Fourier transformation gibt keine Informationen, wann ein Frequenzanteil aufgetreten ist
+\end{itemize}
+
+\subsection{Discrete-Time Fourier Transform (DTFT)}
+\begin{itemize}
+	\item Ersetze in der Formel vorher kontinuierliches x(t) mit diskreten Signal $x[n]$
+	\item Wenn $x[n]$ durch diskretes Sampling einer kontinuierlichen Funktion entstanden ist, approximiert die DTFT die kontinuierliche Fourier-Transformation.
+	\item Die DTFT ist periodisch in $\omega$ mit Periode $2\pi$, daher betrachtet man im Frequenzbereich nur die Frequenzen von $-\pi$ bis $\pi$
+	\item In der DTFT sind nur Frequenzen unterhalb der halben Abtastrate (nyquist-Frequenz) korrekt wiedergegeben. $\pi$ entspricht dann der maximalen Frequenz.
+	\item Scheller Algorithmus (FFT) um diskrete Fourier-Transformation auszurechnen => gute Praxisanwendbar
+	\item DTFT komplex
+	\item Selbes problem wie bei CTFT, keine Infromation über Zeit, wann bestimmte Frequenz aufgetreten ist	
+\end{itemize}
+
+Wenn wir DTFT eines diskreten Signals ausrechnen, sind Frequenzen auf den Bereich $[-\pi,\pi]$ normiert.\\
+Frequenzen im diskreten Signal hängen von Abtastrate ab.\\
+Maximale Frequenz $\pi$ im diskreten Signal $\Leftrightarrow$ Nyquist Frequenz im kontinuierlichen Signal \\
+Realfall: Betrag wichtig, Phase ignoriert, Abtastrate = Nyxquist-Rate, Fensterlänge
+
+\subsection{Praxis}
+\begin{itemize}
+	\item Ergebnis aus FFT so lang wie Fenster
+	\item Negative und positive Frequenzen, nur Hälfte interessant, Fensterlänge/2 = Anzahl Frequenzbins
+	\item Nyxquist-Frequenz / Frequenzbins entspricht Bin-Breite
+	\item Fenstergröße kritisch, Tradeoff zwischen zeitlicher und Frequenzauflösung
+	\item Also: Sampling-Rate 80KHz
+	\item Nyquist-Frequenz: 40KHz
+	\item 20ms Fenster = 0.02*80000= 1600 Sample -> 800 Frequenzbins
+	\item Bin-Breite = 40000/800 = 50Hz
+\end{itemize}
+
+\subsection{Fensterung}
+\begin{itemize}
+	\item Problem Fourier-Transformation: Signal ändert sich mit der Zeit, aber keine Informationen in Fourier-Transformation enthalten, wann welche Frequenzanteile vorgekommen sind
+	\item Lösung: Zerlegen in kleine Abschnitte, Fensterung/Framing
+	\item Vorgehensweise:
+	\item Multipliziere Signal abschnittsweise mit Fensterfunktion
+	\item Erhalte für jedes Fenster ein Resultat
+	\item Funktion der Zeit
+	\item Fenster/Frames sollten überlappen => weniger Ungenauigkeiten
+\end{itemize}
+
+\subsection{Short time Fourier transform STFT}
+\begin{itemize}
+	\item Fensterung + Anwendung der DTFT auf jedem Fenster
+	\item Fensterlänge und verschiebung bestimmen Auflösung (In der Spracherkennung, Fensterlänge 16ms, Verschiebung 10ms)
+	\item Frequenzanteil in 16ms Schritten
+	\item Neues Problem Fensterung verzerrt das Spektrum
+	\item STFT grundlegend für viele Signalverarbeitungen
+	\item Fensterung ermöglicht andere nützliche Informationen
+	\item Frame-base power (Energie im Fenster)
+	\item Frame-based mean (Mittelwert im Fenster)
+	\item STFT erzeugt aus Ursprungssignal eine Folge von Tokens im Zeitbereich
+	\item Tokens sind Vektoren die Frequenzanteile des Frames enthalten
+	\item Tokens können weiterverarbeitet werden
+	\item Mit anderen Frame-basierte Vorverarbeitungen verfährt man entsprechend
+\end{itemize}
+
+\subsection{Fensterfunktion}
+\begin{itemize}
+	\item Wie sollte Fensterfunktion gewählt werden?
+	\item Frequenzspektrum des Signals wenigstmöglich verändern
+	\item Fensterung erfolgt durch Multiplikation im Zeitbereich, was einer Faltung im Frequenzbereich entspricht
+	\item d.h. das Spektrum wird mit der fourier-transformierten Fensterfunktion gefaltet
+	\item Dirac-Impuls: Neutrales Element für Faltungsoperation
+	\item Da die Fensterung im Frequenzbereich einer Faltung entspricht, hätten wir gern ein Fenster, das "so gut wie möglich" gleich dem Dirac-Impuls ist (im Frequenzbereich)
+\end{itemize}
+Rechte Funktion sollte möglichst gut Dirac-Impuls (für n = 0: 1, sonst 0) sein
+\includegraphics[scale=0.65]{Grafiken/rechteckfensterfunktion.png}\\
+\includegraphics[scale=0.65]{Grafiken/hammingfenster.png}\\
+\includegraphics[scale=0.65]{Grafiken/hanningflattopfenster.png}
+
+Quadratisches Mittel in Fenster in EMG benutzt als Feature für Muskelaktivität\\
+Andere Features in Fenstern: \\
+Standard Statistik Werte (Mittelwert, Varianz, Wölbung, Schiefe)
+
+\subsection{Spektrogramm}
+\begin{itemize}
+	\item Frequenzanteile einer Funktion über Zeit: Spektrogramm
+	\item x-Achse Zeit
+	\item y-Achse: Frequenz
+	\item Abhängige Variable: Frequenzanteil zum betreffenden Zeitpunkt, je roter, desto höher
+	\item Fensterlänge haben wichtigen Effekt
+	\item Kurze Fenster: ungenau im Frequenzbereich
+	\item Lange Fenster: ungenau im Zeitbereich
+	\item Kompromiss: Fenstergröße empirisch finden, Genauigkeit begrenzt (Heisenbergsche Unschärferelation)
+	\item Filter "verhscmieren und verzerren" Signal auf der Vertikalten Achse, kann unwichtige Fluktuation unterdrücken, Erkennungsleistung wird typischerweise verbessert
+\end{itemize}
+
+\section{Filter}
+Filter wirken auf Frequenzen des Eingabesignals.\\
+Wichtige Signalverarbeitungsschritte (Rauschunterdrücken, etc) durch Filter repräsentieren.\\
+Impulsantwort und Frequenzantwort (Übertragungsfunktion) eines Filters charakteristisch
+
+\subsection{Lineares zeitinvariantes Filter}
+\begin{itemize}
+	\item H Filter, der Eingabesignal $x[n]$ in Ausgabesignal $y[n]$ transformiert
+	\item Annahme: Transformation ist linear, zeitinvariant, kausal, endliches Eingabesignal nur endliche Ausgabe
+	\item Impulsantwort: Ausgabe zu einzelnem Impuls (Dirac Impuls $\delta$)
+	\item x ist eine gewichtete Summe von verschobenen Impulsen!
+	\item $x[n] = \sum x[v] * \delta[n-v]$
+	\item h Impulsantwort (aus Filter? nicht sicher)
+	\item Ausgabe $y[n] = \sum x[v] * h[n-v]$
+	\item Diese Operation ($:= x*h$) ist Faltung, Ausgabesignal $y = x*h$
+	\item Wenn Signale in Frequenzbereich transformiert werden, wird die Faltung zu einfacher Multiplikation (immer noch linear)
+	\item Lineare, Zeitinvariante Filter sind Multiplikationen im Frequenzbereich
+	\item Jeder Frequenzanteil (komplex) wird mit einem (komplexen) Faktor multipliziert -> verstärken/abschwächen bestimmter Frequenzen
+	\item Zusätzlich Phasenverschiebungen
+	\item $y[n] = (h*x)(n)$ ist im Frequenzbereich dasselbe wie $Y(e^{j\omega}) = H(e^{j\omega}) * X(e^{j\omega})$
+	\item H() Übertragungsfunktion
+	\item Wenn Eingabe reine Frequenz: $H(e^{j\omega})$ Frequenzgang
+	\item $|H(e^{j\omega})|$ ist Amplitudengang
+	\item Imaginärteil ist Phasengang
+\end{itemize}
+
+
+\subsection{Bandpassfilter}
+\begin{itemize}
+	\item Hoch, Tiefpassfilter lassen hohe/tiefe Frequenzen durch
+	\item Bandpassfilter: lassen bestimmte Frequenzen durch
+	\item Bandsperrfilter: Sperren bestimmte Frequenzen
+	\item Filter, multiplizieren im Spektralbereich = Flatungsoperation im Zeitbereich
+	\item (Hilber-Transformation erzeugt Phasenverschiebung)
+	\item (Differentiator approximiet ableitung)
+\end{itemize}
+
+Digitale Filter: Beispiele
+\begin{itemize}
+	\item Wir betrachten nur lineare, zeitinvariante Filter (LTI - linear time invariant)
+	\item (Finite impulse response) Nichtrekursive Filter: Wenn das Eingabesignal endlich ist, ist Ausgabe auch endliuch
+	\item (Infinite impulse response) Rekursive Filter: Endliche Eingabe KANN unendliche Ausgabe erzeugen (die aber in Realität gegen 0 läuft)
+	\item Beispiel: $y[n] = x[n] - 0.5 x[n-1] + 0.2y[n-1]$
+	\item Beide können im Frequenzbereich betrachtet werden
+\end{itemize}
+
+\subsection{z-Transformation}
+\begin{itemize}
+	\item Generalisierung der diskreten Fourier Transformation
+	\item Ziel: Eigenschaften von Filtern besser beschreiben
+	\item DTFT: $X(\omega) = \sum x[n]e^{-j\omega nt_a}$
+	\item Z-Transformation: $X(z) = Z(x[n]) = \sum x[n] z^-n$
+	\item Z komplex
+	\item DTFT: nur $|z| = 1$
+	\item Z-Transformation: z alle komplexen Werte
+	\item DTFT ist die Einschränkung der z-Transformation auf den Einheitskreis
+	\item z-Transformation linear
+	\item Die z-Transformation konvergiert nicht immer und nicht überall, aber bei allen Folgen mit endlicher Energie enthält der Konvergenzbereich den Einheitskreis der z-Ebene
+	\item z-Transformation überführt Faltung im Zeitbereich in Multiplikation im z-Bereich
+	\item Verschiebungseigenschaft: Wenn $x[n] = X(z)$ (nicht gleich, gleichbedeutend)
+	\item Dann $x[n-N] = z^{-N}X(z)$
+	\item Interessant für Filter
+\end{itemize}
+
+\subsection{Filter als Differenzengleichung}
+\begin{itemize}
+	\item Filter H, möglicherweise rekursiv
+	\item Im Zeitbereich: Differenzengleichung: $y[n] = -a_1y[n-1] - a_2y[n-2] ...a_my[n-m] + b_0x[n] + b_1x[n-1] ... + b_lx[n-l]$
+	\item Umformen: Nur y auf der einen Seite, x auf der anderen
+	\item Transformieren: Summe von y $=(a*y)[n] = A(z) * Y(z)$
+	\item Summe von x $=(b*x)[n] = B(z) * X(z)$ 
+	\item rechte Seite jeweils in Spektralbereich
+	\item a und b Vektoren, $a_0$ normiert auf 1
+	\item Definition Übertragunsfunktion im z-bereich
+	\item $H(z) = \frac{Y(z)}{X(z)} = \frac{B(z)}{A(z)}$
+	\item $Y(z) = H(z) * X(z)$
+	\item (Wenn Folge von y[n], y[n-1] ist a genau Koeffizientenfolge, analog x[n]
+	\item Nullstellen von Zähler von H und Nullstellen von Nenner geben Nullstellen und Pole (Unendlichkeitsstellen) an
+	\item z(z-1) im Zähler => Nullstelle z=1
+	\item z(z-1) im Nenner => Polstelle z=1
+	\item Nullstellen und Pole => Eigenschaften des Systems
+	\item Resonanzfrequenz: Polstelle auf Einheitskreis (theoretisch) niemals abklingbar
+	\item FIR (Nichtrekursive) Filter haben KEINE POLSTELLEN außer Ursprung, daher endlcihe Impulsantwort
+\end{itemize}
+
+\subsection{Von z-Transformation auf DTFT}
+\begin{itemize}
+	\item Betragt der DTFT=z-Transformation auf dem Einheitskreis
+	\item Jeder Punkt auf Einheitskreis: Betrag der DTFT = Produkt der Distanzen zu den Nullstellen, dividiert durch Produkt der Distanzen zu Polstellen der z-Transformation
+	\item Damit Auswirkungen eines Filters auf Frequenzen beschreiben
+	\item Dafür gesamte z-Ebene betrachten, nicht nur Einheitskreis
+\end{itemize}
+
+
+\subsection{Filterdesign}
+\begin{itemize}
+	\item Wie bestimmt man Filterkoeffizienten?
+	\item Beschreibe Eigenschaften im Frequenzbereich
+	\item Bestimmte Übertragungsfunktion H
+	\item Transformiere H zurück in Zeitbereich, erhalte Filterkoeffizienten (Impulsantwort)
+	\item Problem: endlcihe Arithmetik geben keine idealen Filter
+	\item exakter Bandpassfilter hat unendlich lange Impulsantwort
+	\item Man muss Abstriche machen
+\end{itemize}
+
+\includegraphics[scale=0.65]{Grafiken/tabelle.png}
+
+Typischer Fehler bei Filtern, wenn Signal mittelwertverschoben braucht Filter lange um einzuschwingen (40sekunden im beispiel)
+
+\subsection{Kompression}
+\begin{itemize}
+	\item Hochdimensionales Signal
+	\item Redundante Informationen
+	\item Signal und rauschtrennung
+	\item Rechenzeit, speicherplatz reduzieren
+	\item hochdimensionales System generell schlecht
+\end{itemize}
+
+
+\subsection{Fluch der Dimensionalität}
+\begin{itemize}
+	\item Pro Dimension exponentiell mehr Trainingsdaten für guten Klassifikator (10cm -> 100 quadratcm)
+	\item Jede Dimension muss viele Informationen liefern um Aufwand zu rechtfertigen
+\end{itemize}
+
+Kompression: Verringerung der Dimensionalität der Daten, bedeutungstragende Merkmale belassen
+\begin{itemize}
+	\item Gegeben: Menge von Feature Vektoren, die Ausschnitte des Signals repräsentieren
+	\item Selektionsmethode Feature-Auswahl: 20 Feature-Komponenten, nehmen beste 10
+	\item Kompressionsmethoden: Sprachsignal Filterbänke, nichtparametrisch, unüberwacht: PCA, ICA, überwacht: LDA
+\end{itemize}
+
+\subsection{Feature Selection}
+\begin{itemize}
+	\item Theoretisch alle Dimensionen durchgehen -> unpraktikabel
+	\item Feature Ranking: Qualitätsmaß für jede Dimension berechnen
+	\item Threshold für Qualitätsmaß, behalte beste Dimensionen
+	\item DEVELOPMENT SET! NICHT TESTSET BENUTZEN
+	\item Subset selection
+	\item Evaluiere Untermenge von Features und vergleiche sie
+	\item Forward Feature Selection: Zunahme von bester Dimesion Schritt für Schritt
+	\item Backwards Feature Selection: Nehme alle und schreiche unwichtige nacheinander heraus
+\end{itemize}
+
+
+Korrelationen: Zusammenhang zwischen mehreren Variablen, Kovarianz der beiden Variablen geteilt durch produkt Standardabweichungen \\
+Korrelation heißt nicht Kausalität \\
+Je höher Dimension, desto warscheinlicher falsche Korrelation\\
+Man korreliert zwei Labens und Merkmale\\
+Funktioniert nur für 2 Klassen Probleme\\
+r Quadrat = Coefficient of detemination, schätzt Anteil der Varianz in Y der durch X erklärt werden kann \\
+Unechte Korrelationen durch Zufall, ungesehene Faktoren
+
+
+\subsection{Fisher ratio}
+\begin{itemize}
+	\item Maß für discrimative Kraft einer Variable
+	\item Fishers ratio = $\frac{(m_1-m_2)^2}{v_1+v_2}$
+	\item m Mittelwert, v Varianz
+	\item oft als Pre selektions Kriterium für Merkmale verwendet
+	\item schneller berechenbar als komplexere Kriteren (mutual Information)
+\end{itemize}
+
+\subsection{Mutual Information}
+\begin{itemize}
+	\item Korrelationen nicht berechenbar
+	\item Besser Mutual Information: Informationen in X und Y gleich
+	\item Um wieviel wird die Unsicherheit der einen Variable reduziert, wenn man die andere kennt
+	\item Diskrete Variable $I(X;Y) = \sum_{y\in Y} \sum_{x\in X} p(x,y) \log(\frac{p(x,y)}{p(x)p(y)})$
+	\item Kontinuierliche Variable $I(X;Y) = \int_Y\int_Xp(x,y)\log(\frac{p(x,y)}{p(x)p(y)})dx dy$
+\end{itemize}
+
+\subsection{Maximum Relevance Minimum Redundancy}
+Nur Qualitätsmaß nicht ugt, da Merkmale mit niedriger Qualitätsindex manchmal wichtige Informationen enthalten\\
+Idee: Gewichtete Relevanz und Redundanz (unter Merkmalen)\\
+\includegraphics[scale=0.65]{Grafiken/mrmr.png}
+
+\subsection{Wrapper}
+Prädiktives Modell um Feature Subsets zu bewerten\\
+Trainieren von Model, das auf hold-out Set getestet wird\\
+Computational sehr teuer\\
+Vorgehen:\\
+Klassifiziere hold-out Set mit jedem einzelnen der m Features\\
+Wähle Feature mit bester Klassifikationsleistung\\
+Klassifizieren hold-out Set mit dem selektierten Feature und jedem anderen Feature, wähle beste Kombination\\
+Weitermachen mit zweiter-Kombination und jedem anderen Feature?
+\\ \\
+Probleme: Einfache Algorithmen, eventuell nicht anwendung, Greedy Algorithmus nicht initialisierbar\\
+Algorithmen finden keine Information die aus einer Kombination von Features besteht, gemeinsame Informationen in Dimensionen ausnutzen!\\
+Filterbänke
+\subsection{Filterbänke}
+\begin{itemize}
+	\item Ausgangsdaten: Spektrum eines Signals nach STFT (Kurzzeitspektrum als Funktion der Zeit)
+	\item Wenn kleine Variationen der Frequenz unwichtig, können wir downsamplen: Dafür gewichtete Mittelwerte benachbarter Frequenzen berechnen
+	\item => Robuste Signalrepräsentation, da Variationen Noise sein können, schwer zu mnoellieren sind
+	\item Beispiel: Bei Verbesserung der Dimensionalität bessere Erkennungsleistung (256D->30-40D)
+	\item Spektrum Mel-Cepstrom: 200Frequenz-Bins reduziert auf 25
+	\item Kein Verlust wichtiger Informationen
+\end{itemize}
+
+
+\subsection{Principal Component Analyses (PCA)}
+\begin{itemize}
+	\item Hauptkomponentenanalyse
+	\item Eingabe: Menge von Eingabesamples (Vektorenmenge)
+	\item PCA sucht sukzessive zueineinander orthogonale Richtungen mit größter Varianz und liefter diese geordnet nach ihrer Varianz zurück
+	\item Annahme: Größte Varianz = größtes Interesse
+	\item Gefundene Richtungen (Hauptkomponenten) = Orthogonalbasis
+	\item Features werden durch Basiswechsel in Hauptkomponenten Basis transformiert
+	\item Dann sind Komponenten nach Varianz geordnet
+	\item Kompression = Weglassen unwichtiger (kleine Varianz) Komponenten
+\end{itemize}
+
+\includegraphics[scale=0.65]{Grafiken/basiswechsel.png}
+PCA wird eingezeichnete Faktoren liefern, Basiswechsel liefert Situation rechts\\
+G-Faktor mit PCA\\
+General Faktor der intelligenz der von IQ Tests bestimmt wird\\
+g-Faktor = intelligenzfaktor, der aussagt ob man dumm oder Genie ist
+
+
+
+
+\subsection{Wiederholung Warscheinlichkeit}
+Erwartungswert: Summe Zufallswert * Warscheinlichkeit (Würfel 1/6*1+1/6*2...)\\
+Bei stetigen Zufallsvariablen: Integral Anstelle Summe \\
+\\
+Varianz ist Maß für Streuung, mittlere quadratische Abweichung vom Mittelwert
+$v(x) = E(X-E(X))^2 = E(X^2) - E(X)^2$\\
+
+Varianz = 0, nimmt fast nur Erwartungswert an\\
+Kovarianz sehr ähnlich, Zusammenhang zwischen X und Y:\\
+$C(X,y) = E[(x-E(X)(Y-E(Y))] = E(XY)-E(X)(E(Y)$\\
+V(x) = C(X,X)\\
+Unkorreliert = Kovarianz 0 = Stochastisch unabhängig\\
+\\
+Kovarianzmatrix für Zufallsvektor$ x=(x_1, x_2...)^T$
+
+Kovarianzmatrix:
+$\begin{matrix}
+	C(x_1, X_1) & C(X_1, X_2) & ... & C(X_1, X_N) \\
+	C(x_2, X_1) & C(X_2, X_2) & ... & C(X_2, X_N) \\
+	C(x_3, X_1) & C(X_3, X_2) & ... & C(X_3, X_N) \\
+\end{matrix}$
+
+Eigenschaften: Symmetrisch, positiv-definit (Alle Eigenwerte sind positiv)\\
+Hauptdiagonale = Varianzen der Komponenten von X\\
+
+
+\subsection{PCA-Berechnung}
+\begin{itemize}
+	\item Eingabesamples $x_n:=(x_n^{(1)}, ..., x_n^{(m)})^T$
+	\item Mittelwert: $\bar{x} = 1/N \sum x_n$ (Vektor)
+	\item Kovarianzmatrix: $1/N \sum (x_n - \bar{x})(x_n-\bar{x})^T$ (NxN Matrix)
+	\item vermutlich unwichtig:	
+	\item Zunächst EINE Richtung suchen (mit größter Varianz), d.h. wir suchen Vektor p, der die $x_i$ in Skalare $y_i = px_i$ transformiert, so dass die empirische Varianz v(y) maximal ist
+	\item p Nebenbedingung $\|p\|^2= pp^T = 1$
+\end{itemize}
+
+\subsection{PCA in a Nutshell}
+\begin{itemize}
+	\item x(t) eine multivariante Zeitreihe (Eingabesamples)
+	\item PCA auf x(t) anwenden heißt:
+	\item $y(t) = V^Tx(t)$
+	\item $V \in O(n)$ Matrix mit den Eigenvektoren $[v_1...v_p]$, die aus Eigenwert Zerlegung der Kovarianzmatrix $\Sigma$ von x(t) bestimmt werden
+	\item Wir erhalten eine Hauptkomponente $y_i(t)$ (räumlich gefilterte Zeitreihe) für jeden Iegenvektor $v_i$
+	\item $y_i(t)=v_i^Tx(t)$
+\end{itemize}
+
+
+\subsection{PCA:Dekorrelation und Unabhängigkeit}
+\begin{itemize}
+	\item Entscheidender Schritt bei PCA ist Dekorrelation der ursprünglichen Dimensionen (Kovarianzen zweier verschiedener Dimensionen durch die Transformation zu Null gemacht werden)
+	\item Optimal für normalverteilte! Datensätze (Nach trafo einzelne Dimensionen statistisch unabhängig)
+	\item Vorteile: Parameterlos und unüberwacht->gut anwendbar ohne Strukturkenntnisse der Daten
+	\item einfach berechenbar
+	\item Erweiterbar um Schwächen zu lindern
+	\item Probleme: (Dekorreliert Dimensionen, wenn nicht normalverteilt, Dimensionen vllt nicht unabhängig)
+	\item Lösung ICA (Independend Component Analyses):
+	\item Transformationsmatrix so berechnen, dass Dimensionen von vornherein maximal stochastisch unabhängig sind
+	\item Algorithmus komplizierter als PCA, auch hier lineare Transformationsmatrix, die Optimierungskriterium erfüllt
+	\item Optimierungskriterien durch Betrachtung der Entropie der Warscheinlichkeitsverteilungen der Dimensionen
+	\item ICA Beispiel für Blind Source Seperation (Trennung eines Signals in Bestandteile von verschiedenen Quellen)
+	\item Anderes Problem: PCA beachtet nicht zeitliche Strukturen der Datenpunkte
+	\item Lösung: Features definieren, die eine Zeitliche Struktur enthalten, etc durch Stacking benachbarter Frames
+	\item Anderes Problem: PCA versagt, wenn Hauptrichtungen der Daten nicht linear oder zueinander orthogonal sind
+	\item Lösung Übergang zu nichtlinearen Transformationen, z.B. mit Kernel PCA
+	\item PCA Beispiel: Gesichter erkennen mti Hilfe der PCA
+	\item Ursprünglich hoher Featureraum (jeder Pixel ein Feature)
+	\item Normalisierung der Gesichter nötig, anstelle Pixel Hauptkomponenten (Gesichter) berechnen und dadurch reduktion des Merkmalsvektor von 10000auf7 (z.b.)
+	\item Deep Neural Netowrks: Verschachtelung mehrerer Restriced Boltzman Machines, Erkennt Parameter in Kreisdaten (PCA: nicht linear, erkennt nichts), viele Trainingsdaten nöätig
+\end{itemize}
+
+
+\subsection{Linear Discriminant Analysis (LDA)}
+\begin{itemize}
+	\item LDA Algorithmus (Fishers linear discriminant) ist linearer Kompressionsalgorithmus
+	\item Basiert wie PCA auf linearem Basiswechsel
+	\item Ziel anders als PCA: Trennbarkeit gewisser Klassen maximieren (nicht hohe Varianz iwe bei PCA)
+	\item LDA: Überwachtet Algorithmus: Klassenzugehörigkeit der Daten bekannt!
+	\item N Klassen -> N Sampledatensätze, je Daten einer Klasse
+	\item LDA berechnet Transformationsmatrix, Dimensionen so Transformiert, dass neue Dimensionen nach Diskriminanz, nach Unterscheidungsfähigkeit sortiert sind
+	\item erste m transformierte Dimensionen verwenden, rest ignorieren
+\end{itemize}
+
+\includegraphics[scale=0.65]{Grafiken/lda.png}
+
+\begin{itemize}
+	\item Menge von Samples in 2 Klassen
+	\item Annahme Beide Klassen folgen einer Gaussverteilung
+	\item Projizieren Samples auf Gerade (eine Dimension), sodasss Klassentrennbarkeit maximal wird (Projektion hat Form $y=w^Tx$
+	\item Projektionsvektor normiert $\|w\|^2= 1$
+	\item Kriterium zur Klassentrennbarkeit könnte sein, dass Mittelpunkte möglichst weit entfernt liegen
+	\item Leicht lösbar, aber nicht optimal, Klassen sollen nicht nur möglichst weit auseinander liegen, sondern niedrige Varianz haben
+\end{itemize}
+
+\includegraphics[scale=0.65]{Grafiken/ldainanutshell.png}
+
+\begin{itemize}
+	\item LDA mit mehreren Klassen
+	\item Erweitern auf mehrere Klassen, die zu diskriminieren sind
+	\item Within-class covariance
+	\item Between-class covariance neu definiert
+	\item Mehrere mögliche Optimierungskriterien
+	\item Mittels simultaner Diagonalisierung lösbar (umständlich, nicht schwer)
+	\item Ergänzende Hinweise: Anzahl Zieldimensionen muss geringer sein als die Anzahl der zu diskriminierenden Klassen
+	\item LDA lässt sich auch mit Kernel Trick zu nichtlinearem Algorithmus erweitern (Kernel LDA)
+\end{itemize}
+
+
+\subsection{Eiugenschaften LDA}
+\begin{itemize}
+	\item Standardmethode zur Dimensionsreduktion in der Spracherkennung
+	\item Nötig vorab Klassenzuordnungen zu haben  (Meist nur approximativ, wenn Klassenzuordnung bekannt, LDA wird PCA vorgezogen
+	\item Merkregel: LDA Ist zur Verbesserung der Klassifikation gut geeignet
+	\item PCA/ICA Spielen besonders dann eine Rolle, wenn überhaupt erst einmal eine gute Repräsentation des Signals gefunden werden soll
+\end{itemize}
+
+
+\section{Visualisierung}
+
+\subsection{Histogramm}
+\begin{itemize}
+	\item Graphische Repräsentation der Verteilung von Daten
+	\item Schätzen der Warscheinlichkeitsverteilung
+	\item Repräsentation benachbarte Rechtecke, erzeugt über diskrete Intervalle (Bins)
+	\item Anzahl Bins muss gewählt werden, abhängig vbon Anzahl Daten, Varianz in den Daten, damit Klassen gut unterscheidbar sind
+\end{itemize}
+
+\subsection{Gaussverteilungen}
+\begin{itemize}
+	\item Parameterfrei (Bei Histogrammen Anzahl bins, hiernichts, da gegeben)
+	\item Mittelwert und Standardabweichung anfällig für Ausreißer
+	\item Klassen müssen gut unterscheidbar sein
+\end{itemize}
+
+
+\subsection{Scatter Plots}
+\begin{itemize}
+	\item Diagram, das kartesische Koordinaten verwendet um 2-3 Variablen zu ziegen
+	\item Punktwolken
+	\item Werte werden als Positionen eingetragen 
+\end{itemize}
+
+
+\subsection{T-SNE}
+\begin{itemize}
+	\item t-Distributed StochasticNeighborEmbedding (t-SNE)
+	\item Technik zur Dimensionalitätsreduktion
+	\item Gut zum Visualisieren von hoch-dimensionalen Daten
+\end{itemize}
+
+\subsection{Deep Neural Networks}
+\begin{itemize}
+	\item Haben tausende Parameter
+	\item Durch verschiedene Schichten enmtstehen komplexe Modelle
+	\item Visualisierung schwer
+	\item Möglichkeit: Maximieren des Outputs für ausgewähltes Neuron
+\end{itemize}
+
+\section{Mustererkennung}
+
+
+\subsection{Klassifikation/Regression}
+\begin{itemize}
+	\item Klassifikation = Bestimmen der vorliegenden Klasse
+	\item Wenn abhängige Variable sich nicht in Klassen einteilen lässt: Regression (Benzinverbrauch in Abhängigkeit PS)
+	\item Auch hier Trainingsdaten um Zusammenhang zu lernen
+\end{itemize}
+
+\subsection{Mustererkennung}
+Verfahren oft statistisch: Kein Wissen über Eigenschaften der Daten, auf Basis von Trainingsdatensatz-> Modell trainiert\\
+Klassifikation durch Auswerten des Modells\\
+Wissensbasierte Systeme:\\
+Klassifikatoren müssen nicht aus trainingsdaten gelernt werden\\
+Regelbasierter Entwurf (Vorab Informationen verarbeiten)
+
+\subsection{Definitionen}
+Überwachtes/Unüberwachtes lernen:\\
+Klassenzuordnungen in der Lernphase unbekannt\\
+Möglicherweise Klassen unbekannt\\
+Strukturen in Daten finden\\
+Parametrische/Nichtparametrische Modellierung:\\
+Parametrische: Annahme Datenfolgen Warscehinlichkeitsverteilung, Schätze Parameter dieser\\
+Nichtparametrische: Keine Annahmen über Verteilung, Direkt auf Daten
+
+
+
+\subsection{Unüberwachtes/Überwachtes Training}
+\begin{itemize}
+	\item Überwacht: Für jedes Sample aus Trainingsdatensatz ist zugehörige Klasse bekannt
+	\item Fürs Training gut, sehr aufwändig oft
+	\item Unüberwachtes Training: Zuordnung nicht bekannt, Gesamtmenge Klassen eventuell unbekannt
+\end{itemize}
+
+
+\subsection{Clustering}
+\begin{itemize}
+	\item Unüberwachtes Lernverfahren
+	\item Cluster:; Gruppe von Datenobjekten mit ähnlichen Eigenschaften
+	\item Clustering = Menge der Cluster in Datensatz
+	\item Clusteranalyse: Verfahren zum berechnen
+	\item Kernidee: Objekte im Cluster ähnliche Eigenschaften
+	\item Objekte in unterschiedlichen Cluster haben unterschiedl. Eigenschaften
+\end{itemize}
+
+\subsection{K-Means-Algorithmus}
+\begin{itemize}
+	\item Ziel: Bestimme Klassenstruktur von einer Menge von N Samples im D-dimensionalen Raum
+	\item Anzahl Klassen K festgelegt
+	\item Minimierung des quadratischen Fehlers (Fehler = Abstand zwischen Punkt und Mittelpunkt Klasse)
+	\item Problem: Mittelpunkt der Klassen hängen von Klassenzuordnung ab (->nicht leicht ausrechenbar, NP-hartes Problem->iterativ ausrechnen)
+	\item Ablauf:
+	\item Bis zur Abbruchbedingung:
+	\item Initialisiere Mittelwerte der K Klassen (fest!) beliebig
+	\item Nächste-Nachbar-Klassifikation: Ordne jedes Sample der Klasse zu, deren Mittelwert es am nächsten liegt
+	\item Update: Rechne auf Basis der neuen Zuordnung neue Klassenmittelwerte aus
+	\item Iteration: Wenn Abbruchbedingung nicht erfüllt, gehe zur Nächsten-Nachbar-Klassifikation
+	\item Mögliche Abbruchbedingungen: Feste Anzahl Iterationen, Fehler unter Schwellwert, Klassenzuordnung ändert sich nicht / nur wenig
+	\item ist mit EM-Algorithmus verwandt
+	\item Geringer Rechendaufwand (keine Varianzen, einfache Distanzfunktion)
+	\item Oft verwendet, um initiale Mittelwerte für Gauss-Mischverteilung zu finden und danach EM-Algo anzuwenden
+	\item Probleme: Konvergiert manchmal nur zu lokalem Optimum
+	\item Initialisierungsschritt kritisch: Wiederholt durchlaufen in Praxis mit unterschiedlichen Startwerten
+	\item Eventuell leere Klasse
+	\item Keine Varianzberechnung -> Manchmal suboptimales Ergebnis
+\end{itemize}
+
+
+\subsection{Hierarchisches Clustern}
+\begin{itemize}
+	\item Devise Verfahren (Top-Down)
+	\item Alle Objekte in einem Cluster, Schrittweise aufteilen
+	\item Agglomerative Verfahren (Bottom-up)
+	\item Jedes Objekt eigenes Cluster, schrittweise zusammenfassen
+	\item Bottom-up Algorithmus:
+	\item Idee: Berechne Distanzen von jedem Datenpunkt zu jedem Datenpunkt
+	\item Jedes Item eigenes Cluster, Distanz Cluster = Distanz Items
+	\item Fasse zwei Cluster mit geringster Distanz zusammen
+	\item Errechne neue Distanzen zwischen diesem und allen anderen
+	\item Wiederhole bis nur noch ein Cluster vorhanden
+	\item Typische Darstellung Dendrogramm
+	\item Stellt kompletten Vorgang dar, nicht nur Endprodukt
+	\item Wahl der Distanzfunktion kritisch (euklidische Distanz, Manhatton distanz, maximum Distanz), ...
+	\item Distanzmaße nicht immer symmetrisch
+	\item Distanzkriterium linkage:
+	\item Größte Distanz zwischen Items aus beiden Klassen 
+	\item Kleinste Distanz zwischen Items aus beiden Klassen
+	\item Durchschnitt
+\end{itemize}
+
+\includegraphics[scale=0.65]{Grafiken/dendrogramm.png}
+
+\includegraphics[scale=0.65]{Grafiken/linkage.png}
+
+
+\subsection{Klassifikatoren}
+Nichtparametrische Verfahren\\
+\begin{itemize}
+	\item Parzen Windows
+	\item Keine Annahme über Verteilung
+	\item Zwei Klassen c1 und c2 in einem zweidimensionalen Merkmalsraum
+	\item Features sind vektoren die aus einer Vorverarbeitung entstanden sind
+	\item Entscheiden, ob Punkt zu Klasse gehört: Ziehe Fenster der Größe V
+	\item Zähle Samples $s_k$ jeder Klasse k, die in das Fenster V fallen
+	\item Beispiel: 4 aus Klasse1, 1 aus Klasse2 -> Warscheinlich gehört zu Klasse1
+	\item Formale Regel: $P(Sample x gehört zu c_k)=\frac{s_k}{\sum sk}$
+	\item Problem: Fenstergröße wichtig
+	\item Zu kleines Fenster: schlechte Abschätzung, Fragmentierung, Ausreißer nicht erkannt
+	\item Zu großes Fenster: schlechte Auflösung
+	\item Lösungsmöglichkeit: Fenstergröße von Datendichte abhängig
+\end{itemize}
+
+\begin{itemize}
+	\item K-nearest Neightbors
+	\item Finde k nächste Nachbar zu Sample x
+	\item Bestimme häufigste Klasse unter Nachbarn
+	\item Weise X dieser Klasse zu
+	\item Ähnliche Probleme, geeignetes k ausschlaggebend
+\end{itemize}
+
+Nachteile von kNN/Parzen-Klassifikatoren:\\
+Problem:Varianzen werden ignoriert von kNN\\
+Wenn normalverteilt bietet sich Gaussklassifikator an\\
+Problem:viele trainingsdaten=hoher Rechenaufwand\\
+Histogramme anstelle Datensatz verwenden\\
+Parametrische Klassifikator oft besser: Modell anstelle Ursprungsdaten benutzen
+
+\begin{itemize}
+	\item Histogramme zur Dichteschätzung:
+	\item Ansatz: Nicht daten betrachten, sondern Histogramm aus Datenpunkten
+	\item Größe bins muss festgelegt werden
+	\item Zu kleine Klassen: viel erratische Struktur,m die eigtl nichjt vorhanden ist
+	\item Zu große Klassen: Struktur geht verloren
+	\item Skalierungsprobleme im hochdimensionalen Raum
+	\item Vorteile: Rechenaufwand und Spoeicheraufwand klein
+	\item Sequentielles Einfügen von Daten leicht
+\end{itemize}
+
+\subsection{Linearer Klassifikator}
+\begin{itemize}
+	\item x Eingabevektor
+	\item Linearer Klassifikator gegeben durch:
+	\item $y(x) = w^Tx+b$ Gewichtsvektor w und biasb
+	\item Eingabesample x wird C1 zugeordnet wenn $y(x) \ge 0$ sonst C2
+	\item Linearer Klassifikator: Featureraum wird in zwei Teile geteilt, getrennt durch Hyperebene mit Gleichung $w^Tx = 0$
+	\item Falls Hyperebene, die alle Eingabevektoren fehlerlos trennt, heißen die Klassen linear separierbar (selten)
+	\item Mehr als 2 Klassen:
+	\item K-1 Klassifikatoren, von denen jeder eine Klasse von den Samples in allen anderen Klassen trennt: one vs the rest classifier
+	\item K(K-1)/2 binäre Klassifikation, von denen jeder ein Paar von Klassen trennt: one versus one classifier
+	\item Nachteil: für gewisse Klassen möglicherweise kein eindeutiges Klassifikationsergebnis, vermeiden indem man K lineare Funktionen aufstellt und Samples diesen Klassen zuordnet wenn sie "zwischen den Geraden liegen"
+	\item Normalisierung:
+	\item Alternative Schreibweise der Trainingsvektoren und Gewichtsvektoren (Faktor 1/l und 1/b)
+	\item Verschiebt Hyperebene, sodass sie durch den Ursprung geht, Featureraum eine Dimension höher als vorher
+	\item $\tilde{x}= \frac{x}{l}$ und $\tilde{w}=\frac{w}{b}$ 
+	\item Klassifizierungsfunktion: $y(\tilde{x}) = w^Tx+b=\tilde{w}^T\tilde{x}$
+\end{itemize}
+
+
+\subsection{Training}
+\begin{itemize}
+	\item Bestimmung der Parameter für linearen Klassifikator
+	\item LDA schon bekannt
+	\item Minimierung des quadratischen Fehlers
+	\item Perzeptron Algorithmus
+	\item x1,..xn Trainingssamples, "klassenzubehörigkeitsvektor" ti= 0 1 0 0, wenn Sample zur 2. Klasse gehört
+	\item Ziel: Fehlerfunktion definieren, diese minimieren
+	\item Oft Minimierung des quadratischen Fehlers (Immer positiv, wenn minimierung durch ableiten und nullsetzen, immer Nullstelle einer linearen Funktion gesucht)
+	\item betrachte Klassifikator, in dem jede Klasse durch eine lineare Funktion beschrieben wird
+	\item $y_k(x) = w_k^Tx+b_k$
+	\item Normalisierte Form (wie oben) und zusammenfassen aller Gleichungen in Gleichungssystem
+	\item $y(x)= \tilde{W}\tilde{x}$
+	\item y K-dimensionaler Spaltenvektor, W tilde ist Kx(D+1)-Matrix
+	\item Ordne Sample Klasse mit größtem $y_k(x)$ zu
+	\item Samples gruppieren:
+	\item $\tilde{X}$ ist `(D+1)xN Matrix mit Eingabesamples als Spalten
+	\item T ist KxN-Matrix, die in jeder Spalte die Zielwerte $t_n$ enthält
+	\item Quadratische Fehlerfunktion
+	\includegraphics[scale=0.65]{Grafiken/fehler.png}
+	\item Lösung=Ableitung: $\tilde{W}=T\tilde{X}_z$, $\tilde{X}_z$ ist pseudoinverse Matrix zu $\tilde{X}$
+	\item Vorteile: mathematisch einfach, geschlossene Lösung des Problems
+	\item Nachteile: Falsche Trennlinie: Grün richtig, lila gefunden
+\includegraphics[scale=0.65]{Grafiken/falschetrennlinie.png}
+	
+\end{itemize}
+
+Perzeptron:
+\begin{itemize}
+	\item Einfaches Neuronales Netzwerk
+	\item Einzelnes Neuron, das +1 oder -1 ausgibt, wenn eingabevektor zur Klasse gehört
+	\item Linearfall:
+	\includegraphics[scale=0.65]{Grafiken/perzeptron1.png}
+	\item Alternative Formulierung für lineare Klassifikation
+	\item betrachtet Eingabesamples und berechnet iterativ ein Update für Gewichtsvektor w, bis ein Abbruchkriterium erfüllt isdt
+	\item w nicht in geschlossener Form gegeben
+\end{itemize}
 %__________________________________BENNE
 
 
