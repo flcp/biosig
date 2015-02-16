@@ -3608,7 +3608,167 @@ Unterschiedliche Verfahren zur Erfassung von Bewegungsabläufen:
 		\item Bottom-up: Automatisches Auffinden ähnlicher Einheiten?
 	\end{itemize}
  		
-\underline{} \\	
+\underline{Metrik: Precision und Recall} \\	
+ 	\begin{itemize}
+ 		\item Precision: Wie viele der gefundenen Segmentgrenzen sind auch echte Segmentgrenzen $precision = \frac{tp}{tp + fp}$
+ 		\item Recall: Wie viele korrekte Segmentgrenzen wurden gefunden $recall = \frac{tp}{tp + fn}$
+ 		\item F-Score: Harmonisches Mittel aus Precision und Recall $F-Score= \frac{2 \cdot precision \cdot recall}{precision + recall}$
+ 	\end{itemize}
+ 		
+\underline{Sliding Window} \\ 		
+	\begin{itemize}
+		\item Berechne jede mögliche Segmentierung
+		\item Wähle diejenige mit dem kleinsten Fehler
+		\item Definiere "sliding window" w und Breite b. Durchlaufe das Signal mit w, b in Schritten s und schneide korrespondierende Segmente aus
+		\item VT: Falls Fehlerfunktion geeignet definiert, findet diese Methode garantiert das Optimum
+		\item NT: zu langsam für Echtzeitanwendungen
+	\end{itemize}
+	
+\underline{Top-down} \\
+ 	\begin{itemize}
+ 		\item Für alle $t_i$: Definiere die Segmente $s_1 := [t_0,t_{i-1}] und s_2 := [t_i,t_n]$
+ 		\item Wähle diejenige als Segmentgrenze aus, an der die Differenz zwischen $s_1,s_2$ maximal wird
+ 		\item Wiederhole den Prozess auf beiden Seiten der Grenze
+ 		\item Stopkriterium: Schwellwert für Distanz, Anzahl Segmente
+ 		\item VT: schneller als sliding window
+ 		\item NT: immer noch langsam, finde geeignetes Distanzmaß, finde guten Schwellwert/Anzahl Segmente
+ 	\end{itemize}
+ 		
+\underline{Bottom-Up} \\
+ 	\begin{itemize}
+ 		\item Analog wie Top-Down, nur von unten nach oben...höhö
+ 		\item VT: schneller als Top-Down
+ 		\item NT: finde geeignetes Distanzmaß, finde guten Schwellwert / Anzahl Segmente
+ 	\end{itemize}
+ 	
+\underline{PCA, PPCA, GMM Segmentierung} \\
+ 	\begin{itemize}
+ 		\item Automatische Segmentierung menschl. Bewegungsabläufe basieren auf statistischen Eigenschafen
+ 		\item Segmentierung in high-level-Verhalten wie laufen, rennen, sitzen im Gegensatz zu low-level-Merkmalen 
+ 		\item Anforderungen: Effizient und Robustheit
+ 		\item gibt unüberwachte sowie überwachte Verfahren
+ 		\item Unüberwacht: kein vorheriges Training von Modellen notwendig
+ 		\item Übertragbarkeit auf ungesehene Daten
+ 	\end{itemize}
+ 
+\underline{Bewegungssequenzen} \\
+ 	\begin{itemize}
+ 		\item Annahme: Lange Bewegungssequenzen sollen in einzelne Bestandteile zerlegt werden, die "high-level- Cahrakteristika" entsprechen
+ 		\item High-level Charakteristika: Beschreibung durch Verben oder Objekte
+ 		\item Bewegungssequenz M, Bewegungsbestandteile $M_1, ...,M_s$
+ 		\item M ist eine Zeitreihe von Frames 
+ 		\item Jeder Frame repräsentiert die Rotationen von Gelenkwinkeln 
+ 		\item Rotationen sind spezifiziert durch Quaternionen
+ 		\item Absolute Körperposition und Orientierung wird nicht betrachtet
+ 		\item Jeder Frame $x_i$ wird präsentiert von einem 56-dimensionalen Raum
+ 		\item 14 Winkel in der Körperhierachie x4 (Quaternion / Gelenk)
+ 	\end{itemize}
+
+\underline{Segmentierung durch PCA} \\
+ 	\begin{itemize}
+ 		\item PCA = Principal Component Analyses 
+ 		\item Idee: Einfache Bewegungen haben eine niedrigere Dimensionalität als komplexe Bewegungen 
+ 		\item Jeder Frame $x_i$ ist repräsentiert als Punkt im 56D Raum
+ 		\item Bewegung entspricht einer Trajektorie im 56D Raum
+ 		\item Definiere Zentrum der Bewegung als Mittelwert
+ 		\item Für einfach Bewegungen formieren die Frames eine Wolke /Cluster ums Zentrum
+ 		\item Bewegung kan durch r < 56 Dimensionen beschrieben werden
+ 		\item Grundidee: solang dieselbe Bewegung ausgeführt wird, bleibt der Fehler konstant. Ändert sich die Bewegung, steigt der Fehler an
+ 	\end{itemize}
+ 		
+\underline{Segmentierung durch PPCA} \\ 		
+ 	\begin{itemize}
+ 		\item PPCA = Probabilistische PCA
+ 		\item PCA betrachtet nur den Unterraum mit Dimension r und ignoriert alle weiteren Informationen
+ 		\item Erweiterung in PPCA: modelliere die Verteilung der Daten außerhalb des Unterraumes
+ 		\item die gesamten Daten werden durch Gaußsche Mischverteilungen modelliert
+ 		\item Mittels der Mahalanobisdistanz wird nun Wahrscheinlichkeit berechnet das eine Fraesequenz auf die Gaußsche Verteilung passt
+ 		\item Segmentierung: gleiches Prinzip wie bei PCA: beobachte den Verlauf der Distanz H
+ 		\item Segmentgrenzen entsprechen den Maxima von H
+ 	\end{itemize}
+
+\underline{GMM} \\
+	\begin{itemize}
+		\item GMM = Gaussian Mixture Model = Gauß sche Mixturverteilung
+	\end{itemize}
+ 		
+ 		
+\underline{Erkennung} \\
+%g 23-26
+Wozu braucht man Verfahren zur auto. Bewegungserkennung und Modellierung?
+	\begin{itemize}
+		\item Mensch-Maschine-Interaktion
+		\item Humanoide Roboter /Maschinen 
+		\item Zahlreiche Anwendungsmöglichkeiten
+	\end{itemize}	 	
+	
+\underline{Mensch-Maschine Interaktion / Sport / Information Retrieval / Komprimierung / Alarm und Überwachungssysteme / Virtuelle Welten} \\	
+ 	\begin{itemize}
+ 		\item Mensch-Maschine Interaktion
+ 			\begin{itemize}
+ 				\item Übersetzung der Gebärdensprache
+ 				\item Roboter bekommt ein persönliches Gesicht
+ 				\item Erkennung von Gesten
+ 			\end{itemize}
+ 		\item Sportwissenschaften
+ 			\begin{itemize}
+ 				\item Bewegungsoptimierung
+ 				\item Suche und Extraktion von Informationen
+ 			\end{itemize}
+ 		\item Information Retrieval
+ 			\begin{itemize}
+ 				\item Inhaltsbasiertes Indizieren, Abspeichern, Suchen von Videodaten
+ 				\item Videoconferencing
+ 			\end{itemize}
+ 		\item Modellbasierte Darstellung von Bewegungen: erlaubt die Komprimierung von Sequenzen 
+ 		\item Alarm und Übewachungssysteme
+ 			\begin{itemize}
+ 				\item Identifizierung von verdächtigen Bewegungen
+ 				\item Sicherheitssysteme 
+ 				\item Passkontrollen, etc
+ 			\end{itemize}
+ 		\item Virtuelle Welt: Animation von Charakteren in Chatrooms und Computerspielen 
+ 	\end{itemize}
+ 		
+\underline{Bewegungserkennung} \\		
+ 	\begin{itemize}
+ 		\item Bewegungen sind grundsätzlich sequenziell
+ 		\item Modellierungsmöglichkeiten Token-Modeling (klassifiziere jedes Fenster unabhängig von den Vorgängern), Sequence Modeling (betrachte Fenster im Kontext der Sequenz)
+ 		\item Merkmalsextraktion: Überlicherweise Sliding window, Berechnung von Merkmalen auf Fester
+ 		\item Merkmale: keine einheitliche Vorverarbeitung (abhängig von Sensorik und der Anwendung)
+ 	\end{itemize}
+ 	
+\underline{Token Modeling} \\
+ 	\begin{itemize}
+ 		\item meist weniger rechenaufwändig als Sequenzmodellierung (wichtiger Faktor in mobilen Anwendungen, Embedded Systems, etc)
+ 		\item Verbreitet in der Aktivitätserkennung
+ 		\item[] %g 23 - 33 mit 4pkt drüber
+ 	\end{itemize}
+
+\underline{Sequenzmodellierung} \\
+ 	\begin{itemize}
+ 		\item einfach erweiterbar um Abhängigkeiten zwischen Aktivitäten zu modellieren
+ 			\begin{itemize}
+ 				\item modelliere Sequenzen von Aktivitäten
+ 				\item HMM für Übergänge zwischen den Aktivitäten
+ 				\item Alternative: Kontexmodell
+ 			\end{itemize}
+ 		\item[] %g 23-34
+ 		\item für feingranulare Aktivitäten ist die temporale Information oft wichtig (Gesten, Gangzyklus)
+ 		\item Bewegungen werden typischerweise im Zeitbereich modelliert $\rightarrow$ Kurve muss mit zeitdiskreten HMM approximiert werden
+ 		\item Rules of Thumb: Hohe Anzahl von Zuständen um hohe Auflösung zu erreichen
+ 	\end{itemize}
+ 		
+ 		
+ 	
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
  		
  		
  		
