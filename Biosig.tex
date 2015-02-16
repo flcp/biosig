@@ -3758,21 +3758,113 @@ Wozu braucht man Verfahren zur auto. Bewegungserkennung und Modellierung?
  		\item Bewegungen werden typischerweise im Zeitbereich modelliert $\rightarrow$ Kurve muss mit zeitdiskreten HMM approximiert werden
  		\item Rules of Thumb: Hohe Anzahl von Zuständen um hohe Auflösung zu erreichen
  	\end{itemize}
+
+\section{Evaluation}
+
+\underline{Referenz/Ground-truth} \\
+ 		\begin{itemize}
+ 			\item Um Ergebnisse beurteilen zu können, muss Ground-truth bekannt sein
+ 		\end{itemize}
  		
- 		
+\underline{Konfusionsmatrix} \\
+	\begin{itemize}
+		\item Andere Darstellung von Klassifikationsergebnissen
+		\item zeigt an, wie viele Instanzen der Referenz-Klasse welcher Klasse im Test zugeordnet wurden (Klassifikation)
+		\item[] %G 24-6
+		\item gibt wichtige Informationen an, die eine detalliertere Analyse zulassen, als nur die Bestimmung der Akkuratheit
+		\item Beispiel 
+		\item[] %G 24-8 ganze folie
+	\end{itemize}
+	
+\underline{F-Score Beispiel + Gegenbeispiel} \\
+ Metrik: Precision und Recall
+ %G 24 -11,12,13,14
+ 
+\underline{Gewichtung von Precision/Recall} \\
+ 	\begin{itemize}
+ 		\item Gewichtung von Recision und Recall ist abhängig vom Task
+ 		\item Was ist besser, zu oft reagieren (FP) oder Ereignisse verpassen (FN)
+ 	\end{itemize}
  	
+\underline{Receiver Operating Characteristic (ROC)} \\
+ 	\begin{itemize}
+ 		\item Methode zur Bewertung und Optimierung von Analyse-Strategien
+ 		\item ROC-Kurve stellt visuell die Abhängigkeit der Effizienz mit der Fehlerrate für verschiedene Parameterwerte dar
+ 		\item Interpreation:
+ 			\begin{itemize}
+ 				\item eine ROC-Kurve nahe der Diagonalen deutet auf einen Zufallsprozess hin
+ 				\item die ideale ROC-Kurve steigt zunähcst senkrecht an, erst danach steigt die Falsch-Positiv-Rate an
+ 				\item eine ROC-Kurve kann auch als Qualitätsmaß verwendet werden
+ 				\item Zu der ROC-Kurve berechnet man die Fläche unterhalb der Kurve. Dieser Wert kann zwischen 0 und 1 liegen, wobei aber 0,5 der schlechteste Wert ist
+ 			\end{itemize}
+ 	\end{itemize}
+ 	
+\underline{Statistische Analyse Beispiel} \\
+ 	%G 24-18
+ 	%G 24-19
+ 	%G 24-20
+ 	%G 24-21
+ 	
+\underline{Descriptive Analyse: Verteilung} \\
+	\begin{itemize}
+		\item Information wie Stichprobe um den zentralen Wert verteil ist
+		\item Warum n-1 statt n? $\rightarrow$ Unbiased (erwartungstreu, unvoreingenommen) Schätzer der rechten Varianz
+		\item Standardabweichung wird oft verwendet
+		\item Varianz kann nur im Zusammenhang zum Mittelwert interpretiert werden
+	\end{itemize}
+	
+\underline{Standard Fehler} \\
+ 	\begin{itemize}
+ 		\item Stichproblem Mittelwert ist nur eine Approximation desechten Mittelwertes der Population
+ 		\item Betrachte Stichproblem Mittelwert als Zufallsvariable
+ 		\item Stichproben Mittelwert als Summe von unabhängigen, identisch verteilten Zufallsvariablen folgt einer Normalverteilung 
+ 		\item Für eine Normalverteilung fallsen 68,2 \% aller möglichen Werte innerhalb von einer Standardabweichung vom Mittelwert $\rightarrow$ Konfidenzinterfall des Stichprobenmittelwert
+ 		\item[] %G 24 - 24
+ 	\end{itemize}
+ 	
+\underline{Deskriptive Statistik: Grenzen} \\
+	\begin{itemize}
+		\item Des. Statistik erlaubt Stichproblemanalyse
+			\begin{itemize}
+				\item vergleicht nicht zwei verschiedene Stichproben
+				\item hilft nicht Hypothese zu evaluieren
+				\item erlaubt nicht zu bewerten, ob Fehler in der Stichprobe noch verlässliche Antwort erlaubt
+			\end{itemize}
+		\item $\rightarrow$ Inferenzstatistik: Ziel - Schlüsse aus Prozessen die Zufallsvariablen enthalten ziehen
+	\end{itemize}
+ 	
+\underline{Warum braucht man statistische Tests} \\
+	\begin{itemize}
+		\item wir sammeln Daten von zwei Populationen. Sind diese unterschiedlich?
+		\item errechne Mittelwerte der Stichproben und untersuche, ob sich diese unterscheiden
+		\item Caveat: damit schauen wir uns nur ein Sample der Population an
+		\item Je größer die Varianz von Distributionen, esto größer der Einfluss von Zufallseffekten
+		\item Wann bedeutet also ein Unterschied im Stichproben-Mittelwert einen Unterschied zwischen den Populationen?
+	\end{itemize}
  		
+\underline{Statistical Tests: Generic Framework} \\
+ %G 24 - 27
+ 
+\underline{t-Test} \\
+ 	\begin{itemize}
+ 		\item Wir haben die Stichproben X und Y von zwei Populationen welche nach zwei Verteilungen A und B verteilt sind. A/B sind normalverteilt + haben gleiche Varianz, X/Y haben gleiche Stichprobengröße
+ 		\item Frage: Sind die Mittelwerte von A und B unterschiedlich?
+ 		\item Hängt ab von: den Stichproben-Mittelwerten und den (unbekannten) Varianzen von A und B
+ 		\item Nullhypothese $H_0$: Die Mittelwerte von A und B sind gleich
+ 	\end{itemize}
+ 	
+\underline{Student's t-Distribution} \\
+ 	\begin{itemize}
+ 		\item ist der Normalverteilung ähnlich (aber größere Enden)
+ 		\item Ein Parameter: Freiheitsgrade (df) = 2(n-1)
+ 	\end{itemize}
  		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 		
+\underline{Varianten des t-Test} \\
+ 	\begin{itemize}
+ 		\item Viele Annahmen des t-tests können fallen gelassen werden (ungleiche Varianzen, ungleiche Stichprobengrößen)
+ 		\item Es wurde der two-sided t-test vorgestellt, gibt auch one-sided t-test
+ 		\item Es wurde Variante für unabhängige Stichproben gezeigt
+ 	\end{itemize}
  		
  		
  		
