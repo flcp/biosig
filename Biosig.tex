@@ -1469,7 +1469,182 @@ Perzeptron:
 	\item Alternative Formulierung für lineare Klassifikation
 	\item betrachtet Eingabesamples und berechnet iterativ ein Update für Gewichtsvektor w, bis ein Abbruchkriterium erfüllt isdt
 	\item w nicht in geschlossener Form gegeben
+	\item Perzeptron mit obiger Klassifikationsformel ist linearer Klassifikator
+	\item Grundbaustein für komplizierte neuronale Netze
+	\item Leicht geänderte Definition: (Klassen C1, C2)
+		\includegraphics[scale=0.65]{Grafiken/perzeptron2.png}
+	\item Wir suchen Hyperebene (w) durch Nullpunkt (kein +b Bias), sodass für möglichst viele Samples x gilt: $tw^Tx>0$, dh gleiches Vorzeichen t und wtx
+	\item Fehlerbasiert: In jedem schritt hat ein Sample nur Auswirkungen auf das Training, wenn es falsch klassifiziert wird
 \end{itemize}
+
+
+Durchführung Perzeptron:
+\begin{itemize}
+	\item $x_i$ Vektor, der falsch klassifiziert wurde
+	\item Abstand zur Entscheidungshyperebene: $d_i = d(x_i) = w^Tx_i$
+	\item Abstand = Kosten
+	\item Gradientenabstieg->Update-Regel für Gewichtsvektor (die Kostenfunktion minimiert)
+	\includegraphics[scale=0.65]{Grafiken/perzeptron3.png}
+	\item Gewichtsupdate durchführen bis Abbruchkriterium
+	\item Falls Klassen linear separierbar, findet dieser Algorithmus eine geeignete Hyperebene in endlich viele Schritten
+	\item Kann nicht konvergieren, wenn Klassen nicht separierbar
+\end{itemize}
+
+\subsection{Bayes Entscheidungstheorie}
+\begin{itemize}
+	\item Wir wollen Warscheinlichkeit, wie sicher Instanz zur Klasse gehört
+	\item Warscheinlichkeit für eine Klasse A gegeben einen Merkmalsvektor B p(A|B) kann nicht direkt bestimmt werden
+	\item P(A|B) ist die A-Posteriori Warscheinlichkeit
+	\item Bayes Theorem:
+	$P(A|B) = \frac{P(B|A)\times P(A)}{P(B)}$
+	\item P(B|A) Warscheinlichkeit für Merkmal gegeben Klasse
+	\item P(A) A priori Warscheinlichkeit für Klasse
+	\item P(B) A priori Warscehinlichkeit fvür Merkmalsvektor
+\end{itemize}
+\includegraphics[scale=0.65]{Grafiken/bayes.png}
+In Praxis: Wenn höchste Warscehinlichkeit gesucht wird, kann Normalisierung weggelassen werden (Ohne Teilen)\\
+Dann keine echten Warscheinlichkeiten mehr
+
+\subsection{Gaussklassifikator}
+\begin{itemize}
+	\item Modelliert die Verteilung von Datenpunkten mit Hilfe der Gaussverteilung
+	\item Bestimmen für jede Klasse Parameter der Gaussverteilkung, die die Lage der Samples im Featureraum gut beschreibt
+	\item Klassifikation = Auswertung Dichtefunktion
+	\item Beliebige Verteilungen lassen sich gut als Summe von Gaussverteilungen darstellen
+	\item Dichtefunktion (Gausskurve)
+	\item Jede Klasse hat eigene Gausdichtefunktion
+	\item Verteilungen GETRENNT modelliert
+	\item Klassifikation  =Auswertung mehrdimensionaler Gaussverteilung
+	\item Generatives Modell: Warscheinlichkeit, dass Modell Vektor generiert hat
+	\item Diskriminatives Modell: Diskriminiert den Merkmalsraum in Entscheidungsräume
+	\item Durchführung Klassifikation:
+	\item Dichtefunktionen der Klassen $C_i $
+	\item Schön trainierte Dichten
+	\item Wir berechnen Wert jeder Guassfunktion für Eingabesample x
+	\item x wird der Klasse zugeordnet, die den höchsten Wert hat
+	\item Dichtewert kann weiterverwendet werden
+	\item Methode geht nicht nur für Gaussverteilungen
+	\item Es ergeben sich Entscheidungsregionen (nicht unbedingt zusammenhängend)
+	\item Sample in Region wird in zubehörige Klasse gesteckt
+\end{itemize}
+
+\begin{itemize}
+	\item Training für Gaussklassifikator
+	\item Suche geeignete Mittelwert und Kovarianzmatrix für Samples
+	\item Wir wählen so, dass abgeschätze Verteilung der Samples maximale Warscheinlichkeit hat
+	\item \includegraphics[scale=0.65]{Grafiken/traininggauss.png}
+	\item Maximum Likelihood Abschätzung
+	\item Sehr einfach unaufwendig, nicht iterativ, für jede Klasse getrennt durchführen
+	\item Für alle Klassen Mittelwert und Varianz => Gaussklassifikator
+	\item Bei wenigen Trainingsdaten: Nur Diagonalwerte der Kovarianzmatrizen trrainieren, andere Werte 0
+	\item Alternative Methode: Diskriminatives Training: Klassifikationsfehler möglichst klein halten, aufwändig
+\end{itemize}
+
+
+\subsection{Gauss-Mischverteilungen}
+Man benutzt mehrere Verteilungen um genauere Approximationen zu erhalten\\
+beim Test nicht eine Gaussverteilung ausgewertet, sondern mehrere\\
+Jede Verteilung hat Gewicht
+\includegraphics[scale=0.65]{Grafiken/dichtefunktionmisch.png}
+
+Vor und Nachteile:\\
+Flexibilität\\
+Man kann Anzahl Verteilungen von Komplexität der Klasse abhängig machen\\
+Parameter Tying: Man kann Parameter sparen (Wenn zuwenig Trainingsdaten)\\
+Wir können identische Mischverteilungen mit unterschiedlichen Gewichtne für mehrere Klassen benutzen\\
+
+\includegraphics[scale=0.65]{Grafiken/entscheidungsregionenmisch.png}
+
+Anzahl Verteilungen muss gut gewählt sein! (2Phenome, 2Gaussmischverteilungen)
+
+\subsection{Training von Gauss Mischverteilungen}
+\begin{itemize}
+	\item Vorhin: Einzelne Gaussverteilungen durch Maximum Likelihood Abschätzungfen von Mittelwert und Kovarianz trainierbar
+	\item Problem: Wie viele wollen wir trainieren, welche Samples gehören zu welcher Verteilunge?
+	\item Doppeltes Optimierungsproblem:
+	\item Optimale Form der Gaussverteilungen hängt von den zugeordneten Samples ab
+	\item Zurodnung Samples hängt von Verteilungen ab
+	\item Zuordnung ist eine probabilistische Zuordnung
+	\item WIeder Maximum Likelihood Training
+	\item Doppeltes Optimierungsproblem: Keine analytische Lösung
+	\item Iterativer Algorithmus, der Zuordnung und Verteilungsparameter schrittweise abwechselnd optimiert (EM, Expectation maximization) Algorithmus
+	\item Aufwändig, Initialisierung: K-Means-Ago
+	\item Annahme: Gewünmschte Anzahl der Gaussglocken bekannt
+	\item EM-Algo ist allgemeines Verfahren zur Bestimmung von Maximum Likelihood Schätzwerten beio probabilistischen Modellen
+	\item Durchführung hängt von Zusammenhang ab
+	\item Für Gauss Mischverteilungen:
+	\item Grundidee: Zweistufig iterativ
+	\item Estimation Step: Probabilistische Zuordnung der Samples zu Gaussverteilungen berechnet
+	\item Maximization Step: Parameter der Modelle werden so optimiert wie vorhin
+	\item Warscheinlichkeit der Beobachtung wird maximiert unter Annahme der Zuordnung von SChritt 1
+	\item Abwchselnd ausführen, bis Erwartungswert nicht oder nur noch kaum ändert
+	\item Dann lokales Maximum gefunden
+	\item Maximization-Step: Jede Gaussverteilung abgeschätzt wie immer, jedes Sample wird gewichtet, GEwicht ist Zuordnungswarscheinlichkeit zur Verteilung
+	\item In jedem Schritt erhöht EM die log-likelihood Funktion (quasi Gesamtwarscheinlichkeit) der Trainingssamples, Abbruchkriterium wenn log-likelihood sich nicht mehr stark ändert (oder mit etwas Erfahrung feste Zahl Iterationen)
+\end{itemize}
+
+\subsection{Suppor Vector Machines}
+\begin{itemize}
+	\item Beruht auf 3 Tricks:
+	\item Finde Hyperebene (trennfläche in 2 Klassen). Hyperebene soll maximalen Abstand zu denjenigen Vektoren haben, die der Ebene am nächsten liegen
+	\item Nur Trainingsvektoren betrachten, die am nächsten an der Hyperebene liegen (Stützvektoren, Support Vektors)
+	\item Wenn Daten nicht linear separierbar, transformiere Merkmalsraum mit Kernel-Trick
+	\item Abstand heißt margin
+	\item Generalisierungsfähigkeit: Unbekannte Datenpunkte können besonders gut klassifiziert werden
+	\item Zwei Klassen, Zielwerte $t_n$ 1 oder 0 je nach Klasse
+	\item Margin ist Minimum aller Abstände zur Trennebene
+	\item Wir wollten größte Margin, es ergibt sich\includegraphics[scale=0.65]{Grafiken/margin.png}
+	\item Schlecht analytisch zu fassen, duale Repräsentation
+\includegraphics[scale=0.65]{Grafiken/dualerep.png}
+	\item Kernel Funktion vorerst $k(x,x')= x^Tx'$
+	\item Zu maximieren sind Parameter $a_n$ (ist effizient, Standardverfahren)
+	\item Neue Datenpunkte klassifizieren, in dem wir einsetzen:
+	\item $w=\sum a_nt_nx_n$
+	\item \includegraphics[scale=0.65]{Grafiken/linearesvm.png}
+	\item Es kann gezeigt werden, dass entweder $a_n=0$, dann Sample irrelevant oder $t_ny_n=1$, dann liegt Punkt genau auf Rand (nur wenig meist) = Support Vektors
+	\item Sparsity: Nur Support Vektors für Klassifikation benötigt: Sehr effizient
+\end{itemize}
+
+\subsection{Nichtlineare Klassifikation}
+Anstelle von Hyperebene nichtlineare Trennfunktion nehmen, sehr aufwändig\\
+Trick: Wir bilden ab auf hochdimensionalen Featureraum, in dem Trennfunktion linear ist->linear Trennen\\
+Problem: Aufwand um Abbildungsfunktion $\Phi$ zu berechnen sehr hoch\\
+Aber Um SVM zu trainieren und um die Klassifikation durchzuführen brauchen wir lediglich die Werte der Kernelfunktion $k(x,x_n) = \Phi(x) \Phi(x_n)$\\
+Geeignetes $\Phi$, viel einfacher zu berechnen als Funktion selbst\\
+Dies ist Kernel Trick\\
+\\
+Zusammenfassung: Haupteigenschaften SVM:\\
+Featureraum: Klassifikation nichtlinearer Trennung wird durchgeführt, indem die Daten in einen Featureraum abgebildet werden, wo sie linear trennbar sind. Wegen des Kernel tricks ist die Komplexität handhabbar.\\
+Sprasity: Zur Klassifikatioon nur wenige Trainingssamples wichtig, die am nächsten der Trennhyperebene liegen\\
+Maximum Margin: Das Training beruht auf dem lerntheoretisch optimalen Margin-Kriterium\\ \\
+In Praxis fast nie linear trennbar, slack variables: einzelne Datenpunkte dürfen falsch klassifiziert werden
+
+\subsection{Regression}
+\begin{itemize}
+	\item Nicht Zuweisen eines Samples zu einer Klasse, sondern abbilden auf kontinuierlich abhängige Variable
+	\item Interpolation vs Extrapolation: Interpolation innerhalb Bereichs gesicherter Werte, Extrapolation über den gesicherten Bereich hinaus
+	\item Lineare Regression: Annahme, linearer Zusammenhang zwischen unabhängiger Variable (Merkmal) und der abhängigen Variable
+	\item Linear, da erste Potenz der Regressionskoeffizienten
+	\item \includegraphics[scale=0.65]{Grafiken/linregression.png}
+	\item Zu bestimmen sind $\beta_0, \beta_1$ und Fehler E
+	\item Parameter für Regressionsmodell nicht bekannt: schätzen $y_i=a+bx_i+e_i$
+	\item Quadratrischen Fehler minimieren:
+	\includegraphics[scale=0.65]{Grafiken/quadratfehler.png}
+	\item Man erhält:
+	\includegraphics[scale=0.65]{Grafiken/lsglinreg.png}
+	\item In Biosig normalerweise multiple Regression: mehrere unabhängige Variablen $Y=\beta_0+\beta_1x_1+\beta_2x_2+...+\epsilon$
+	\item Zur Berechnung lineares Regressionsmodell auf mehr Dimensionen erweitern
+	\includegraphics[scale=0.65]{Grafiken/multipreg.png}
+	\item Dieser Schätzer ist nach dem Gauß-Markow-Theorem der beste lineare unverzerrte Schätzer
+	\item Mit dem errechneten b-Vektor können nun Schätzwerte für neue Merkmale errechnet werden 
+	\includegraphics[scale=0.65]{Grafiken/neuemerkmale.png}
+	\item Lineare/Multiple Regression einfachste Regressionsmodelle, viele andere existieren: Logistische Regression, Support Vector Regression
+\end{itemize}
+
+
+
+
+
 %__________________________________BENNE
 
 
