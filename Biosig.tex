@@ -718,7 +718,7 @@ Ein Aktionspotenzial wandert nicht, es induziert neue AP in benachbarter Membran
 \end{itemize}
 
 Gehirnteile zuständig für Körperteile
-\includegraphics[scale=0.65]{Grafiken/Homunkulus.png}
+\includegraphics[scale=0.65]{Grafiken/homunkulus.png}
 
 \subsection{Neuronale Organisation des Kortex}
 \begin{itemize}
@@ -4854,6 +4854,160 @@ Wozu braucht man Verfahren zur auto. Bewegungserkennung und Modellierung?
  		\item Es wurde der two-sided t-test vorgestellt, gibt auch one-sided t-test
  		\item Es wurde Variante für unabhängige Stichproben gezeigt
  	\end{itemize}
+
+\section{Evaluation / Versuchsplanung}	
+\subsection{Evaluation}
+\underline{Regression} \\
+ 	\begin{itemize}
+ 		\item Ausgiebig mit Maßen und Analysen für Klassifikation beschäftigt
+ 		\item Benutzerschnittstellen basierend auf Biosignalen prädizieren aber oft Werte statt nur zu klassifizieren
+ 		\item Annahmen bei der Regression:	
+ 			\begin{itemize}
+ 				\item Normality of Error: Error values ($\epsilon$) sind normalverteil für jeden Wert von X
+ 				\item Homosedasticity: die Wahrscheinlichkeitsverteilung der Fehler hat konstante Varianz
+ 				\item Independence of Errors: Fehlerwerte sind statistisch unabhängig
+ 			\end{itemize}
+ 		\item Standard Error der Schätzung:
+ 			\begin{itemize}
+ 				\item $S_{YX} = \sqrt[2]{\frac{SSE}{n-2}} = \sqrt[2]{MSE}$
+ 				\item SSE = error sum of squares, n = Stichprobengröße, MSE = Mean Standard Error
+ 			\end{itemize}
+ 		\item $S_{YX}$ ist also ein Maß für die Variation der beobachteten Y Werte von der Regressionslinie
+ 		\item Mean Squared Error (MSE): Durchschnittlicher Quadratischer Abstandvon Regression und Zielvariable
+ 		\item Mean Absolute Error (MAE): Durchschnittlicher Abstand von Regression und Zielvariable
+ 		\item Total Variation besteht aus 2 Teilen: SST (Total sum of squares) = SSR (regression sum of squares) + SSE (error sum of squares)
+ 			\begin{itemize}
+ 				\item SST: misst absolute Variation der $Y_i$ Werte um deren Mittelwert
+ 				\item SSR: erklärter Anteil der Variation der dem Zusammenhang zwischen Y und X zugeschrieben wird
+ 				\item SSE: Variation von Y-Werten die anderen Faktoren zugeschrieben wird als dem Zusammenhang mit X
+ 			\end{itemize}
+ 	\end{itemize}
+
+\underline{Cross-Validierung} \\
+	\begin{itemize}
+		\item Modelvalidierungstechnik um zu bewerten, wie die Ergebniss eeiner statis. Analyse auf unbekannten Daten generalisieren
+		\item Normaler Ansatz: Datensatz mit bekannten/unbekannten Daten auf welchen trainiert/das Model evaluiert wird
+		\item Idee: Teile Stichprobe in komplementäre Subsets, trainiere auf einem Subset und validiere auf dem anderen Subset
+		\item Cross-Validation ist wichtig um vor Hypothesen die das Trainingsset vorgibt (overfitting) zu schützen		
+	\end{itemize}	 		
+	
+\underline{Typen von Cross-Validation} \\
+	\begin{itemize}
+		\item K-fold cross-validation
+			\begin{itemize}
+				\item zerteile die Daten zufällig in k gleich große Subsamples
+				\item Wähle zufällig ein Subsample für das Testen
+				\item K-1 Subsamples zum Training 
+				\item wiederhole k mal (folds)
+				\item jedes Subsample wird genau einmal zum Validieren genutzt
+				\item Mittle über die k Ergebnisse
+			\end{itemize}
+		\item Repeated random sub-sampling validation
+			\begin{itemize}
+				\item zerteile die Daten zufällig in Training und Testing Datensätze
+				\item VT (gegenüber k-folds): Verhältnis von Training/Test unabhängig von k\\
+				\item NT: Samples könnten gar nicht, oder mehrfach zum validieren benutzt werden
+			\end{itemize}
+		\item Leave-one-out cross validation
+			\begin{itemize}
+				\item benutze einzelne Samples als Validierungsdaten
+				\item verbleibende Daten sind Trainingsdaten
+				\item jedes Sample wird genau einmal zur Validierung genutzt
+			\end{itemize}
+	\end{itemize}
+ 		
+\subsection{Versuchsplanung}
+\underline{The Scientific Method} \\
+ 	%G 25 - 18
+
+Generic Approach for emipiric Testing
+	\begin{itemize}
+		\item 1. Formulate hypotheses
+		\item 2. Design experiment to investigate the predictions of the hypotheses
+		\item 3. collect data in that experiment
+		\item 4. perform statistical analysis to evaluate the hypotheses in the light of the collected data
+		\item 5. draw conclusions
+	\end{itemize}
+	
+\underline{Objectivity, Reliability and Validity} \\
+	\begin{itemize}
+		\item Wie gut/vertrauenswürdig sind die Ergebnisse eines Experiments
+		\item determine its objectivity, validity, reliability
+		\item Ojectivity: result independent of researcher or examiner?
+			\begin{itemize}
+				\item Durchführungsobjektivität
+				\item Auswertungsobjektivität
+				\item Interpretationsobjektivität
+			\end{itemize}
+		\item eliability: How accurate does the experiment measure?
+			\begin{itemize}
+				\item Internal consistency: if serveral components should measure the same thing, they should be similar
+				\item retest reliability: if we repeat the experiment with the same person, do we get the similar results?
+				\item the more volatile the trait in question, the harder it is to determine reliability
+			\end{itemize}
+		\item Validity: Does the experiment measure what it is supposed to?
+			 \begin{itemize}
+			 	\item Internal Validity:
+			 		\begin{itemize}
+			 			\item Did the treatment acually influence the dependent variable?
+			 			\item Does not mean that the influence was as intended
+			 			\item potential threads to int. validity: external influences, social threads, etc.
+			 		\end{itemize}
+			 	\item External Validity:
+			 		\begin{itemize}
+			 			\item Does the result generalize from the settings of th eexperiment
+			 			\item potential threads to ext. validity: effect casued by specific situation, Novelty effects, etc.
+			 			\item related (but not the same): Ecological validity $\rightarrow$ does the laboratory experiment generalize to more natural, less controlled scenarios?
+			 		\end{itemize}
+			 	\item Construct Validity:
+			 		\begin{itemize}
+			 			\item Does the experiment measure what we think it measures?
+			 			\item content validity: Are the imtems of the experiment related / not related to the concept in questen / to other concepts?
+			 			\item criterion validiy: compare with other empirical measures of the concept in question: judgment of human observer, physiological measurements, other experimental criteria
+			 		\end{itemize}
+			 \end{itemize}
+	\end{itemize}
+
+\underline{Summary} \\
+ 	\begin{itemize}
+ 		\item 1. Formulate hypotheses $\rightarrow$ users perceive personality of systems, users show similarity attraction 
+ 		\item 2. Deisng experiment to investigate the predictions of the hypotheses $\rightarrow$ 2x2 factorial design
+ 		\item 3. collect data in that experiment
+ 		\item 4. perform statiscal analysis to evaluate the hypotheses in the light of the collected data $\rightarrow$ descriptive statistics, t-Test, ANOVA
+ 		\item 5. draw conclusions $\rightarrow$ Interpretation, check validity and reliability, regard alternative explanations
+ 	\end{itemize}
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
  		
  		
  		
